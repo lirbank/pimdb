@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "dev": "bun --watch lib/pimdb.ts",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
+}
