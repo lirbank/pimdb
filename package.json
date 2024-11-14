@@ -3,10 +3,9 @@
   "module": "src/index.ts",
   "type": "module",
   "scripts": {
-    "dev": "bun --watch src/pimdb.ts",
+    "dev": "bun --watch src/index.ts",
     "format": "prettier --write .",
-    "typecheck": "tsc --noEmit",
-    "build": "tsc"
+    "build": "tsc --noEmit false"
   },
   "devDependencies": {
     "@types/bun": "latest",
