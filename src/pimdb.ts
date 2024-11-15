@@ -45,12 +45,10 @@ export class PimPrimaryIndex<K, V extends Record<string, any>>
     }
   }
 
-  // Get a record by primary key
   get(key: K): V | undefined {
     return this.index.get(key);
   }
 
-  // Get all records
   getAll(): V[] {
     return Array.from(this.index.values());
   }
@@ -103,7 +101,6 @@ export class PimSecondaryIndex<V extends Record<string, any>>
     }
   }
 
-  // Query records based on criteria
   query(criteria: Partial<V>): V[] {
     const key = this.keyFields.map((field) => criteria[field] || "").join("|");
     return this.index.get(key) || [];
@@ -151,7 +148,6 @@ export class PimRangeIndex<V extends Record<string, any>> implements Index<V> {
     }
   }
 
-  // Method to perform range queries
   rangeQuery(min?: number, max?: number): V[] {
     let results: V[] = [];
     for (const [key, records] of this.index.entries()) {
@@ -169,39 +165,34 @@ export class PimRangeIndex<V extends Record<string, any>> implements Index<V> {
 /**
  * Collection
  */
-export class PimCollection<K, V extends Record<string, any>> {
+export class PimCollection<
+  K,
+  V extends Record<string, any>,
+  I extends { [key: string]: Index<V> },
+> {
   name: string;
-  private primaryIndex: PimPrimaryIndex<K, V>;
-  private indexes: Map<string, Index<V>>;
+  primaryIndex: PimPrimaryIndex<K, V>;
+  indexes: I;
 
-  constructor(
-    name: string,
-    primaryKeyField: keyof V,
-    indexes: Index<V>[] = [],
-  ) {
+  constructor(name: string, primaryKeyField: keyof V, indexes: I) {
     this.name = name;
     this.primaryIndex = new PimPrimaryIndex<K, V>(
       "primaryIndex",
       primaryKeyField,
     );
-    this.indexes = new Map<string, Index<V>>();
-
-    // Initialize indexes
-    indexes.forEach((index) => {
-      this.indexes.set(index.name, index);
-    });
+    this.indexes = indexes;
   }
 
   insert(record: V): void {
     this.primaryIndex.insert(record);
-    for (const index of this.indexes.values()) {
+    for (const index of Object.values(this.indexes)) {
       index.insert(record);
     }
   }
 
   update(record: V): void {
     this.primaryIndex.update(record);
-    for (const index of this.indexes.values()) {
+    for (const index of Object.values(this.indexes)) {
       index.update(record);
     }
   }
@@ -212,27 +203,15 @@ export class PimCollection<K, V extends Record<string, any>> {
       throw new Error(`Record with primary key ${key} does not exist`);
     }
     this.primaryIndex.delete(record);
-    for (const index of this.indexes.values()) {
+    for (const index of Object.values(this.indexes)) {
       index.delete(record);
     }
   }
 
-  // Get a record by primary key
   getByPrimaryKey(key: K): V | undefined {
     return this.primaryIndex.get(key);
   }
 
-  // Access an index by name
-  getIndex<T extends Index<V>>(name: string): T | undefined {
-    return this.indexes.get(name) as T | undefined;
-  }
-
-  // List all index names
-  getIndexNames(): string[] {
-    return Array.from(this.indexes.keys());
-  }
-
-  // Get all records
   getAllRecords(): V[] {
     return this.primaryIndex.getAll();
   }
