@@ -1,10 +1,10 @@
 {
   "name": "pimdb",
-  "module": "src/index.ts",
   "type": "module",
+  "module": "src/index.ts",
   "scripts": {
     "dev": "bun --watch src/index.ts",
-    "build": "tsc --noEmit false",
+    "build": "prettier --check . && eslint . && vitest run && tsc --noEmit false",
     "format": "prettier --write .",
     "lint": "eslint --fix .",
     "test": "vitest",
