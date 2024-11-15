@@ -1,6 +1,6 @@
 import {
   PimCollection,
-  PimPrimaryIndex,
+  //   PimPrimaryIndex,
   PimRangeIndex,
   PimSecondaryIndex,
 } from "./pimdb";
@@ -13,7 +13,7 @@ interface User {
 }
 
 // Create a primary index on 'id'
-const primaryIndex = new PimPrimaryIndex<number, User>("primaryIndex", "id");
+// const primaryIndex = new PimPrimaryIndex<number, User>("primaryIndex", "id");
 
 // Create a secondary index on 'name'
 const nameIndex = new PimSecondaryIndex<User>("nameIndex", ["name"]);

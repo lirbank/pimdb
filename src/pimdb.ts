@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 interface Index<V extends Record<string, any>> {
   name: string;
   insert(record: V): void;
