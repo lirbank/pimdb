@@ -29,6 +29,30 @@ describe("primary index", () => {
     expect(i.get("3") === c).toBe(true);
   });
 
+  test("getAll", () => {
+    const i = new PrimaryIndex<TestDoc>();
+
+    const a = { id: "1", name: "a" };
+    const b = { id: "2", name: "b" };
+    const c = { id: "3", name: "c" };
+
+    i.insert(a);
+    i.insert(b);
+    i.insert(c);
+
+    expect(i.getAll()).toStrictEqual([
+      { id: "1", name: "a" },
+      { id: "2", name: "b" },
+      { id: "3", name: "c" },
+    ]);
+
+    // The index should return the same object reference as the one inserted.
+    // This is the intended behavior.
+    expect(i.getAll()[0] === a).toBe(true);
+    expect(i.getAll()[1] === b).toBe(true);
+    expect(i.getAll()[2] === c).toBe(true);
+  });
+
   test("insert", () => {
     const i = new PrimaryIndex<TestDoc>();
 
