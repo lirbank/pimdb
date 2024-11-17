@@ -1,0 +1,4002 @@
+[
+  {
+    "id": "ship000000",
+    "name": "BG Prometheus Two-821"
+  },
+  {
+    "id": "ship000001",
+    "name": "ISS Galaxy Mark-II"
+  },
+  {
+    "id": "ship000002",
+    "name": "BG Nova"
+  },
+  {
+    "id": "ship000003",
+    "name": "Auriga Commercial-148"
+  },
+  {
+    "id": "ship000004",
+    "name": "Discovery Elite"
+  },
+  {
+    "id": "ship000005",
+    "name": "USS Prometheus Commercial-396"
+  },
+  {
+    "id": "ship000006",
+    "name": "ISS Discovery X"
+  },
+  {
+    "id": "ship000007",
+    "name": "Galaxy Supreme-897"
+  },
+  {
+    "id": "ship000008",
+    "name": "Sevastopol Alpha"
+  },
+  {
+    "id": "ship000009",
+    "name": "Sevastopol Two"
+  },
+  {
+    "id": "ship000010",
+    "name": "HWSS Discovery Mark-II"
+  },
+  {
+    "id": "ship000011",
+    "name": "GSV Voyager"
+  },
+  {
+    "id": "ship000012",
+    "name": "USCSS Nova Mark-II-187"
+  },
+  {
+    "id": "ship000013",
+    "name": "Narcissus Mark-II-100"
+  },
+  {
+    "id": "ship000014",
+    "name": "HWSS Odyssey"
+  },
+  {
+    "id": "ship000015",
+    "name": "Explorer Beta-167"
+  },
+  {
+    "id": "ship000016",
+    "name": "Nebula"
+  },
+  {
+    "id": "ship000017",
+    "name": "USCSS Covenant Alpha-232"
+  },
+  {
+    "id": "ship000018",
+    "name": "ISS Auriga Two-730"
+  },
+  {
+    "id": "ship000019",
+    "name": "USS Auriga Mark-II-378"
+  },
+  {
+    "id": "ship000020",
+    "name": "USS Nostromo Beta-190"
+  },
+  {
+    "id": "ship000021",
+    "name": "DSV Phoenix Mark-II-995"
+  },
+  {
+    "id": "ship000022",
+    "name": "USCSS Auriga"
+  },
+  {
+    "id": "ship000023",
+    "name": "ISS Covenant"
+  },
+  {
+    "id": "ship000024",
+    "name": "Phoenix Mark-II"
+  },
+  {
+    "id": "ship000025",
+    "name": "ISS Stellar Elite-850"
+  },
+  {
+    "id": "ship000026",
+    "name": "Sevastopol Alpha"
+  },
+  {
+    "id": "ship000027",
+    "name": "Prometheus Elite-841"
+  },
+  {
+    "id": "ship000028",
+    "name": "USCSS Covenant Alpha-232"
+  },
+  {
+    "id": "ship000029",
+    "name": "DSV Galaxy Supreme-90"
+  },
+  {
+    "id": "ship000030",
+    "name": "DSV Discovery Commercial-68"
+  },
+  {
+    "id": "ship000031",
+    "name": "ISS Nova Supreme"
+  },
+  {
+    "id": "ship000032",
+    "name": "Odyssey Mark-II-594"
+  },
+  {
+    "id": "ship000033",
+    "name": "Voyager Two-537"
+  },
+  {
+    "id": "ship000034",
+    "name": "USCSS Discovery Supreme"
+  },
+  {
+    "id": "ship000035",
+    "name": "USCSS Discovery One-810"
+  },
+  {
+    "id": "ship000036",
+    "name": "Prometheus One-949"
+  },
+  {
+    "id": "ship000037",
+    "name": "BG Prometheus Two-821"
+  },
+  {
+    "id": "ship000038",
+    "name": "USS Nostromo Alpha"
+  },
+  {
+    "id": "ship000039",
+    "name": "USS Galaxy"
+  },
+  {
+    "id": "ship000040",
+    "name": "USS Odyssey Commercial"
+  },
+  {
+    "id": "ship000041",
+    "name": "DSV Covenant"
+  },
+  {
+    "id": "ship000042",
+    "name": "GSV Odyssey Station-591"
+  },
+  {
+    "id": "ship000043",
+    "name": "BG Nebula Beta"
+  },
+  {
+    "id": "ship000044",
+    "name": "DSV Narcissus Elite-433"
+  },
+  {
+    "id": "ship000045",
+    "name": "DSV Prometheus"
+  },
+  {
+    "id": "ship000046",
+    "name": "USS Narcissus"
+  },
+  {
+    "id": "ship000047",
+    "name": "Nebula Commercial"
+  },
+  {
+    "id": "ship000048",
+    "name": "DSV Prometheus Beta"
+  },
+  {
+    "id": "ship000049",
+    "name": "BG Auriga Supreme-831"
+  },
+  {
+    "id": "ship000050",
+    "name": "ISS Sevastopol"
+  },
+  {
+    "id": "ship000051",
+    "name": "USS Auriga"
+  },
+  {
+    "id": "ship000052",
+    "name": "ISS Galaxy Elite-992"
+  },
+  {
+    "id": "ship000053",
+    "name": "Nostromo Commercial-720"
+  },
+  {
+    "id": "ship000054",
+    "name": "DSV Covenant Elite-345"
+  },
+  {
+    "id": "ship000055",
+    "name": "HWSS Nebula"
+  },
+  {
+    "id": "ship000056",
+    "name": "USCSS Cosmos Elite-684"
+  },
+  {
+    "id": "ship000057",
+    "name": "Nova Supreme-390"
+  },
+  {
+    "id": "ship000058",
+    "name": "HWSS Galaxy"
+  },
+  {
+    "id": "ship000059",
+    "name": "Prometheus"
+  },
+  {
+    "id": "ship000060",
+    "name": "GSV Galaxy X-718"
+  },
+  {
+    "id": "ship000061",
+    "name": "Discovery Mark-II"
+  },
+  {
+    "id": "ship000062",
+    "name": "Voyager Elite-969"
+  },
+  {
+    "id": "ship000063",
+    "name": "DSV Odyssey Station-811"
+  },
+  {
+    "id": "ship000064",
+    "name": "BG Nova Prime"
+  },
+  {
+    "id": "ship000065",
+    "name": "USS Auriga Supreme-128"
+  },
+  {
+    "id": "ship000066",
+    "name": "USS Odyssey Elite"
+  },
+  {
+    "id": "ship000067",
+    "name": "GSV Phoenix"
+  },
+  {
+    "id": "ship000068",
+    "name": "Nostromo Beta"
+  },
+  {
+    "id": "ship000069",
+    "name": "USCSS Nostromo Station"
+  },
+  {
+    "id": "ship000070",
+    "name": "USCSS Covenant Prime-888"
+  },
+  {
+    "id": "ship000071",
+    "name": "HWSS Galaxy"
+  },
+  {
+    "id": "ship000072",
+    "name": "Nebula Two-701"
+  },
+  {
+    "id": "ship000073",
+    "name": "GSV Explorer Commercial"
+  },
+  {
+    "id": "ship000074",
+    "name": "Auriga Commercial-148"
+  },
+  {
+    "id": "ship000075",
+    "name": "Explorer Commercial-532"
+  },
+  {
+    "id": "ship000076",
+    "name": "USCSS Covenant Prime-888"
+  },
+  {
+    "id": "ship000077",
+    "name": "Covenant X-334"
+  },
+  {
+    "id": "ship000078",
+    "name": "GSV Sulaco"
+  },
+  {
+    "id": "ship000079",
+    "name": "HWSS Cosmos Supreme"
+  },
+  {
+    "id": "ship000080",
+    "name": "ISS Nebula Station"
+  },
+  {
+    "id": "ship000081",
+    "name": "GSV Discovery"
+  },
+  {
+    "id": "ship000082",
+    "name": "Galaxy Beta-613"
+  },
+  {
+    "id": "ship000083",
+    "name": "Covenant X-334"
+  },
+  {
+    "id": "ship000084",
+    "name": "DSV Nostromo Prime-119"
+  },
+  {
+    "id": "ship000085",
+    "name": "Nostromo"
+  },
+  {
+    "id": "ship000086",
+    "name": "DSV Sulaco"
+  },
+  {
+    "id": "ship000087",
+    "name": "DSV Voyager Alpha-850"
+  },
+  {
+    "id": "ship000088",
+    "name": "USCSS Discovery One-810"
+  },
+  {
+    "id": "ship000089",
+    "name": "ISS Nova Supreme"
+  },
+  {
+    "id": "ship000090",
+    "name": "USCSS Prometheus Elite-983"
+  },
+  {
+    "id": "ship000091",
+    "name": "Narcissus Commercial"
+  },
+  {
+    "id": "ship000092",
+    "name": "DSV Phoenix Mark-II-995"
+  },
+  {
+    "id": "ship000093",
+    "name": "ISS Odyssey X"
+  },
+  {
+    "id": "ship000094",
+    "name": "DSV Cosmos X-746"
+  },
+  {
+    "id": "ship000095",
+    "name": "Phoenix Two-441"
+  },
+  {
+    "id": "ship000096",
+    "name": "USCSS Sulaco"
+  },
+  {
+    "id": "ship000097",
+    "name": "ISS Prometheus"
+  },
+  {
+    "id": "ship000098",
+    "name": "GSV Galaxy Prime"
+  },
+  {
+    "id": "ship000099",
+    "name": "ISS Nebula Beta-167"
+  },
+  {
+    "id": "ship000100",
+    "name": "USS Auriga Elite"
+  },
+  {
+    "id": "ship000101",
+    "name": "Sulaco Mark-II"
+  },
+  {
+    "id": "ship000102",
+    "name": "Cosmos Commercial"
+  },
+  {
+    "id": "ship000103",
+    "name": "DSV Nostromo"
+  },
+  {
+    "id": "ship000104",
+    "name": "ISS Sulaco Commercial"
+  },
+  {
+    "id": "ship000105",
+    "name": "DSV Galaxy Supreme-90"
+  },
+  {
+    "id": "ship000106",
+    "name": "USS Voyager Mark-II"
+  },
+  {
+    "id": "ship000107",
+    "name": "Galaxy Elite-430"
+  },
+  {
+    "id": "ship000108",
+    "name": "DSV Sulaco Station"
+  },
+  {
+    "id": "ship000109",
+    "name": "HWSS Galaxy"
+  },
+  {
+    "id": "ship000110",
+    "name": "DSV Phoenix"
+  },
+  {
+    "id": "ship000111",
+    "name": "ISS Discovery Elite-181"
+  },
+  {
+    "id": "ship000112",
+    "name": "USCSS Auriga"
+  },
+  {
+    "id": "ship000113",
+    "name": "HWSS Explorer"
+  },
+  {
+    "id": "ship000114",
+    "name": "USS Auriga Alpha"
+  },
+  {
+    "id": "ship000115",
+    "name": "BG Auriga X-952"
+  },
+  {
+    "id": "ship000116",
+    "name": "ISS Sulaco Commercial"
+  },
+  {
+    "id": "ship000117",
+    "name": "Galaxy Elite-430"
+  },
+  {
+    "id": "ship000118",
+    "name": "ISS Covenant Station-202"
+  },
+  {
+    "id": "ship000119",
+    "name": "USS Phoenix Mark-II-793"
+  },
+  {
+    "id": "ship000120",
+    "name": "USS Auriga Alpha"
+  },
+  {
+    "id": "ship000121",
+    "name": "HWSS Sulaco One"
+  },
+  {
+    "id": "ship000122",
+    "name": "Voyager One-483"
+  },
+  {
+    "id": "ship000123",
+    "name": "USCSS Voyager X"
+  },
+  {
+    "id": "ship000124",
+    "name": "USS Narcissus"
+  },
+  {
+    "id": "ship000125",
+    "name": "Nebula"
+  },
+  {
+    "id": "ship000126",
+    "name": "GSV Prometheus One-183"
+  },
+  {
+    "id": "ship000127",
+    "name": "HWSS Nostromo Station-774"
+  },
+  {
+    "id": "ship000128",
+    "name": "GSV Stellar X"
+  },
+  {
+    "id": "ship000129",
+    "name": "USCSS Discovery Two-542"
+  },
+  {
+    "id": "ship000130",
+    "name": "HWSS Narcissus X"
+  },
+  {
+    "id": "ship000131",
+    "name": "USCSS Auriga"
+  },
+  {
+    "id": "ship000132",
+    "name": "GSV Odyssey Station"
+  },
+  {
+    "id": "ship000133",
+    "name": "Galaxy Elite-628"
+  },
+  {
+    "id": "ship000134",
+    "name": "HWSS Phoenix Prime-547"
+  },
+  {
+    "id": "ship000135",
+    "name": "USCSS Nebula"
+  },
+  {
+    "id": "ship000136",
+    "name": "USS Nostromo"
+  },
+  {
+    "id": "ship000137",
+    "name": "DSV Narcissus X-283"
+  },
+  {
+    "id": "ship000138",
+    "name": "ISS Galaxy One-323"
+  },
+  {
+    "id": "ship000139",
+    "name": "HWSS Voyager X-131"
+  },
+  {
+    "id": "ship000140",
+    "name": "ISS Explorer Station-727"
+  },
+  {
+    "id": "ship000141",
+    "name": "DSV Phoenix Station"
+  },
+  {
+    "id": "ship000142",
+    "name": "HWSS Phoenix Elite-728"
+  },
+  {
+    "id": "ship000143",
+    "name": "BG Nebula Elite"
+  },
+  {
+    "id": "ship000144",
+    "name": "USS Sulaco One-932"
+  },
+  {
+    "id": "ship000145",
+    "name": "Odyssey Alpha"
+  },
+  {
+    "id": "ship000146",
+    "name": "DSV Nova"
+  },
+  {
+    "id": "ship000147",
+    "name": "Nostromo X-478"
+  },
+  {
+    "id": "ship000148",
+    "name": "GSV Covenant Two-949"
+  },
+  {
+    "id": "ship000149",
+    "name": "USS Galaxy Alpha"
+  },
+  {
+    "id": "ship000150",
+    "name": "Nova Supreme-390"
+  },
+  {
+    "id": "ship000151",
+    "name": "ISS Phoenix Supreme-2"
+  },
+  {
+    "id": "ship000152",
+    "name": "BG Nova"
+  },
+  {
+    "id": "ship000153",
+    "name": "ISS Sevastopol Two"
+  },
+  {
+    "id": "ship000154",
+    "name": "GSV Auriga Mark-II-639"
+  },
+  {
+    "id": "ship000155",
+    "name": "USS Nebula Alpha"
+  },
+  {
+    "id": "ship000156",
+    "name": "USCSS Cosmos Mark-II-791"
+  },
+  {
+    "id": "ship000157",
+    "name": "Sulaco Prime-57"
+  },
+  {
+    "id": "ship000158",
+    "name": "DSV Prometheus Beta"
+  },
+  {
+    "id": "ship000159",
+    "name": "HWSS Explorer"
+  },
+  {
+    "id": "ship000160",
+    "name": "USS Prometheus Commercial-407"
+  },
+  {
+    "id": "ship000161",
+    "name": "HWSS Phoenix Prime"
+  },
+  {
+    "id": "ship000162",
+    "name": "USCSS Explorer"
+  },
+  {
+    "id": "ship000163",
+    "name": "ISS Cosmos Mark-II"
+  },
+  {
+    "id": "ship000164",
+    "name": "USS Auriga Elite"
+  },
+  {
+    "id": "ship000165",
+    "name": "USCSS Nova Mark-II-187"
+  },
+  {
+    "id": "ship000166",
+    "name": "Explorer Beta"
+  },
+  {
+    "id": "ship000167",
+    "name": "USCSS Cosmos X-348"
+  },
+  {
+    "id": "ship000168",
+    "name": "DSV Cosmos Station"
+  },
+  {
+    "id": "ship000169",
+    "name": "GSV Covenant Two-949"
+  },
+  {
+    "id": "ship000170",
+    "name": "ISS Galaxy Supreme-935"
+  },
+  {
+    "id": "ship000171",
+    "name": "HWSS Nostromo"
+  },
+  {
+    "id": "ship000172",
+    "name": "USCSS Sevastopol Two"
+  },
+  {
+    "id": "ship000173",
+    "name": "DSV Phoenix Mark-II-995"
+  },
+  {
+    "id": "ship000174",
+    "name": "Nostromo Commercial-720"
+  },
+  {
+    "id": "ship000175",
+    "name": "GSV Prometheus Commercial"
+  },
+  {
+    "id": "ship000176",
+    "name": "ISS Voyager Supreme-532"
+  },
+  {
+    "id": "ship000177",
+    "name": "HWSS Phoenix"
+  },
+  {
+    "id": "ship000178",
+    "name": "GSV Odyssey Alpha"
+  },
+  {
+    "id": "ship000179",
+    "name": "USCSS Cosmos Commercial-118"
+  },
+  {
+    "id": "ship000180",
+    "name": "ISS Nebula Beta-167"
+  },
+  {
+    "id": "ship000181",
+    "name": "ISS Voyager Supreme-532"
+  },
+  {
+    "id": "ship000182",
+    "name": "Voyager Elite-969"
+  },
+  {
+    "id": "ship000183",
+    "name": "Sevastopol Station"
+  },
+  {
+    "id": "ship000184",
+    "name": "Sulaco Elite"
+  },
+  {
+    "id": "ship000185",
+    "name": "USCSS Sulaco"
+  },
+  {
+    "id": "ship000186",
+    "name": "USS Galaxy One"
+  },
+  {
+    "id": "ship000187",
+    "name": "USS Auriga Supreme-128"
+  },
+  {
+    "id": "ship000188",
+    "name": "USS Sulaco Commercial-461"
+  },
+  {
+    "id": "ship000189",
+    "name": "DSV Nostromo Prime-119"
+  },
+  {
+    "id": "ship000190",
+    "name": "Voyager Two-537"
+  },
+  {
+    "id": "ship000191",
+    "name": "GSV Discovery Supreme"
+  },
+  {
+    "id": "ship000192",
+    "name": "USS Sulaco Commercial-461"
+  },
+  {
+    "id": "ship000193",
+    "name": "USCSS Sevastopol X"
+  },
+  {
+    "id": "ship000194",
+    "name": "DSV Galaxy Prime-147"
+  },
+  {
+    "id": "ship000195",
+    "name": "USS Explorer"
+  },
+  {
+    "id": "ship000196",
+    "name": "USS Explorer Beta-543"
+  },
+  {
+    "id": "ship000197",
+    "name": "Nova Mark-II"
+  },
+  {
+    "id": "ship000198",
+    "name": "Nebula Mark-II"
+  },
+  {
+    "id": "ship000199",
+    "name": "HWSS Voyager Commercial-861"
+  },
+  {
+    "id": "ship000200",
+    "name": "USS Odyssey Commercial"
+  },
+  {
+    "id": "ship000201",
+    "name": "GSV Explorer Mark-II"
+  },
+  {
+    "id": "ship000202",
+    "name": "GSV Narcissus Station"
+  },
+  {
+    "id": "ship000203",
+    "name": "USS Voyager"
+  },
+  {
+    "id": "ship000204",
+    "name": "ISS Auriga Elite-709"
+  },
+  {
+    "id": "ship000205",
+    "name": "DSV Nova Elite"
+  },
+  {
+    "id": "ship000206",
+    "name": "Nostromo Commercial-720"
+  },
+  {
+    "id": "ship000207",
+    "name": "Galaxy Elite-430"
+  },
+  {
+    "id": "ship000208",
+    "name": "Nebula Mark-II"
+  },
+  {
+    "id": "ship000209",
+    "name": "Discovery Beta"
+  },
+  {
+    "id": "ship000210",
+    "name": "GSV Odyssey Station-591"
+  },
+  {
+    "id": "ship000211",
+    "name": "USS Sulaco Alpha-345"
+  },
+  {
+    "id": "ship000212",
+    "name": "GSV Explorer Commercial"
+  },
+  {
+    "id": "ship000213",
+    "name": "DSV Galaxy Prime"
+  },
+  {
+    "id": "ship000214",
+    "name": "USCSS Galaxy Two-629"
+  },
+  {
+    "id": "ship000215",
+    "name": "ISS Explorer"
+  },
+  {
+    "id": "ship000216",
+    "name": "GSV Auriga"
+  },
+  {
+    "id": "ship000217",
+    "name": "USS Galaxy One"
+  },
+  {
+    "id": "ship000218",
+    "name": "USCSS Odyssey Elite-789"
+  },
+  {
+    "id": "ship000219",
+    "name": "Voyager Supreme"
+  },
+  {
+    "id": "ship000220",
+    "name": "Nebula Two-701"
+  },
+  {
+    "id": "ship000221",
+    "name": "USCSS Phoenix Supreme-673"
+  },
+  {
+    "id": "ship000222",
+    "name": "GSV Phoenix Mark-II-49"
+  },
+  {
+    "id": "ship000223",
+    "name": "USS Stellar"
+  },
+  {
+    "id": "ship000224",
+    "name": "HWSS Cosmos One-749"
+  },
+  {
+    "id": "ship000225",
+    "name": "HWSS Stellar Commercial"
+  },
+  {
+    "id": "ship000226",
+    "name": "HWSS Sevastopol Beta-713"
+  },
+  {
+    "id": "ship000227",
+    "name": "GSV Nostromo Two"
+  },
+  {
+    "id": "ship000228",
+    "name": "GSV Sevastopol Elite"
+  },
+  {
+    "id": "ship000229",
+    "name": "Auriga Supreme"
+  },
+  {
+    "id": "ship000230",
+    "name": "USS Sulaco Alpha-345"
+  },
+  {
+    "id": "ship000231",
+    "name": "Auriga Elite-18"
+  },
+  {
+    "id": "ship000232",
+    "name": "USCSS Cosmos Mark-II-791"
+  },
+  {
+    "id": "ship000233",
+    "name": "USS Prometheus Elite-652"
+  },
+  {
+    "id": "ship000234",
+    "name": "GSV Nostromo Supreme"
+  },
+  {
+    "id": "ship000235",
+    "name": "HWSS Discovery X-471"
+  },
+  {
+    "id": "ship000236",
+    "name": "ISS Auriga Elite-709"
+  },
+  {
+    "id": "ship000237",
+    "name": "ISS Phoenix"
+  },
+  {
+    "id": "ship000238",
+    "name": "USS Prometheus Elite-652"
+  },
+  {
+    "id": "ship000239",
+    "name": "Phoenix"
+  },
+  {
+    "id": "ship000240",
+    "name": "BG Sulaco"
+  },
+  {
+    "id": "ship000241",
+    "name": "USS Galaxy Alpha"
+  },
+  {
+    "id": "ship000242",
+    "name": "Sulaco Commercial"
+  },
+  {
+    "id": "ship000243",
+    "name": "USCSS Narcissus"
+  },
+  {
+    "id": "ship000244",
+    "name": "ISS Stellar Elite-220"
+  },
+  {
+    "id": "ship000245",
+    "name": "Nebula Beta"
+  },
+  {
+    "id": "ship000246",
+    "name": "GSV Cosmos Two-619"
+  },
+  {
+    "id": "ship000247",
+    "name": "Nova"
+  },
+  {
+    "id": "ship000248",
+    "name": "ISS Voyager Supreme-532"
+  },
+  {
+    "id": "ship000249",
+    "name": "USCSS Voyager"
+  },
+  {
+    "id": "ship000250",
+    "name": "HWSS Voyager Station"
+  },
+  {
+    "id": "ship000251",
+    "name": "BG Sulaco Alpha"
+  },
+  {
+    "id": "ship000252",
+    "name": "USS Nebula Alpha"
+  },
+  {
+    "id": "ship000253",
+    "name": "USS Nebula Alpha"
+  },
+  {
+    "id": "ship000254",
+    "name": "GSV Discovery Supreme"
+  },
+  {
+    "id": "ship000255",
+    "name": "USS Voyager Mark-II"
+  },
+  {
+    "id": "ship000256",
+    "name": "Sevastopol Two-77"
+  },
+  {
+    "id": "ship000257",
+    "name": "DSV Nova"
+  },
+  {
+    "id": "ship000258",
+    "name": "Auriga Elite-18"
+  },
+  {
+    "id": "ship000259",
+    "name": "Explorer Commercial-532"
+  },
+  {
+    "id": "ship000260",
+    "name": "ISS Galaxy Elite-992"
+  },
+  {
+    "id": "ship000261",
+    "name": "HWSS Nostromo"
+  },
+  {
+    "id": "ship000262",
+    "name": "USS Nostromo Prime"
+  },
+  {
+    "id": "ship000263",
+    "name": "HWSS Voyager Commercial-861"
+  },
+  {
+    "id": "ship000264",
+    "name": "USCSS Auriga Commercial-523"
+  },
+  {
+    "id": "ship000265",
+    "name": "Nebula Mark-II"
+  },
+  {
+    "id": "ship000266",
+    "name": "USCSS Covenant Two"
+  },
+  {
+    "id": "ship000267",
+    "name": "ISS Galaxy Mark-II"
+  },
+  {
+    "id": "ship000268",
+    "name": "USCSS Odyssey Two"
+  },
+  {
+    "id": "ship000269",
+    "name": "Auriga Elite-963"
+  },
+  {
+    "id": "ship000270",
+    "name": "BG Galaxy Supreme-911"
+  },
+  {
+    "id": "ship000271",
+    "name": "ISS Voyager Supreme-532"
+  },
+  {
+    "id": "ship000272",
+    "name": "GSV Prometheus Two-927"
+  },
+  {
+    "id": "ship000273",
+    "name": "USS Sevastopol X-532"
+  },
+  {
+    "id": "ship000274",
+    "name": "Auriga Elite-829"
+  },
+  {
+    "id": "ship000275",
+    "name": "DSV Phoenix One"
+  },
+  {
+    "id": "ship000276",
+    "name": "USS Voyager"
+  },
+  {
+    "id": "ship000277",
+    "name": "GSV Discovery Supreme"
+  },
+  {
+    "id": "ship000278",
+    "name": "USCSS Galaxy Beta-678"
+  },
+  {
+    "id": "ship000279",
+    "name": "Sulaco Mark-II"
+  },
+  {
+    "id": "ship000280",
+    "name": "ISS Auriga Two-730"
+  },
+  {
+    "id": "ship000281",
+    "name": "DSV Discovery"
+  },
+  {
+    "id": "ship000282",
+    "name": "Sulaco Prime-57"
+  },
+  {
+    "id": "ship000283",
+    "name": "GSV Nostromo Supreme"
+  },
+  {
+    "id": "ship000284",
+    "name": "USCSS Stellar Elite"
+  },
+  {
+    "id": "ship000285",
+    "name": "Explorer Beta-167"
+  },
+  {
+    "id": "ship000286",
+    "name": "BG Nebula Beta"
+  },
+  {
+    "id": "ship000287",
+    "name": "Nostromo X-478"
+  },
+  {
+    "id": "ship000288",
+    "name": "Nostromo Mark-II-154"
+  },
+  {
+    "id": "ship000289",
+    "name": "USS Auriga Elite"
+  },
+  {
+    "id": "ship000290",
+    "name": "GSV Prometheus One-183"
+  },
+  {
+    "id": "ship000291",
+    "name": "Phoenix X-640"
+  },
+  {
+    "id": "ship000292",
+    "name": "USCSS Stellar Elite"
+  },
+  {
+    "id": "ship000293",
+    "name": "Explorer Elite"
+  },
+  {
+    "id": "ship000294",
+    "name": "USCSS Voyager X"
+  },
+  {
+    "id": "ship000295",
+    "name": "USS Prometheus Elite-652"
+  },
+  {
+    "id": "ship000296",
+    "name": "HWSS Voyager Commercial-861"
+  },
+  {
+    "id": "ship000297",
+    "name": "USCSS Cosmos X-348"
+  },
+  {
+    "id": "ship000298",
+    "name": "USS Cosmos Alpha"
+  },
+  {
+    "id": "ship000299",
+    "name": "HWSS Prometheus"
+  },
+  {
+    "id": "ship000300",
+    "name": "Nova Supreme-390"
+  },
+  {
+    "id": "ship000301",
+    "name": "HWSS Discovery Station-385"
+  },
+  {
+    "id": "ship000302",
+    "name": "BG Auriga Elite-287"
+  },
+  {
+    "id": "ship000303",
+    "name": "USS Sulaco Commercial-461"
+  },
+  {
+    "id": "ship000304",
+    "name": "Voyager Mark-II"
+  },
+  {
+    "id": "ship000305",
+    "name": "Sevastopol Two-77"
+  },
+  {
+    "id": "ship000306",
+    "name": "Covenant Station-426"
+  },
+  {
+    "id": "ship000307",
+    "name": "ISS Cosmos Mark-II"
+  },
+  {
+    "id": "ship000308",
+    "name": "HWSS Odyssey"
+  },
+  {
+    "id": "ship000309",
+    "name": "USCSS Prometheus Prime"
+  },
+  {
+    "id": "ship000310",
+    "name": "HWSS Prometheus Station-269"
+  },
+  {
+    "id": "ship000311",
+    "name": "Stellar Alpha"
+  },
+  {
+    "id": "ship000312",
+    "name": "USS Nostromo Beta-190"
+  },
+  {
+    "id": "ship000313",
+    "name": "Nova One-684"
+  },
+  {
+    "id": "ship000314",
+    "name": "Sevastopol X-583"
+  },
+  {
+    "id": "ship000315",
+    "name": "BG Nebula Mark-II-74"
+  },
+  {
+    "id": "ship000316",
+    "name": "HWSS Sevastopol"
+  },
+  {
+    "id": "ship000317",
+    "name": "Galaxy Elite-628"
+  },
+  {
+    "id": "ship000318",
+    "name": "Cosmos Alpha-525"
+  },
+  {
+    "id": "ship000319",
+    "name": "DSV Phoenix Supreme"
+  },
+  {
+    "id": "ship000320",
+    "name": "Discovery Beta"
+  },
+  {
+    "id": "ship000321",
+    "name": "DSV Sevastopol X"
+  },
+  {
+    "id": "ship000322",
+    "name": "Sevastopol Station"
+  },
+  {
+    "id": "ship000323",
+    "name": "USS Sulaco Commercial-461"
+  },
+  {
+    "id": "ship000324",
+    "name": "ISS Prometheus"
+  },
+  {
+    "id": "ship000325",
+    "name": "ISS Stellar"
+  },
+  {
+    "id": "ship000326",
+    "name": "USS Stellar"
+  },
+  {
+    "id": "ship000327",
+    "name": "Nostromo"
+  },
+  {
+    "id": "ship000328",
+    "name": "BG Galaxy Commercial-911"
+  },
+  {
+    "id": "ship000329",
+    "name": "ISS Auriga"
+  },
+  {
+    "id": "ship000330",
+    "name": "BG Nebula"
+  },
+  {
+    "id": "ship000331",
+    "name": "USS Sulaco"
+  },
+  {
+    "id": "ship000332",
+    "name": "Phoenix Beta-699"
+  },
+  {
+    "id": "ship000333",
+    "name": "Sulaco Two-559"
+  },
+  {
+    "id": "ship000334",
+    "name": "USS Sulaco Alpha-345"
+  },
+  {
+    "id": "ship000335",
+    "name": "GSV Nostromo Two"
+  },
+  {
+    "id": "ship000336",
+    "name": "BG Galaxy Mark-II"
+  },
+  {
+    "id": "ship000337",
+    "name": "DSV Cosmos Prime"
+  },
+  {
+    "id": "ship000338",
+    "name": "ISS Stellar Supreme"
+  },
+  {
+    "id": "ship000339",
+    "name": "DSV Voyager Elite-317"
+  },
+  {
+    "id": "ship000340",
+    "name": "GSV Odyssey Alpha"
+  },
+  {
+    "id": "ship000341",
+    "name": "USCSS Prometheus Elite-983"
+  },
+  {
+    "id": "ship000342",
+    "name": "ISS Auriga Two-730"
+  },
+  {
+    "id": "ship000343",
+    "name": "Prometheus Beta-516"
+  },
+  {
+    "id": "ship000344",
+    "name": "USCSS Galaxy Beta-678"
+  },
+  {
+    "id": "ship000345",
+    "name": "USS Galaxy Alpha"
+  },
+  {
+    "id": "ship000346",
+    "name": "HWSS Narcissus"
+  },
+  {
+    "id": "ship000347",
+    "name": "BG Auriga X-952"
+  },
+  {
+    "id": "ship000348",
+    "name": "DSV Voyager Elite-317"
+  },
+  {
+    "id": "ship000349",
+    "name": "DSV Nebula Elite"
+  },
+  {
+    "id": "ship000350",
+    "name": "USCSS Phoenix"
+  },
+  {
+    "id": "ship000351",
+    "name": "Sevastopol Two"
+  },
+  {
+    "id": "ship000352",
+    "name": "DSV Galaxy Supreme-90"
+  },
+  {
+    "id": "ship000353",
+    "name": "ISS Prometheus One-623"
+  },
+  {
+    "id": "ship000354",
+    "name": "Narcissus Commercial"
+  },
+  {
+    "id": "ship000355",
+    "name": "DSV Covenant Elite-345"
+  },
+  {
+    "id": "ship000356",
+    "name": "DSV Nebula Elite"
+  },
+  {
+    "id": "ship000357",
+    "name": "Sevastopol X-583"
+  },
+  {
+    "id": "ship000358",
+    "name": "USCSS Cosmos Mark-II-791"
+  },
+  {
+    "id": "ship000359",
+    "name": "BG Sulaco"
+  },
+  {
+    "id": "ship000360",
+    "name": "ISS Voyager X"
+  },
+  {
+    "id": "ship000361",
+    "name": "DSV Odyssey X"
+  },
+  {
+    "id": "ship000362",
+    "name": "Cosmos Alpha-525"
+  },
+  {
+    "id": "ship000363",
+    "name": "DSV Voyager Elite-317"
+  },
+  {
+    "id": "ship000364",
+    "name": "Sulaco X"
+  },
+  {
+    "id": "ship000365",
+    "name": "GSV Voyager"
+  },
+  {
+    "id": "ship000366",
+    "name": "USS Explorer One"
+  },
+  {
+    "id": "ship000367",
+    "name": "ISS Odyssey X"
+  },
+  {
+    "id": "ship000368",
+    "name": "HWSS Auriga"
+  },
+  {
+    "id": "ship000369",
+    "name": "Nova Two-91"
+  },
+  {
+    "id": "ship000370",
+    "name": "HWSS Phoenix"
+  },
+  {
+    "id": "ship000371",
+    "name": "USS Stellar"
+  },
+  {
+    "id": "ship000372",
+    "name": "DSV Narcissus Elite-433"
+  },
+  {
+    "id": "ship000373",
+    "name": "Stellar One"
+  },
+  {
+    "id": "ship000374",
+    "name": "HWSS Voyager Commercial-861"
+  },
+  {
+    "id": "ship000375",
+    "name": "USS Auriga Mark-II-378"
+  },
+  {
+    "id": "ship000376",
+    "name": "HWSS Discovery X-471"
+  },
+  {
+    "id": "ship000377",
+    "name": "USCSS Covenant Alpha-232"
+  },
+  {
+    "id": "ship000378",
+    "name": "Covenant Commercial-806"
+  },
+  {
+    "id": "ship000379",
+    "name": "Nebula Mark-II"
+  },
+  {
+    "id": "ship000380",
+    "name": "GSV Galaxy X-718"
+  },
+  {
+    "id": "ship000381",
+    "name": "HWSS Nostromo"
+  },
+  {
+    "id": "ship000382",
+    "name": "GSV Odyssey X-525"
+  },
+  {
+    "id": "ship000383",
+    "name": "Nostromo Supreme"
+  },
+  {
+    "id": "ship000384",
+    "name": "GSV Sulaco Commercial"
+  },
+  {
+    "id": "ship000385",
+    "name": "BG Discovery Commercial-418"
+  },
+  {
+    "id": "ship000386",
+    "name": "DSV Explorer Elite-263"
+  },
+  {
+    "id": "ship000387",
+    "name": "USS Nostromo One-351"
+  },
+  {
+    "id": "ship000388",
+    "name": "Sulaco X"
+  },
+  {
+    "id": "ship000389",
+    "name": "USCSS Prometheus Elite-983"
+  },
+  {
+    "id": "ship000390",
+    "name": "Galaxy Mark-II-515"
+  },
+  {
+    "id": "ship000391",
+    "name": "Discovery"
+  },
+  {
+    "id": "ship000392",
+    "name": "Covenant Prime"
+  },
+  {
+    "id": "ship000393",
+    "name": "USCSS Prometheus Elite-983"
+  },
+  {
+    "id": "ship000394",
+    "name": "Phoenix Two-441"
+  },
+  {
+    "id": "ship000395",
+    "name": "BG Nebula Beta"
+  },
+  {
+    "id": "ship000396",
+    "name": "Phoenix Commercial-483"
+  },
+  {
+    "id": "ship000397",
+    "name": "DSV Cosmos Prime"
+  },
+  {
+    "id": "ship000398",
+    "name": "ISS Discovery X"
+  },
+  {
+    "id": "ship000399",
+    "name": "DSV Sulaco"
+  },
+  {
+    "id": "ship000400",
+    "name": "Voyager Commercial-44"
+  },
+  {
+    "id": "ship000401",
+    "name": "Nova Prime"
+  },
+  {
+    "id": "ship000402",
+    "name": "DSV Covenant One-212"
+  },
+  {
+    "id": "ship000403",
+    "name": "ISS Odyssey Elite-141"
+  },
+  {
+    "id": "ship000404",
+    "name": "Nebula Two-701"
+  },
+  {
+    "id": "ship000405",
+    "name": "USCSS Explorer One"
+  },
+  {
+    "id": "ship000406",
+    "name": "DSV Odyssey X"
+  },
+  {
+    "id": "ship000407",
+    "name": "BG Auriga Elite-287"
+  },
+  {
+    "id": "ship000408",
+    "name": "USCSS Prometheus Prime"
+  },
+  {
+    "id": "ship000409",
+    "name": "USS Cosmos Supreme-950"
+  },
+  {
+    "id": "ship000410",
+    "name": "BG Nebula Elite"
+  },
+  {
+    "id": "ship000411",
+    "name": "USS Covenant Supreme"
+  },
+  {
+    "id": "ship000412",
+    "name": "HWSS Phoenix Elite-728"
+  },
+  {
+    "id": "ship000413",
+    "name": "Auriga One-862"
+  },
+  {
+    "id": "ship000414",
+    "name": "Auriga Elite-963"
+  },
+  {
+    "id": "ship000415",
+    "name": "Stellar Mark-II-872"
+  },
+  {
+    "id": "ship000416",
+    "name": "Prometheus Commercial"
+  },
+  {
+    "id": "ship000417",
+    "name": "USCSS Explorer"
+  },
+  {
+    "id": "ship000418",
+    "name": "Phoenix Two-711"
+  },
+  {
+    "id": "ship000419",
+    "name": "USS Explorer Station"
+  },
+  {
+    "id": "ship000420",
+    "name": "GSV Explorer Elite"
+  },
+  {
+    "id": "ship000421",
+    "name": "BG Nebula"
+  },
+  {
+    "id": "ship000422",
+    "name": "GSV Auriga Two"
+  },
+  {
+    "id": "ship000423",
+    "name": "USS Auriga Mark-II-452"
+  },
+  {
+    "id": "ship000424",
+    "name": "Odyssey X-8"
+  },
+  {
+    "id": "ship000425",
+    "name": "Auriga Elite-18"
+  },
+  {
+    "id": "ship000426",
+    "name": "ISS Nebula Beta-167"
+  },
+  {
+    "id": "ship000427",
+    "name": "Galaxy Elite-430"
+  },
+  {
+    "id": "ship000428",
+    "name": "USS Sevastopol X-532"
+  },
+  {
+    "id": "ship000429",
+    "name": "GSV Prometheus Two-927"
+  },
+  {
+    "id": "ship000430",
+    "name": "USCSS Galaxy Two-629"
+  },
+  {
+    "id": "ship000431",
+    "name": "HWSS Sulaco One"
+  },
+  {
+    "id": "ship000432",
+    "name": "Covenant Commercial-806"
+  },
+  {
+    "id": "ship000433",
+    "name": "ISS Cosmos"
+  },
+  {
+    "id": "ship000434",
+    "name": "ISS Odyssey X"
+  },
+  {
+    "id": "ship000435",
+    "name": "Covenant Commercial"
+  },
+  {
+    "id": "ship000436",
+    "name": "USCSS Explorer"
+  },
+  {
+    "id": "ship000437",
+    "name": "USS Nostromo Beta-190"
+  },
+  {
+    "id": "ship000438",
+    "name": "BG Cosmos Supreme"
+  },
+  {
+    "id": "ship000439",
+    "name": "Nebula Two-701"
+  },
+  {
+    "id": "ship000440",
+    "name": "USS Auriga Mark-II-378"
+  },
+  {
+    "id": "ship000441",
+    "name": "HWSS Odyssey"
+  },
+  {
+    "id": "ship000442",
+    "name": "DSV Nostromo Prime-119"
+  },
+  {
+    "id": "ship000443",
+    "name": "ISS Voyager X"
+  },
+  {
+    "id": "ship000444",
+    "name": "USS Prometheus Commercial-396"
+  },
+  {
+    "id": "ship000445",
+    "name": "USS Odyssey Commercial"
+  },
+  {
+    "id": "ship000446",
+    "name": "ISS Sevastopol"
+  },
+  {
+    "id": "ship000447",
+    "name": "HWSS Explorer"
+  },
+  {
+    "id": "ship000448",
+    "name": "Nova Prime"
+  },
+  {
+    "id": "ship000449",
+    "name": "ISS Nova Supreme"
+  },
+  {
+    "id": "ship000450",
+    "name": "USS Nostromo One-351"
+  },
+  {
+    "id": "ship000451",
+    "name": "Covenant Commercial-806"
+  },
+  {
+    "id": "ship000452",
+    "name": "USCSS Prometheus One"
+  },
+  {
+    "id": "ship000453",
+    "name": "DSV Voyager"
+  },
+  {
+    "id": "ship000454",
+    "name": "GSV Explorer Commercial"
+  },
+  {
+    "id": "ship000455",
+    "name": "Voyager One"
+  },
+  {
+    "id": "ship000456",
+    "name": "DSV Cosmos X-746"
+  },
+  {
+    "id": "ship000457",
+    "name": "ISS Odyssey Prime-897"
+  },
+  {
+    "id": "ship000458",
+    "name": "DSV Voyager Alpha-552"
+  },
+  {
+    "id": "ship000459",
+    "name": "USS Explorer"
+  },
+  {
+    "id": "ship000460",
+    "name": "DSV Voyager Alpha-552"
+  },
+  {
+    "id": "ship000461",
+    "name": "Narcissus Commercial"
+  },
+  {
+    "id": "ship000462",
+    "name": "DSV Nostromo Prime-119"
+  },
+  {
+    "id": "ship000463",
+    "name": "ISS Auriga Two-730"
+  },
+  {
+    "id": "ship000464",
+    "name": "Sulaco Two-207"
+  },
+  {
+    "id": "ship000465",
+    "name": "USCSS Galaxy Supreme-661"
+  },
+  {
+    "id": "ship000466",
+    "name": "GSV Nebula Mark-II"
+  },
+  {
+    "id": "ship000467",
+    "name": "ISS Prometheus Mark-II-912"
+  },
+  {
+    "id": "ship000468",
+    "name": "Phoenix Mark-II"
+  },
+  {
+    "id": "ship000469",
+    "name": "BG Nebula Mark-II-74"
+  },
+  {
+    "id": "ship000470",
+    "name": "ISS Odyssey Elite-141"
+  },
+  {
+    "id": "ship000471",
+    "name": "Stellar Mark-II-872"
+  },
+  {
+    "id": "ship000472",
+    "name": "USCSS Sevastopol Two"
+  },
+  {
+    "id": "ship000473",
+    "name": "BG Stellar Alpha-268"
+  },
+  {
+    "id": "ship000474",
+    "name": "BG Nebula Mark-II-74"
+  },
+  {
+    "id": "ship000475",
+    "name": "USS Sulaco Supreme-482"
+  },
+  {
+    "id": "ship000476",
+    "name": "Cosmos Alpha-525"
+  },
+  {
+    "id": "ship000477",
+    "name": "USS Nostromo One-351"
+  },
+  {
+    "id": "ship000478",
+    "name": "USS Nebula Mark-II-650"
+  },
+  {
+    "id": "ship000479",
+    "name": "Covenant Commercial-806"
+  },
+  {
+    "id": "ship000480",
+    "name": "BG Nova Prime"
+  },
+  {
+    "id": "ship000481",
+    "name": "DSV Galaxy Prime-147"
+  },
+  {
+    "id": "ship000482",
+    "name": "USCSS Stellar"
+  },
+  {
+    "id": "ship000483",
+    "name": "Discovery Commercial-493"
+  },
+  {
+    "id": "ship000484",
+    "name": "GSV Covenant Supreme-27"
+  },
+  {
+    "id": "ship000485",
+    "name": "DSV Phoenix Supreme"
+  },
+  {
+    "id": "ship000486",
+    "name": "DSV Prometheus"
+  },
+  {
+    "id": "ship000487",
+    "name": "Voyager Two-537"
+  },
+  {
+    "id": "ship000488",
+    "name": "DSV Prometheus X-628"
+  },
+  {
+    "id": "ship000489",
+    "name": "DSV Explorer"
+  },
+  {
+    "id": "ship000490",
+    "name": "Explorer Elite"
+  },
+  {
+    "id": "ship000491",
+    "name": "HWSS Discovery X-471"
+  },
+  {
+    "id": "ship000492",
+    "name": "DSV Sulaco"
+  },
+  {
+    "id": "ship000493",
+    "name": "BG Nebula"
+  },
+  {
+    "id": "ship000494",
+    "name": "Explorer Commercial-532"
+  },
+  {
+    "id": "ship000495",
+    "name": "USCSS Galaxy X"
+  },
+  {
+    "id": "ship000496",
+    "name": "GSV Explorer Commercial"
+  },
+  {
+    "id": "ship000497",
+    "name": "DSV Voyager"
+  },
+  {
+    "id": "ship000498",
+    "name": "GSV Sulaco"
+  },
+  {
+    "id": "ship000499",
+    "name": "GSV Auriga Station"
+  },
+  {
+    "id": "ship000500",
+    "name": "USS Nostromo Beta-190"
+  },
+  {
+    "id": "ship000501",
+    "name": "Phoenix X-640"
+  },
+  {
+    "id": "ship000502",
+    "name": "USCSS Odyssey Two"
+  },
+  {
+    "id": "ship000503",
+    "name": "Covenant Prime"
+  },
+  {
+    "id": "ship000504",
+    "name": "Explorer Beta"
+  },
+  {
+    "id": "ship000505",
+    "name": "ISS Nostromo"
+  },
+  {
+    "id": "ship000506",
+    "name": "USS Sevastopol"
+  },
+  {
+    "id": "ship000507",
+    "name": "Phoenix One"
+  },
+  {
+    "id": "ship000508",
+    "name": "ISS Auriga Elite-709"
+  },
+  {
+    "id": "ship000509",
+    "name": "HWSS Voyager Commercial-861"
+  },
+  {
+    "id": "ship000510",
+    "name": "DSV Voyager Alpha-850"
+  },
+  {
+    "id": "ship000511",
+    "name": "USS Nova Elite"
+  },
+  {
+    "id": "ship000512",
+    "name": "GSV Auriga"
+  },
+  {
+    "id": "ship000513",
+    "name": "USS Nova Prime-985"
+  },
+  {
+    "id": "ship000514",
+    "name": "BG Sevastopol X-230"
+  },
+  {
+    "id": "ship000515",
+    "name": "GSV Odyssey Station"
+  },
+  {
+    "id": "ship000516",
+    "name": "DSV Nova Mark-II"
+  },
+  {
+    "id": "ship000517",
+    "name": "DSV Explorer"
+  },
+  {
+    "id": "ship000518",
+    "name": "ISS Odyssey Elite-141"
+  },
+  {
+    "id": "ship000519",
+    "name": "Nebula Two"
+  },
+  {
+    "id": "ship000520",
+    "name": "HWSS Narcissus X"
+  },
+  {
+    "id": "ship000521",
+    "name": "HWSS Sulaco One"
+  },
+  {
+    "id": "ship000522",
+    "name": "GSV Nebula Mark-II"
+  },
+  {
+    "id": "ship000523",
+    "name": "Phoenix Two-441"
+  },
+  {
+    "id": "ship000524",
+    "name": "Nova One-684"
+  },
+  {
+    "id": "ship000525",
+    "name": "BG Nostromo Two"
+  },
+  {
+    "id": "ship000526",
+    "name": "DSV Sevastopol Station-635"
+  },
+  {
+    "id": "ship000527",
+    "name": "Narcissus Prime-961"
+  },
+  {
+    "id": "ship000528",
+    "name": "DSV Odyssey"
+  },
+  {
+    "id": "ship000529",
+    "name": "BG Odyssey X-603"
+  },
+  {
+    "id": "ship000530",
+    "name": "HWSS Voyager Commercial-861"
+  },
+  {
+    "id": "ship000531",
+    "name": "USCSS Galaxy Supreme-661"
+  },
+  {
+    "id": "ship000532",
+    "name": "DSV Voyager"
+  },
+  {
+    "id": "ship000533",
+    "name": "Discovery Elite"
+  },
+  {
+    "id": "ship000534",
+    "name": "BG Auriga"
+  },
+  {
+    "id": "ship000535",
+    "name": "HWSS Nostromo Station-447"
+  },
+  {
+    "id": "ship000536",
+    "name": "USS Voyager Mark-II"
+  },
+  {
+    "id": "ship000537",
+    "name": "Sulaco"
+  },
+  {
+    "id": "ship000538",
+    "name": "HWSS Nebula One-932"
+  },
+  {
+    "id": "ship000539",
+    "name": "Stellar Mark-II-872"
+  },
+  {
+    "id": "ship000540",
+    "name": "Nostromo X-478"
+  },
+  {
+    "id": "ship000541",
+    "name": "Sevastopol"
+  },
+  {
+    "id": "ship000542",
+    "name": "USCSS Discovery One-810"
+  },
+  {
+    "id": "ship000543",
+    "name": "GSV Cosmos Alpha"
+  },
+  {
+    "id": "ship000544",
+    "name": "USS Prometheus Commercial-407"
+  },
+  {
+    "id": "ship000545",
+    "name": "USCSS Auriga"
+  },
+  {
+    "id": "ship000546",
+    "name": "ISS Galaxy One-323"
+  },
+  {
+    "id": "ship000547",
+    "name": "DSV Covenant One-212"
+  },
+  {
+    "id": "ship000548",
+    "name": "GSV Galaxy Prime"
+  },
+  {
+    "id": "ship000549",
+    "name": "GSV Odyssey Station-591"
+  },
+  {
+    "id": "ship000550",
+    "name": "USS Nostromo Alpha"
+  },
+  {
+    "id": "ship000551",
+    "name": "Cosmos Station-175"
+  },
+  {
+    "id": "ship000552",
+    "name": "Sevastopol"
+  },
+  {
+    "id": "ship000553",
+    "name": "HWSS Cosmos Supreme"
+  },
+  {
+    "id": "ship000554",
+    "name": "Sulaco Commercial"
+  },
+  {
+    "id": "ship000555",
+    "name": "GSV Galaxy Prime"
+  },
+  {
+    "id": "ship000556",
+    "name": "HWSS Galaxy Mark-II"
+  },
+  {
+    "id": "ship000557",
+    "name": "USCSS Sulaco Commercial-751"
+  },
+  {
+    "id": "ship000558",
+    "name": "ISS Prometheus One-623"
+  },
+  {
+    "id": "ship000559",
+    "name": "ISS Cosmos"
+  },
+  {
+    "id": "ship000560",
+    "name": "Narcissus Commercial"
+  },
+  {
+    "id": "ship000561",
+    "name": "HWSS Nova Alpha-488"
+  },
+  {
+    "id": "ship000562",
+    "name": "GSV Odyssey X-525"
+  },
+  {
+    "id": "ship000563",
+    "name": "USCSS Cosmos Elite-684"
+  },
+  {
+    "id": "ship000564",
+    "name": "Sevastopol Commercial-269"
+  },
+  {
+    "id": "ship000565",
+    "name": "HWSS Explorer"
+  },
+  {
+    "id": "ship000566",
+    "name": "Cosmos Two-664"
+  },
+  {
+    "id": "ship000567",
+    "name": "DSV Covenant One-212"
+  },
+  {
+    "id": "ship000568",
+    "name": "Covenant Commercial-672"
+  },
+  {
+    "id": "ship000569",
+    "name": "Nova Prime"
+  },
+  {
+    "id": "ship000570",
+    "name": "HWSS Odyssey"
+  },
+  {
+    "id": "ship000571",
+    "name": "Sulaco Elite"
+  },
+  {
+    "id": "ship000572",
+    "name": "HWSS Discovery X-471"
+  },
+  {
+    "id": "ship000573",
+    "name": "ISS Sevastopol Commercial-650"
+  },
+  {
+    "id": "ship000574",
+    "name": "HWSS Discovery Station-385"
+  },
+  {
+    "id": "ship000575",
+    "name": "HWSS Voyager Station"
+  },
+  {
+    "id": "ship000576",
+    "name": "USCSS Galaxy X-74"
+  },
+  {
+    "id": "ship000577",
+    "name": "DSV Phoenix Station"
+  },
+  {
+    "id": "ship000578",
+    "name": "ISS Voyager Supreme-532"
+  },
+  {
+    "id": "ship000579",
+    "name": "HWSS Cosmos Supreme"
+  },
+  {
+    "id": "ship000580",
+    "name": "USCSS Discovery One-810"
+  },
+  {
+    "id": "ship000581",
+    "name": "Prometheus"
+  },
+  {
+    "id": "ship000582",
+    "name": "ISS Stellar Beta-432"
+  },
+  {
+    "id": "ship000583",
+    "name": "USCSS Discovery Two-542"
+  },
+  {
+    "id": "ship000584",
+    "name": "Stellar One"
+  },
+  {
+    "id": "ship000585",
+    "name": "USS Cosmos Station"
+  },
+  {
+    "id": "ship000586",
+    "name": "Phoenix Beta-921"
+  },
+  {
+    "id": "ship000587",
+    "name": "Nebula Two-701"
+  },
+  {
+    "id": "ship000588",
+    "name": "GSV Prometheus Commercial"
+  },
+  {
+    "id": "ship000589",
+    "name": "ISS Sulaco Commercial"
+  },
+  {
+    "id": "ship000590",
+    "name": "USCSS Sevastopol Station"
+  },
+  {
+    "id": "ship000591",
+    "name": "Voyager X"
+  },
+  {
+    "id": "ship000592",
+    "name": "USCSS Prometheus Prime"
+  },
+  {
+    "id": "ship000593",
+    "name": "ISS Nebula"
+  },
+  {
+    "id": "ship000594",
+    "name": "Odyssey Mark-II-594"
+  },
+  {
+    "id": "ship000595",
+    "name": "DSV Sevastopol Station-635"
+  },
+  {
+    "id": "ship000596",
+    "name": "ISS Galaxy Supreme-935"
+  },
+  {
+    "id": "ship000597",
+    "name": "Nova Mark-II"
+  },
+  {
+    "id": "ship000598",
+    "name": "HWSS Phoenix Prime-547"
+  },
+  {
+    "id": "ship000599",
+    "name": "ISS Nebula"
+  },
+  {
+    "id": "ship000600",
+    "name": "USCSS Galaxy Beta-678"
+  },
+  {
+    "id": "ship000601",
+    "name": "DSV Voyager One"
+  },
+  {
+    "id": "ship000602",
+    "name": "ISS Prometheus One-623"
+  },
+  {
+    "id": "ship000603",
+    "name": "GSV Discovery Supreme"
+  },
+  {
+    "id": "ship000604",
+    "name": "Nova Supreme"
+  },
+  {
+    "id": "ship000605",
+    "name": "Sulaco X"
+  },
+  {
+    "id": "ship000606",
+    "name": "ISS Discovery Mark-II-772"
+  },
+  {
+    "id": "ship000607",
+    "name": "Cosmos Station-175"
+  },
+  {
+    "id": "ship000608",
+    "name": "Stellar"
+  },
+  {
+    "id": "ship000609",
+    "name": "BG Sulaco Alpha"
+  },
+  {
+    "id": "ship000610",
+    "name": "USS Auriga"
+  },
+  {
+    "id": "ship000611",
+    "name": "BG Nova"
+  },
+  {
+    "id": "ship000612",
+    "name": "Discovery One-878"
+  },
+  {
+    "id": "ship000613",
+    "name": "BG Cosmos"
+  },
+  {
+    "id": "ship000614",
+    "name": "HWSS Sevastopol Beta"
+  },
+  {
+    "id": "ship000615",
+    "name": "USCSS Phoenix"
+  },
+  {
+    "id": "ship000616",
+    "name": "DSV Covenant One-212"
+  },
+  {
+    "id": "ship000617",
+    "name": "GSV Voyager"
+  },
+  {
+    "id": "ship000618",
+    "name": "DSV Nostromo Prime-119"
+  },
+  {
+    "id": "ship000619",
+    "name": "GSV Explorer Mark-II"
+  },
+  {
+    "id": "ship000620",
+    "name": "Voyager Elite-969"
+  },
+  {
+    "id": "ship000621",
+    "name": "GSV Phoenix Mark-II-49"
+  },
+  {
+    "id": "ship000622",
+    "name": "DSV Nostromo"
+  },
+  {
+    "id": "ship000623",
+    "name": "ISS Narcissus X"
+  },
+  {
+    "id": "ship000624",
+    "name": "HWSS Discovery Commercial"
+  },
+  {
+    "id": "ship000625",
+    "name": "ISS Stellar Elite-850"
+  },
+  {
+    "id": "ship000626",
+    "name": "Sulaco Two-207"
+  },
+  {
+    "id": "ship000627",
+    "name": "USCSS Stellar Elite"
+  },
+  {
+    "id": "ship000628",
+    "name": "USS Cosmos X"
+  },
+  {
+    "id": "ship000629",
+    "name": "USS Prometheus Prime-155"
+  },
+  {
+    "id": "ship000630",
+    "name": "GSV Nova Prime-817"
+  },
+  {
+    "id": "ship000631",
+    "name": "Prometheus Beta-516"
+  },
+  {
+    "id": "ship000632",
+    "name": "USS Nostromo Beta-190"
+  },
+  {
+    "id": "ship000633",
+    "name": "Covenant Station-426"
+  },
+  {
+    "id": "ship000634",
+    "name": "USS Cosmos Supreme-950"
+  },
+  {
+    "id": "ship000635",
+    "name": "Sevastopol Alpha"
+  },
+  {
+    "id": "ship000636",
+    "name": "ISS Stellar Elite-220"
+  },
+  {
+    "id": "ship000637",
+    "name": "ISS Stellar Supreme"
+  },
+  {
+    "id": "ship000638",
+    "name": "USCSS Prometheus Elite"
+  },
+  {
+    "id": "ship000639",
+    "name": "Narcissus Mark-II-100"
+  },
+  {
+    "id": "ship000640",
+    "name": "ISS Discovery Elite-181"
+  },
+  {
+    "id": "ship000641",
+    "name": "USS Cosmos X"
+  },
+  {
+    "id": "ship000642",
+    "name": "GSV Discovery"
+  },
+  {
+    "id": "ship000643",
+    "name": "USS Covenant Supreme"
+  },
+  {
+    "id": "ship000644",
+    "name": "HWSS Narcissus"
+  },
+  {
+    "id": "ship000645",
+    "name": "USS Sevastopol Mark-II"
+  },
+  {
+    "id": "ship000646",
+    "name": "ISS Prometheus"
+  },
+  {
+    "id": "ship000647",
+    "name": "BG Sulaco"
+  },
+  {
+    "id": "ship000648",
+    "name": "HWSS Cosmos Supreme"
+  },
+  {
+    "id": "ship000649",
+    "name": "DSV Stellar One-614"
+  },
+  {
+    "id": "ship000650",
+    "name": "ISS Sulaco Beta"
+  },
+  {
+    "id": "ship000651",
+    "name": "DSV Cosmos Prime"
+  },
+  {
+    "id": "ship000652",
+    "name": "Sulaco Prime"
+  },
+  {
+    "id": "ship000653",
+    "name": "BG Nova"
+  },
+  {
+    "id": "ship000654",
+    "name": "Phoenix One"
+  },
+  {
+    "id": "ship000655",
+    "name": "USS Sulaco Commercial-461"
+  },
+  {
+    "id": "ship000656",
+    "name": "Galaxy Supreme-897"
+  },
+  {
+    "id": "ship000657",
+    "name": "HWSS Prometheus Prime-733"
+  },
+  {
+    "id": "ship000658",
+    "name": "USS Sulaco Alpha-345"
+  },
+  {
+    "id": "ship000659",
+    "name": "USCSS Galaxy"
+  },
+  {
+    "id": "ship000660",
+    "name": "USS Auriga Supreme-128"
+  },
+  {
+    "id": "ship000661",
+    "name": "Explorer Beta-167"
+  },
+  {
+    "id": "ship000662",
+    "name": "USS Phoenix Mark-II-793"
+  },
+  {
+    "id": "ship000663",
+    "name": "Sulaco Alpha-137"
+  },
+  {
+    "id": "ship000664",
+    "name": "Odyssey Alpha"
+  },
+  {
+    "id": "ship000665",
+    "name": "USCSS Phoenix Elite"
+  },
+  {
+    "id": "ship000666",
+    "name": "Nova Two-91"
+  },
+  {
+    "id": "ship000667",
+    "name": "USS Sulaco"
+  },
+  {
+    "id": "ship000668",
+    "name": "GSV Covenant Supreme-27"
+  },
+  {
+    "id": "ship000669",
+    "name": "DSV Nova One-124"
+  },
+  {
+    "id": "ship000670",
+    "name": "Discovery"
+  },
+  {
+    "id": "ship000671",
+    "name": "ISS Covenant Station-202"
+  },
+  {
+    "id": "ship000672",
+    "name": "Sulaco X"
+  },
+  {
+    "id": "ship000673",
+    "name": "BG Stellar Alpha-268"
+  },
+  {
+    "id": "ship000674",
+    "name": "Sulaco Prime-57"
+  },
+  {
+    "id": "ship000675",
+    "name": "USCSS Explorer"
+  },
+  {
+    "id": "ship000676",
+    "name": "BG Stellar Alpha-268"
+  },
+  {
+    "id": "ship000677",
+    "name": "Covenant X-334"
+  },
+  {
+    "id": "ship000678",
+    "name": "Stellar Mark-II"
+  },
+  {
+    "id": "ship000679",
+    "name": "BG Discovery Mark-II"
+  },
+  {
+    "id": "ship000680",
+    "name": "BG Discovery Mark-II"
+  },
+  {
+    "id": "ship000681",
+    "name": "Nova Supreme"
+  },
+  {
+    "id": "ship000682",
+    "name": "GSV Nova Commercial"
+  },
+  {
+    "id": "ship000683",
+    "name": "GSV Nova Commercial"
+  },
+  {
+    "id": "ship000684",
+    "name": "USCSS Odyssey Two"
+  },
+  {
+    "id": "ship000685",
+    "name": "BG Nova Prime"
+  },
+  {
+    "id": "ship000686",
+    "name": "USCSS Nebula"
+  },
+  {
+    "id": "ship000687",
+    "name": "Auriga Supreme"
+  },
+  {
+    "id": "ship000688",
+    "name": "BG Prometheus Two-821"
+  },
+  {
+    "id": "ship000689",
+    "name": "USS Narcissus"
+  },
+  {
+    "id": "ship000690",
+    "name": "USCSS Discovery X"
+  },
+  {
+    "id": "ship000691",
+    "name": "Nostromo Supreme"
+  },
+  {
+    "id": "ship000692",
+    "name": "Prometheus"
+  },
+  {
+    "id": "ship000693",
+    "name": "Auriga One-862"
+  },
+  {
+    "id": "ship000694",
+    "name": "Auriga Commercial-148"
+  },
+  {
+    "id": "ship000695",
+    "name": "USCSS Auriga"
+  },
+  {
+    "id": "ship000696",
+    "name": "USCSS Nostromo Two-164"
+  },
+  {
+    "id": "ship000697",
+    "name": "USCSS Auriga Alpha-776"
+  },
+  {
+    "id": "ship000698",
+    "name": "USCSS Auriga Commercial-523"
+  },
+  {
+    "id": "ship000699",
+    "name": "BG Odyssey X-603"
+  },
+  {
+    "id": "ship000700",
+    "name": "ISS Discovery Mark-II-772"
+  },
+  {
+    "id": "ship000701",
+    "name": "USS Galaxy One"
+  },
+  {
+    "id": "ship000702",
+    "name": "USCSS Nostromo Two-164"
+  },
+  {
+    "id": "ship000703",
+    "name": "USS Prometheus Commercial-396"
+  },
+  {
+    "id": "ship000704",
+    "name": "HWSS Phoenix X"
+  },
+  {
+    "id": "ship000705",
+    "name": "Stellar Mark-II"
+  },
+  {
+    "id": "ship000706",
+    "name": "Auriga Elite-829"
+  },
+  {
+    "id": "ship000707",
+    "name": "Voyager Commercial-44"
+  },
+  {
+    "id": "ship000708",
+    "name": "Auriga Commercial-148"
+  },
+  {
+    "id": "ship000709",
+    "name": "Sevastopol X-583"
+  },
+  {
+    "id": "ship000710",
+    "name": "DSV Auriga Mark-II-859"
+  },
+  {
+    "id": "ship000711",
+    "name": "USCSS Prometheus Elite"
+  },
+  {
+    "id": "ship000712",
+    "name": "DSV Explorer"
+  },
+  {
+    "id": "ship000713",
+    "name": "Stellar Mark-II"
+  },
+  {
+    "id": "ship000714",
+    "name": "ISS Nebula Station"
+  },
+  {
+    "id": "ship000715",
+    "name": "Covenant Prime"
+  },
+  {
+    "id": "ship000716",
+    "name": "HWSS Cosmos Supreme"
+  },
+  {
+    "id": "ship000717",
+    "name": "DSV Cosmos X-746"
+  },
+  {
+    "id": "ship000718",
+    "name": "USS Nostromo Beta-190"
+  },
+  {
+    "id": "ship000719",
+    "name": "DSV Stellar One-614"
+  },
+  {
+    "id": "ship000720",
+    "name": "Odyssey Alpha"
+  },
+  {
+    "id": "ship000721",
+    "name": "HWSS Prometheus Prime-733"
+  },
+  {
+    "id": "ship000722",
+    "name": "USS Sevastopol X-532"
+  },
+  {
+    "id": "ship000723",
+    "name": "Nostromo Station-344"
+  },
+  {
+    "id": "ship000724",
+    "name": "DSV Cosmos Station"
+  },
+  {
+    "id": "ship000725",
+    "name": "USS Stellar"
+  },
+  {
+    "id": "ship000726",
+    "name": "Sulaco Prime"
+  },
+  {
+    "id": "ship000727",
+    "name": "Auriga Mark-II"
+  },
+  {
+    "id": "ship000728",
+    "name": "USCSS Covenant Prime-888"
+  },
+  {
+    "id": "ship000729",
+    "name": "HWSS Galaxy Mark-II"
+  },
+  {
+    "id": "ship000730",
+    "name": "USCSS Sevastopol Mark-II-933"
+  },
+  {
+    "id": "ship000731",
+    "name": "GSV Stellar X"
+  },
+  {
+    "id": "ship000732",
+    "name": "USS Auriga"
+  },
+  {
+    "id": "ship000733",
+    "name": "Sulaco Two-207"
+  },
+  {
+    "id": "ship000734",
+    "name": "ISS Discovery Elite-181"
+  },
+  {
+    "id": "ship000735",
+    "name": "HWSS Explorer"
+  },
+  {
+    "id": "ship000736",
+    "name": "Nova One-684"
+  },
+  {
+    "id": "ship000737",
+    "name": "DSV Narcissus Beta"
+  },
+  {
+    "id": "ship000738",
+    "name": "ISS Phoenix Supreme-2"
+  },
+  {
+    "id": "ship000739",
+    "name": "ISS Prometheus Mark-II-912"
+  },
+  {
+    "id": "ship000740",
+    "name": "DSV Covenant Station-279"
+  },
+  {
+    "id": "ship000741",
+    "name": "DSV Narcissus Supreme-816"
+  },
+  {
+    "id": "ship000742",
+    "name": "Nostromo Beta"
+  },
+  {
+    "id": "ship000743",
+    "name": "Voyager Elite-969"
+  },
+  {
+    "id": "ship000744",
+    "name": "Discovery Beta"
+  },
+  {
+    "id": "ship000745",
+    "name": "BG Cosmos"
+  },
+  {
+    "id": "ship000746",
+    "name": "ISS Stellar Two"
+  },
+  {
+    "id": "ship000747",
+    "name": "DSV Cosmos Station"
+  },
+  {
+    "id": "ship000748",
+    "name": "USCSS Cosmos X-348"
+  },
+  {
+    "id": "ship000749",
+    "name": "ISS Odyssey Elite-141"
+  },
+  {
+    "id": "ship000750",
+    "name": "Explorer Beta"
+  },
+  {
+    "id": "ship000751",
+    "name": "ISS Discovery Supreme"
+  },
+  {
+    "id": "ship000752",
+    "name": "USCSS Prometheus Prime"
+  },
+  {
+    "id": "ship000753",
+    "name": "Nostromo Supreme"
+  },
+  {
+    "id": "ship000754",
+    "name": "Nostromo Supreme"
+  },
+  {
+    "id": "ship000755",
+    "name": "DSV Prometheus"
+  },
+  {
+    "id": "ship000756",
+    "name": "Odyssey Station-385"
+  },
+  {
+    "id": "ship000757",
+    "name": "DSV Nostromo"
+  },
+  {
+    "id": "ship000758",
+    "name": "USS Auriga Elite"
+  },
+  {
+    "id": "ship000759",
+    "name": "DSV Sulaco Station"
+  },
+  {
+    "id": "ship000760",
+    "name": "ISS Galaxy Supreme-935"
+  },
+  {
+    "id": "ship000761",
+    "name": "ISS Sevastopol Beta-940"
+  },
+  {
+    "id": "ship000762",
+    "name": "DSV Voyager"
+  },
+  {
+    "id": "ship000763",
+    "name": "HWSS Discovery"
+  },
+  {
+    "id": "ship000764",
+    "name": "BG Nebula Elite"
+  },
+  {
+    "id": "ship000765",
+    "name": "Nebula Two"
+  },
+  {
+    "id": "ship000766",
+    "name": "USCSS Prometheus One"
+  },
+  {
+    "id": "ship000767",
+    "name": "USS Prometheus Commercial-396"
+  },
+  {
+    "id": "ship000768",
+    "name": "GSV Stellar"
+  },
+  {
+    "id": "ship000769",
+    "name": "HWSS Explorer"
+  },
+  {
+    "id": "ship000770",
+    "name": "Prometheus Elite-128"
+  },
+  {
+    "id": "ship000771",
+    "name": "GSV Auriga Mark-II-639"
+  },
+  {
+    "id": "ship000772",
+    "name": "USS Nebula Mark-II-650"
+  },
+  {
+    "id": "ship000773",
+    "name": "DSV Covenant One-212"
+  },
+  {
+    "id": "ship000774",
+    "name": "Prometheus One-949"
+  },
+  {
+    "id": "ship000775",
+    "name": "DSV Galaxy"
+  },
+  {
+    "id": "ship000776",
+    "name": "ISS Stellar Elite-220"
+  },
+  {
+    "id": "ship000777",
+    "name": "USCSS Auriga Commercial-523"
+  },
+  {
+    "id": "ship000778",
+    "name": "GSV Covenant Supreme-27"
+  },
+  {
+    "id": "ship000779",
+    "name": "ISS Auriga Supreme-194"
+  },
+  {
+    "id": "ship000780",
+    "name": "ISS Auriga Supreme-194"
+  },
+  {
+    "id": "ship000781",
+    "name": "Discovery Mark-II"
+  },
+  {
+    "id": "ship000782",
+    "name": "BG Sevastopol Two"
+  },
+  {
+    "id": "ship000783",
+    "name": "Phoenix X-640"
+  },
+  {
+    "id": "ship000784",
+    "name": "USS Galaxy One"
+  },
+  {
+    "id": "ship000785",
+    "name": "Sulaco Mark-II"
+  },
+  {
+    "id": "ship000786",
+    "name": "Discovery One-878"
+  },
+  {
+    "id": "ship000787",
+    "name": "DSV Discovery Commercial-616"
+  },
+  {
+    "id": "ship000788",
+    "name": "USCSS Cosmos Elite-684"
+  },
+  {
+    "id": "ship000789",
+    "name": "Sevastopol X-583"
+  },
+  {
+    "id": "ship000790",
+    "name": "DSV Narcissus Elite-433"
+  },
+  {
+    "id": "ship000791",
+    "name": "HWSS Narcissus"
+  },
+  {
+    "id": "ship000792",
+    "name": "BG Nova"
+  },
+  {
+    "id": "ship000793",
+    "name": "DSV Sulaco Station"
+  },
+  {
+    "id": "ship000794",
+    "name": "USCSS Galaxy Beta-678"
+  },
+  {
+    "id": "ship000795",
+    "name": "USS Sulaco"
+  },
+  {
+    "id": "ship000796",
+    "name": "GSV Nova Prime-817"
+  },
+  {
+    "id": "ship000797",
+    "name": "USS Auriga Elite"
+  },
+  {
+    "id": "ship000798",
+    "name": "Narcissus Commercial"
+  },
+  {
+    "id": "ship000799",
+    "name": "USS Cosmos X"
+  },
+  {
+    "id": "ship000800",
+    "name": "Phoenix Beta-921"
+  },
+  {
+    "id": "ship000801",
+    "name": "ISS Odyssey Two-362"
+  },
+  {
+    "id": "ship000802",
+    "name": "HWSS Discovery Commercial"
+  },
+  {
+    "id": "ship000803",
+    "name": "Cosmos Alpha-525"
+  },
+  {
+    "id": "ship000804",
+    "name": "Nova"
+  },
+  {
+    "id": "ship000805",
+    "name": "DSV Covenant"
+  },
+  {
+    "id": "ship000806",
+    "name": "BG Sulaco Alpha"
+  },
+  {
+    "id": "ship000807",
+    "name": "HWSS Discovery"
+  },
+  {
+    "id": "ship000808",
+    "name": "USCSS Nova Prime-530"
+  },
+  {
+    "id": "ship000809",
+    "name": "GSV Voyager One"
+  },
+  {
+    "id": "ship000810",
+    "name": "HWSS Stellar Commercial"
+  },
+  {
+    "id": "ship000811",
+    "name": "ISS Odyssey Prime-897"
+  },
+  {
+    "id": "ship000812",
+    "name": "USS Prometheus Commercial-396"
+  },
+  {
+    "id": "ship000813",
+    "name": "Nova"
+  },
+  {
+    "id": "ship000814",
+    "name": "GSV Phoenix"
+  },
+  {
+    "id": "ship000815",
+    "name": "DSV Sevastopol Station-635"
+  },
+  {
+    "id": "ship000816",
+    "name": "Prometheus Elite-841"
+  },
+  {
+    "id": "ship000817",
+    "name": "Auriga Elite-963"
+  },
+  {
+    "id": "ship000818",
+    "name": "DSV Galaxy Beta-241"
+  },
+  {
+    "id": "ship000819",
+    "name": "Nebula Two"
+  },
+  {
+    "id": "ship000820",
+    "name": "ISS Auriga Two-730"
+  },
+  {
+    "id": "ship000821",
+    "name": "ISS Cosmos Mark-II"
+  },
+  {
+    "id": "ship000822",
+    "name": "Voyager"
+  },
+  {
+    "id": "ship000823",
+    "name": "Nebula Commercial"
+  },
+  {
+    "id": "ship000824",
+    "name": "USCSS Voyager Beta-311"
+  },
+  {
+    "id": "ship000825",
+    "name": "HWSS Nostromo Station-774"
+  },
+  {
+    "id": "ship000826",
+    "name": "USS Nova Prime-985"
+  },
+  {
+    "id": "ship000827",
+    "name": "GSV Nostromo Supreme"
+  },
+  {
+    "id": "ship000828",
+    "name": "DSV Sulaco"
+  },
+  {
+    "id": "ship000829",
+    "name": "USCSS Explorer One"
+  },
+  {
+    "id": "ship000830",
+    "name": "GSV Cosmos Two-619"
+  },
+  {
+    "id": "ship000831",
+    "name": "HWSS Odyssey"
+  },
+  {
+    "id": "ship000832",
+    "name": "HWSS Discovery Beta-209"
+  },
+  {
+    "id": "ship000833",
+    "name": "HWSS Discovery Commercial"
+  },
+  {
+    "id": "ship000834",
+    "name": "Nova Prime"
+  },
+  {
+    "id": "ship000835",
+    "name": "HWSS Sulaco"
+  },
+  {
+    "id": "ship000836",
+    "name": "Odyssey Elite"
+  },
+  {
+    "id": "ship000837",
+    "name": "Prometheus One-949"
+  },
+  {
+    "id": "ship000838",
+    "name": "BG Discovery Beta"
+  },
+  {
+    "id": "ship000839",
+    "name": "ISS Sulaco Beta"
+  },
+  {
+    "id": "ship000840",
+    "name": "USCSS Nebula"
+  },
+  {
+    "id": "ship000841",
+    "name": "Narcissus Prime-961"
+  },
+  {
+    "id": "ship000842",
+    "name": "GSV Phoenix"
+  },
+  {
+    "id": "ship000843",
+    "name": "USCSS Galaxy Supreme-661"
+  },
+  {
+    "id": "ship000844",
+    "name": "USCSS Explorer"
+  },
+  {
+    "id": "ship000845",
+    "name": "Prometheus Elite-128"
+  },
+  {
+    "id": "ship000846",
+    "name": "HWSS Phoenix Prime"
+  },
+  {
+    "id": "ship000847",
+    "name": "Nova Supreme-249"
+  },
+  {
+    "id": "ship000848",
+    "name": "Auriga"
+  },
+  {
+    "id": "ship000849",
+    "name": "Explorer Beta-167"
+  },
+  {
+    "id": "ship000850",
+    "name": "DSV Auriga Mark-II-859"
+  },
+  {
+    "id": "ship000851",
+    "name": "DSV Sulaco Station"
+  },
+  {
+    "id": "ship000852",
+    "name": "USCSS Narcissus Two"
+  },
+  {
+    "id": "ship000853",
+    "name": "USS Auriga Mark-II-452"
+  },
+  {
+    "id": "ship000854",
+    "name": "USS Auriga Alpha"
+  },
+  {
+    "id": "ship000855",
+    "name": "USS Nebula Mark-II-650"
+  },
+  {
+    "id": "ship000856",
+    "name": "ISS Discovery Elite-181"
+  },
+  {
+    "id": "ship000857",
+    "name": "USCSS Sulaco"
+  },
+  {
+    "id": "ship000858",
+    "name": "ISS Prometheus One-623"
+  },
+  {
+    "id": "ship000859",
+    "name": "ISS Prometheus"
+  },
+  {
+    "id": "ship000860",
+    "name": "Odyssey Prime"
+  },
+  {
+    "id": "ship000861",
+    "name": "USS Covenant Supreme"
+  },
+  {
+    "id": "ship000862",
+    "name": "USS Nostromo Prime"
+  },
+  {
+    "id": "ship000863",
+    "name": "GSV Stellar X"
+  },
+  {
+    "id": "ship000864",
+    "name": "USS Explorer Station"
+  },
+  {
+    "id": "ship000865",
+    "name": "Voyager"
+  },
+  {
+    "id": "ship000866",
+    "name": "Prometheus Two-183"
+  },
+  {
+    "id": "ship000867",
+    "name": "Sulaco Two-559"
+  },
+  {
+    "id": "ship000868",
+    "name": "GSV Nova Commercial"
+  },
+  {
+    "id": "ship000869",
+    "name": "DSV Discovery"
+  },
+  {
+    "id": "ship000870",
+    "name": "GSV Odyssey Station"
+  },
+  {
+    "id": "ship000871",
+    "name": "USCSS Galaxy Beta-678"
+  },
+  {
+    "id": "ship000872",
+    "name": "Narcissus"
+  },
+  {
+    "id": "ship000873",
+    "name": "Narcissus Mark-II"
+  },
+  {
+    "id": "ship000874",
+    "name": "Galaxy Elite-430"
+  },
+  {
+    "id": "ship000875",
+    "name": "ISS Sevastopol Two"
+  },
+  {
+    "id": "ship000876",
+    "name": "BG Stellar Alpha-268"
+  },
+  {
+    "id": "ship000877",
+    "name": "HWSS Prometheus Station-269"
+  },
+  {
+    "id": "ship000878",
+    "name": "Prometheus One"
+  },
+  {
+    "id": "ship000879",
+    "name": "ISS Auriga Elite-709"
+  },
+  {
+    "id": "ship000880",
+    "name": "BG Explorer Commercial-470"
+  },
+  {
+    "id": "ship000881",
+    "name": "DSV Narcissus Supreme-816"
+  },
+  {
+    "id": "ship000882",
+    "name": "GSV Discovery Supreme"
+  },
+  {
+    "id": "ship000883",
+    "name": "Nebula Two-701"
+  },
+  {
+    "id": "ship000884",
+    "name": "GSV Nova Prime-817"
+  },
+  {
+    "id": "ship000885",
+    "name": "USCSS Cosmos Elite-684"
+  },
+  {
+    "id": "ship000886",
+    "name": "DSV Narcissus X-283"
+  },
+  {
+    "id": "ship000887",
+    "name": "USCSS Galaxy X"
+  },
+  {
+    "id": "ship000888",
+    "name": "DSV Phoenix One"
+  },
+  {
+    "id": "ship000889",
+    "name": "GSV Odyssey Station"
+  },
+  {
+    "id": "ship000890",
+    "name": "GSV Odyssey Alpha"
+  },
+  {
+    "id": "ship000891",
+    "name": "DSV Phoenix Supreme"
+  },
+  {
+    "id": "ship000892",
+    "name": "BG Nebula Mark-II-74"
+  },
+  {
+    "id": "ship000893",
+    "name": "Prometheus Two-614"
+  },
+  {
+    "id": "ship000894",
+    "name": "Voyager Commercial-44"
+  },
+  {
+    "id": "ship000895",
+    "name": "ISS Phoenix Elite-387"
+  },
+  {
+    "id": "ship000896",
+    "name": "BG Sevastopol X-230"
+  },
+  {
+    "id": "ship000897",
+    "name": "Galaxy Supreme-897"
+  },
+  {
+    "id": "ship000898",
+    "name": "Narcissus Two-594"
+  },
+  {
+    "id": "ship000899",
+    "name": "Cosmos Station-175"
+  },
+  {
+    "id": "ship000900",
+    "name": "ISS Nebula Beta-167"
+  },
+  {
+    "id": "ship000901",
+    "name": "Phoenix Commercial-483"
+  },
+  {
+    "id": "ship000902",
+    "name": "ISS Voyager X"
+  },
+  {
+    "id": "ship000903",
+    "name": "DSV Nova One-124"
+  },
+  {
+    "id": "ship000904",
+    "name": "HWSS Explorer"
+  },
+  {
+    "id": "ship000905",
+    "name": "ISS Stellar Two"
+  },
+  {
+    "id": "ship000906",
+    "name": "USCSS Sulaco Commercial-751"
+  },
+  {
+    "id": "ship000907",
+    "name": "USCSS Explorer One"
+  },
+  {
+    "id": "ship000908",
+    "name": "Galaxy Elite-430"
+  },
+  {
+    "id": "ship000909",
+    "name": "USCSS Prometheus One"
+  },
+  {
+    "id": "ship000910",
+    "name": "ISS Sulaco Beta"
+  },
+  {
+    "id": "ship000911",
+    "name": "BG Galaxy Supreme-911"
+  },
+  {
+    "id": "ship000912",
+    "name": "DSV Phoenix Station"
+  },
+  {
+    "id": "ship000913",
+    "name": "DSV Auriga Elite-470"
+  },
+  {
+    "id": "ship000914",
+    "name": "BG Nebula Beta"
+  },
+  {
+    "id": "ship000915",
+    "name": "USCSS Auriga Commercial-523"
+  },
+  {
+    "id": "ship000916",
+    "name": "USCSS Sevastopol Supreme-143"
+  },
+  {
+    "id": "ship000917",
+    "name": "Auriga One-862"
+  },
+  {
+    "id": "ship000918",
+    "name": "HWSS Sevastopol"
+  },
+  {
+    "id": "ship000919",
+    "name": "DSV Nostromo Prime-119"
+  },
+  {
+    "id": "ship000920",
+    "name": "Sevastopol Commercial-340"
+  },
+  {
+    "id": "ship000921",
+    "name": "ISS Cosmos"
+  },
+  {
+    "id": "ship000922",
+    "name": "Explorer Beta"
+  },
+  {
+    "id": "ship000923",
+    "name": "Stellar"
+  },
+  {
+    "id": "ship000924",
+    "name": "USCSS Nebula"
+  },
+  {
+    "id": "ship000925",
+    "name": "USS Nostromo Alpha"
+  },
+  {
+    "id": "ship000926",
+    "name": "USS Sulaco Commercial-461"
+  },
+  {
+    "id": "ship000927",
+    "name": "ISS Sulaco Beta"
+  },
+  {
+    "id": "ship000928",
+    "name": "USS Cosmos Supreme-950"
+  },
+  {
+    "id": "ship000929",
+    "name": "USS Prometheus Elite-652"
+  },
+  {
+    "id": "ship000930",
+    "name": "BG Prometheus"
+  },
+  {
+    "id": "ship000931",
+    "name": "GSV Stellar X"
+  },
+  {
+    "id": "ship000932",
+    "name": "DSV Covenant One-212"
+  },
+  {
+    "id": "ship000933",
+    "name": "USCSS Phoenix Elite"
+  },
+  {
+    "id": "ship000934",
+    "name": "Discovery Beta"
+  },
+  {
+    "id": "ship000935",
+    "name": "HWSS Covenant Elite-849"
+  },
+  {
+    "id": "ship000936",
+    "name": "USCSS Narcissus Two"
+  },
+  {
+    "id": "ship000937",
+    "name": "Voyager Elite-969"
+  },
+  {
+    "id": "ship000938",
+    "name": "HWSS Prometheus Prime-733"
+  },
+  {
+    "id": "ship000939",
+    "name": "DSV Prometheus Beta"
+  },
+  {
+    "id": "ship000940",
+    "name": "DSV Nova"
+  },
+  {
+    "id": "ship000941",
+    "name": "Cosmos Commercial"
+  },
+  {
+    "id": "ship000942",
+    "name": "HWSS Covenant Elite-849"
+  },
+  {
+    "id": "ship000943",
+    "name": "Sevastopol Commercial-269"
+  },
+  {
+    "id": "ship000944",
+    "name": "Sulaco Two-559"
+  },
+  {
+    "id": "ship000945",
+    "name": "Voyager"
+  },
+  {
+    "id": "ship000946",
+    "name": "ISS Voyager Supreme-532"
+  },
+  {
+    "id": "ship000947",
+    "name": "USS Explorer Station"
+  },
+  {
+    "id": "ship000948",
+    "name": "Sulaco Elite"
+  },
+  {
+    "id": "ship000949",
+    "name": "ISS Voyager Supreme-532"
+  },
+  {
+    "id": "ship000950",
+    "name": "HWSS Prometheus Prime-733"
+  },
+  {
+    "id": "ship000951",
+    "name": "HWSS Sevastopol"
+  },
+  {
+    "id": "ship000952",
+    "name": "Explorer Elite"
+  },
+  {
+    "id": "ship000953",
+    "name": "HWSS Prometheus Prime-733"
+  },
+  {
+    "id": "ship000954",
+    "name": "ISS Odyssey Elite-44"
+  },
+  {
+    "id": "ship000955",
+    "name": "USS Discovery Mark-II-102"
+  },
+  {
+    "id": "ship000956",
+    "name": "DSV Explorer Elite-263"
+  },
+  {
+    "id": "ship000957",
+    "name": "DSV Sulaco Station"
+  },
+  {
+    "id": "ship000958",
+    "name": "Auriga One-862"
+  },
+  {
+    "id": "ship000959",
+    "name": "BG Nova Supreme"
+  },
+  {
+    "id": "ship000960",
+    "name": "HWSS Explorer"
+  },
+  {
+    "id": "ship000961",
+    "name": "HWSS Phoenix Elite-728"
+  },
+  {
+    "id": "ship000962",
+    "name": "Nova One-684"
+  },
+  {
+    "id": "ship000963",
+    "name": "GSV Auriga"
+  },
+  {
+    "id": "ship000964",
+    "name": "DSV Narcissus Elite-433"
+  },
+  {
+    "id": "ship000965",
+    "name": "BG Prometheus Two-821"
+  },
+  {
+    "id": "ship000966",
+    "name": "GSV Explorer Mark-II"
+  },
+  {
+    "id": "ship000967",
+    "name": "BG Nova Prime"
+  },
+  {
+    "id": "ship000968",
+    "name": "GSV Covenant Two-949"
+  },
+  {
+    "id": "ship000969",
+    "name": "Explorer Commercial-532"
+  },
+  {
+    "id": "ship000970",
+    "name": "ISS Covenant"
+  },
+  {
+    "id": "ship000971",
+    "name": "USCSS Covenant Prime-888"
+  },
+  {
+    "id": "ship000972",
+    "name": "USCSS Galaxy X"
+  },
+  {
+    "id": "ship000973",
+    "name": "ISS Auriga Two-730"
+  },
+  {
+    "id": "ship000974",
+    "name": "GSV Cosmos Alpha"
+  },
+  {
+    "id": "ship000975",
+    "name": "USS Prometheus Elite-652"
+  },
+  {
+    "id": "ship000976",
+    "name": "ISS Nebula Station"
+  },
+  {
+    "id": "ship000977",
+    "name": "Nova Prime"
+  },
+  {
+    "id": "ship000978",
+    "name": "Covenant Two-588"
+  },
+  {
+    "id": "ship000979",
+    "name": "Voyager Two-537"
+  },
+  {
+    "id": "ship000980",
+    "name": "ISS Discovery Elite-181"
+  },
+  {
+    "id": "ship000981",
+    "name": "BG Sevastopol Two"
+  },
+  {
+    "id": "ship000982",
+    "name": "USS Voyager Mark-II"
+  },
+  {
+    "id": "ship000983",
+    "name": "HWSS Nostromo Station-774"
+  },
+  {
+    "id": "ship000984",
+    "name": "Odyssey Prime"
+  },
+  {
+    "id": "ship000985",
+    "name": "HWSS Voyager Two-1"
+  },
+  {
+    "id": "ship000986",
+    "name": "USS Voyager"
+  },
+  {
+    "id": "ship000987",
+    "name": "Discovery Supreme"
+  },
+  {
+    "id": "ship000988",
+    "name": "USCSS Galaxy Beta-678"
+  },
+  {
+    "id": "ship000989",
+    "name": "DSV Voyager"
+  },
+  {
+    "id": "ship000990",
+    "name": "DSV Sulaco"
+  },
+  {
+    "id": "ship000991",
+    "name": "USS Galaxy Alpha"
+  },
+  {
+    "id": "ship000992",
+    "name": "Voyager One"
+  },
+  {
+    "id": "ship000993",
+    "name": "USCSS Prometheus Elite"
+  },
+  {
+    "id": "ship000994",
+    "name": "USS Voyager"
+  },
+  {
+    "id": "ship000995",
+    "name": "Galaxy Elite-628"
+  },
+  {
+    "id": "ship000996",
+    "name": "Sulaco Mark-II"
+  },
+  {
+    "id": "ship000997",
+    "name": "GSV Auriga Two"
+  },
+  {
+    "id": "ship000998",
+    "name": "USS Odyssey One-334"
+  },
+  {
+    "id": "ship000999",
+    "name": "BG Auriga Supreme-831"
+  }
+]
