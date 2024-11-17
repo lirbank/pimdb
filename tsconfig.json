@@ -7,7 +7,7 @@
     "isolatedModules": true,
     "strict": true,
     "noUncheckedIndexedAccess": true,
-    // "noPropertyAccessFromIndexSignature": true,
+    "noPropertyAccessFromIndexSignature": true,
     "skipLibCheck": true,
     "outDir": "./dist",
     "declaration": true,

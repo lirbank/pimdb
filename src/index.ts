@@ -1,50 +1,47 @@
-import { PimCollection, PimRangeIndex, PimSecondaryIndex } from "./pimdb";
+import { db } from "./db";
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  age: number;
-}
+db.users.insert({
+  id: "1",
+  name: "Alice",
+  // email: "alice@example.com",
+  age: 30,
+  username: "alice",
+});
+db.users.insert({ id: "2", name: "Bob", username: "bob", age: 25 });
+db.users.insert({
+  id: "3",
+  name: "Charlie",
+  // email: "charlie@example.com",
+  age: 35,
+  username: "charlie",
+});
 
-const nameIndex = new PimSecondaryIndex<User>("nameIndex", ["name"]);
-const ageRangeIndex = new PimRangeIndex<User>("ageRangeIndex", "age");
-
-const indexes = {
-  nameIndex: nameIndex,
-  ageRangeIndex: ageRangeIndex,
-};
-
-const users = new PimCollection<number, User, typeof indexes>(
-  "users",
-  "id",
-  indexes,
-);
-
-users.insert({ id: 1, name: "Alice", email: "alice@example.com", age: 30 });
-users.insert({ id: 2, name: "Bob", email: "bob@example.com", age: 25 });
-users.insert({ id: 3, name: "Charlie", email: "charlie@example.com", age: 35 });
-
-const alice = users.getByPrimaryKey(1);
+const alice = db.users.indexes.primary.get("1");
 console.log("Get by primary key (id = 1):", alice);
 
 // Access the name index
-const usersNamedAlice = users.indexes.nameIndex.query({ name: "Alice" });
+const usersNamedAlice = db.users.indexes.regularIndex.find("Alice");
 console.log("Users named Alice:", usersNamedAlice);
 
 // Access the age range index
-const usersInThirties = users.indexes.ageRangeIndex.rangeQuery(30, 39);
+const usersInThirties = db.users.indexes.regularIndex.findInRange(30, 39);
 console.log("Users in their thirties:", usersInThirties);
 
 // Update Alice's age
-users.update({ id: 1, name: "Alice", email: "alice@example.com", age: 31 });
+db.users.update({
+  id: "1",
+  name: "Alice",
+  // email: "alice@example.com",
+  age: 31,
+  username: "alice",
+});
 
 // Verify the update
-const updatedAlice = users.getByPrimaryKey(1);
+const updatedAlice = db.users.indexes.primary.get("1");
 console.log("Updated Alice:", updatedAlice);
 
 // Verify that indexes are updated
-const usersInThirtiesAfterUpdate = users.indexes.ageRangeIndex.rangeQuery(
+const usersInThirtiesAfterUpdate = db.users.indexes.regularIndex.findInRange(
   30,
   39,
 );
@@ -54,14 +51,14 @@ console.log(
 );
 
 // Delete Bob
-users.delete(2);
+db.users.delete({ id: "2", name: "Bob", username: "bob", age: 25 });
 
 // Verify deletion
-const bob = users.getByPrimaryKey(2);
+const bob = db.users.indexes.primary.get("2");
 console.log("Bob after deletion:", bob); // Should be undefined
 
 // Verify that indexes are updated
-const usersInTwentiesAfterDeletion = users.indexes.ageRangeIndex.rangeQuery(
+const usersInTwentiesAfterDeletion = db.users.indexes.regularIndex.findInRange(
   20,
   29,
 );
@@ -70,5 +67,5 @@ console.log(
   usersInTwentiesAfterDeletion,
 );
 
-const allUsers = users.getAllRecords();
+const allUsers = db.users.indexes.primary.getAll();
 console.log("All users:", allUsers);

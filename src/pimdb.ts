@@ -1,218 +1,208 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-interface Index<V extends Record<string, any>> {
-  name: string;
-  insert(record: V): void;
-  update(record: V): void;
-  delete(record: V): void;
+/**
+ * BaseDocument
+ */
+interface BaseDocument {
+  /** Primary key */
+  id: string;
 }
 
 /**
- * Primary index
+ * Index interface
  */
-export class PimPrimaryIndex<K, V extends Record<string, any>>
-  implements Index<V>
-{
-  name: string;
-  private primaryKeyField: keyof V;
-  private index: Map<K, V>;
-
-  constructor(name: string, primaryKeyField: keyof V) {
-    this.name = name;
-    this.primaryKeyField = primaryKeyField;
-    this.index = new Map<K, V>();
-  }
-
-  insert(record: V): void {
-    const key = record[this.primaryKeyField] as K;
-    if (this.index.has(key)) {
-      throw new Error(`Duplicate primary key: ${key}`);
-    }
-    this.index.set(key, record);
-  }
-
-  update(record: V): void {
-    const key = record[this.primaryKeyField] as K;
-    if (!this.index.has(key)) {
-      throw new Error(`Record with primary key ${key} does not exist`);
-    }
-    this.index.set(key, record);
-  }
-
-  delete(record: V): void {
-    const key = record[this.primaryKeyField] as K;
-    if (!this.index.delete(key)) {
-      throw new Error(`Record with primary key ${key} does not exist`);
-    }
-  }
-
-  get(key: K): V | undefined {
-    return this.index.get(key);
-  }
-
-  getAll(): V[] {
-    return Array.from(this.index.values());
-  }
+interface Index<T> {
+  insert(item: T): void;
+  update(item: T): void;
+  delete(item: T): void;
 }
 
 /**
- * Secondary index
+ * Primary Index
+ *
+ * This is a unique primary index.
  */
-export class PimSecondaryIndex<V extends Record<string, any>>
-  implements Index<V>
-{
-  name: string;
-  private keyFields: (keyof V)[];
-  private index: Map<string, V[]>;
+export class PrimaryIndex<T extends BaseDocument> implements Index<T> {
+  private map = new Map<T["id"], T>();
 
-  constructor(name: string, keyFields: (keyof V)[]) {
-    this.name = name;
-    this.keyFields = keyFields;
-    this.index = new Map<string, V[]>();
-  }
-
-  private generateKey(record: V): string {
-    return this.keyFields.map((field) => record[field]).join("|");
-  }
-
-  insert(record: V): void {
-    const key = this.generateKey(record);
-    if (!this.index.has(key)) {
-      this.index.set(key, []);
+  insert(doc: T): void {
+    if (this.map.has(doc.id)) {
+      throw new Error(`Duplicate primary key: ${doc.id}`);
     }
-    this.index.get(key)!.push(record);
+    this.map.set(doc.id, doc);
   }
 
-  update(record: V): void {
-    this.delete(record);
-    this.insert(record);
-  }
-
-  delete(record: V): void {
-    const key = this.generateKey(record);
-    const records = this.index.get(key);
-    if (records) {
-      const idx = records.indexOf(record);
-      if (idx !== -1) {
-        records.splice(idx, 1);
-        if (records.length === 0) {
-          this.index.delete(key);
-        }
-      }
+  update(doc: T): void {
+    if (!this.map.has(doc.id)) {
+      throw new Error(`Record with primary key ${doc.id} does not exist`);
     }
+    this.map.set(doc.id, doc);
   }
 
-  query(criteria: Partial<V>): V[] {
-    const key = this.keyFields.map((field) => criteria[field] || "").join("|");
-    return this.index.get(key) || [];
+  /**
+   * @returns true if the record was deleted, false if it did not exist
+   */
+  delete(doc: T): boolean {
+    return this.map.delete(doc.id);
+  }
+
+  get(id: T["id"]): T | undefined {
+    return this.map.get(id);
+  }
+
+  getAll(): T[] {
+    return Array.from(this.map.values());
   }
 }
 
 /**
- * Range index
+ * Sorted Index
+ *
+ * This is a regular index.
  */
-export class PimRangeIndex<V extends Record<string, any>> implements Index<V> {
-  name: string;
-  private keyField: keyof V;
-  private index: Map<number, V[]>;
+export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
+  private indexKey: keyof T;
 
-  constructor(name: string, keyField: keyof V) {
-    this.name = name;
-    this.keyField = keyField;
-    this.index = new Map<number, V[]>();
+  constructor(indexKey: keyof T) {
+    this.indexKey = indexKey;
   }
 
-  insert(record: V): void {
-    const key = record[this.keyField] as number;
-    if (!this.index.has(key)) {
-      this.index.set(key, []);
-    }
-    this.index.get(key)!.push(record);
+  insert(doc: T): void {
+    console.log("insert", doc);
+    // TODO: Implement
   }
 
-  update(record: V): void {
-    this.delete(record);
-    this.insert(record);
+  update(doc: T): void {
+    console.log("update", doc);
+    // TODO: Implement
   }
 
-  delete(record: V): void {
-    const key = record[this.keyField] as number;
-    const records = this.index.get(key);
-    if (records) {
-      const idx = records.indexOf(record);
-      if (idx !== -1) {
-        records.splice(idx, 1);
-        if (records.length === 0) {
-          this.index.delete(key);
-        }
-      }
-    }
+  delete(doc: T): void {
+    console.log("delete", doc);
+    // TODO: Implement
   }
 
-  rangeQuery(min?: number, max?: number): V[] {
-    let results: V[] = [];
-    for (const [key, records] of this.index.entries()) {
-      if (
-        (min === undefined || key >= min) &&
-        (max === undefined || key <= max)
-      ) {
-        results = results.concat(records);
-      }
-    }
-    return results;
+  find(value: T[typeof this.indexKey]): T[] {
+    console.log("find", value);
+    return [];
+  }
+
+  findInRange(
+    start?: T[typeof this.indexKey],
+    end?: T[typeof this.indexKey],
+  ): T[] {
+    console.log("findInRange", start, end);
+    return [];
+  }
+}
+
+/**
+ * Text Index
+ *
+ * This is a plain partial text search index.
+ *
+ * It is not a full-text search index
+ * and does not support advanced features like stemming, synonyms, or relevance
+ * scoring.
+ */
+export class PimTextIndex<T extends BaseDocument> implements Index<T> {
+  private indexKey: {
+    [K in keyof T]: T[K] extends string ? K : never;
+  }[keyof T];
+
+  constructor(
+    indexKey: { [K in keyof T]: T[K] extends string ? K : never }[keyof T],
+  ) {
+    this.indexKey = indexKey;
+    console.log(this.indexKey);
+    // TODO: Implement
+  }
+
+  insert(doc: T): void {
+    console.log("insert", doc);
+    // TODO: Implement
+  }
+
+  update(doc: T): void {
+    console.log("update", doc);
+    // TODO: Implement
+  }
+
+  delete(doc: T): void {
+    console.log("delete", doc);
+    // TODO: Implement
+  }
+
+  search(
+    query: string,
+    options?: {
+      caseSensitive?: boolean;
+      exact?: boolean;
+      limit?: number;
+    },
+  ): T[] {
+    console.log("search", query, options);
+    return [];
+    // TODO: Implement
   }
 }
 
 /**
  * Collection
+ *
+ * This is a collection of documents with indexes.
  */
 export class PimCollection<
-  K,
-  V extends Record<string, any>,
-  I extends { [key: string]: Index<V> },
+  T extends BaseDocument,
+  TIndexes extends Record<string, Index<T>>,
 > {
-  name: string;
-  primaryIndex: PimPrimaryIndex<K, V>;
-  indexes: I;
+  indexes: TIndexes;
 
-  constructor(name: string, primaryKeyField: keyof V, indexes: I) {
-    this.name = name;
-    this.primaryIndex = new PimPrimaryIndex<K, V>(
-      "primaryIndex",
-      primaryKeyField,
-    );
+  constructor(indexes: TIndexes) {
     this.indexes = indexes;
   }
 
-  insert(record: V): void {
-    this.primaryIndex.insert(record);
+  insert(doc: T): void {
     for (const index of Object.values(this.indexes)) {
-      index.insert(record);
+      index.insert(doc);
     }
   }
 
-  update(record: V): void {
-    this.primaryIndex.update(record);
+  update(doc: T): void {
     for (const index of Object.values(this.indexes)) {
-      index.update(record);
+      index.update(doc);
     }
   }
 
-  delete(key: K): void {
-    const record = this.primaryIndex.get(key);
-    if (!record) {
-      throw new Error(`Record with primary key ${key} does not exist`);
-    }
-    this.primaryIndex.delete(record);
+  delete(doc: T): void {
     for (const index of Object.values(this.indexes)) {
-      index.delete(record);
+      index.delete(doc);
     }
   }
+}
 
-  getByPrimaryKey(key: K): V | undefined {
-    return this.primaryIndex.get(key);
+/**
+ * Database
+ *
+ * This is a database of collections.
+ */
+class PimDB<
+  TCollections extends Record<
+    string,
+    PimCollection<BaseDocument, Record<string, Index<BaseDocument>>>
+  >,
+> {
+  constructor(collections: TCollections) {
+    Object.assign(this, collections);
   }
+}
 
-  getAllRecords(): V[] {
-    return this.primaryIndex.getAll();
-  }
+/**
+ * Factory function to create PimDB instances
+ */
+export function createPimDB<
+  TCollections extends Record<
+    string,
+    PimCollection<BaseDocument, Record<string, Index<BaseDocument>>>
+  >,
+>(collections: TCollections): PimDB<TCollections> & TCollections {
+  return Object.assign(new PimDB(collections), collections);
 }
