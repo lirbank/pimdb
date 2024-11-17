@@ -16,10 +16,13 @@ export class PrimaryIndex<T extends BaseDocument> implements Index<T> {
   }
 
   update(doc: T): void {
-    if (!this.map.has(doc.id)) {
+    const existing = this.map.get(doc.id);
+    if (!existing) {
       throw new Error(`Record with primary key ${doc.id} does not exist`);
     }
-    this.map.set(doc.id, doc);
+
+    // Mutate the existing object in place.
+    Object.assign(existing, doc);
   }
 
   /**
