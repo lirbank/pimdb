@@ -1,10 +1,7 @@
-import {
-  createPimDB,
-  PimCollection,
-  PimSortedIndex,
-  PimTextIndex,
-  PrimaryIndex,
-} from "./pimdb";
+import { createPimDB, PimCollection } from "./pimdb";
+import { PimTextIndex } from "./indexes/text";
+import { PimSortedIndex } from "./indexes/sorted";
+import { PrimaryIndex } from "./indexes/primary";
 
 // Define User and Post interfaces
 interface User {
