@@ -64,27 +64,27 @@ describe("findInRange", () => {
 
   // Nostromo
   bench("100000 docs - Nostromo", () => {
-    index100000.findInRange("Nostromo", "Nostromo");
+    index100000.findInRange({ gte: "Nostromo", lte: "Nostromo" });
   });
 
   bench("10000 docs - Nostromo", () => {
-    index10000.findInRange("Nostromo", "Nostromo");
+    index10000.findInRange({ gte: "Nostromo", lte: "Nostromo" });
   });
 
   bench("1000 docs - Nostromo", () => {
-    index1000.findInRange("Nostromo", "Nostromo");
+    index1000.findInRange({ gte: "Nostromo", lte: "Nostromo" });
   });
 
   // Nothing (does not exist)
   bench("100000 docs - Nothing", () => {
-    index100000.findInRange("Nothing", "Nothing");
+    index100000.findInRange({ gte: "Nothing", lte: "Nothing" });
   });
 
   bench("10000 docs - Nothing", () => {
-    index10000.findInRange("Nothing", "Nothing");
+    index10000.findInRange({ gte: "Nothing", lte: "Nothing" });
   });
 
   bench("1000 docs - Nothing", () => {
-    index1000.findInRange("Nothing", "Nothing");
+    index1000.findInRange({ gte: "Nothing", lte: "Nothing" });
   });
 });

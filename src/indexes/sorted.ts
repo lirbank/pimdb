@@ -116,22 +116,21 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
   }
 
   findInRange(
-    start?: T[typeof this.indexKey],
-    end?: T[typeof this.indexKey],
+    range: {
+      gte?: string | number;
+      lte?: string | number;
+    } = {},
   ): T[] {
-    // If both bounds are undefined or null, return all documents
-    if (
-      (start === undefined || start === null) &&
-      (end === undefined || end === null)
-    ) {
+    // If both bounds are undefined, return all documents
+    if (range.gte === undefined && range.lte === undefined) {
       return [...this.documents];
     }
 
     let startIndex = 0;
     let endIndex = this.documents.length;
 
-    // Find start index if start value is provided and not null
-    if (start !== undefined && start !== null) {
+    // Find start index if gte value is provided
+    if (range.gte !== undefined) {
       let left = 0;
       let right = this.documents.length - 1;
 
@@ -139,14 +138,14 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
         const mid = Math.floor((left + right) / 2);
         const midDoc = this.documents[mid];
 
-        // Add null check for midDoc
         if (!midDoc) {
           throw new Error(`Invalid document at index ${mid}`);
         }
 
         const midValue = midDoc[this.indexKey];
 
-        if (midValue < start) {
+        // Changed comparison to find first value >= gte
+        if (midValue < range.gte) {
           left = mid + 1;
         } else {
           right = mid - 1;
@@ -155,8 +154,8 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
       startIndex = left;
     }
 
-    // Find end index if end value is provided and not null
-    if (end !== undefined && end !== null) {
+    // Find end index if lte value is provided
+    if (range.lte !== undefined) {
       let left = 0;
       let right = this.documents.length - 1;
 
@@ -170,13 +169,19 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
 
         const midValue = midDoc[this.indexKey];
 
-        if (midValue <= end) {
+        // Changed comparison to find first value > lte
+        if (midValue <= range.lte) {
           left = mid + 1;
         } else {
           right = mid - 1;
         }
       }
       endIndex = left;
+    }
+
+    // If the range is invalid (start > end), return empty array
+    if (startIndex >= endIndex) {
+      return [];
     }
 
     return this.documents.slice(startIndex, endIndex);

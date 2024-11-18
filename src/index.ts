@@ -24,7 +24,10 @@ const usersNamedAlice = db.users.indexes.regularIndex.find("Alice");
 console.log("Users named Alice:", usersNamedAlice);
 
 // Access the age range index
-const usersInThirties = db.users.indexes.regularIndex.findInRange(30, 39);
+const usersInThirties = db.users.indexes.regularIndex.findInRange({
+  gte: 30,
+  lte: 39,
+});
 console.log("Users in their thirties:", usersInThirties);
 
 // Update Alice's age
@@ -41,10 +44,10 @@ const updatedAlice = db.users.indexes.primary.get("1");
 console.log("Updated Alice:", updatedAlice);
 
 // Verify that indexes are updated
-const usersInThirtiesAfterUpdate = db.users.indexes.regularIndex.findInRange(
-  30,
-  39,
-);
+const usersInThirtiesAfterUpdate = db.users.indexes.regularIndex.findInRange({
+  gte: 30,
+  lte: 39,
+});
 console.log(
   "Users in their thirties after update:",
   usersInThirtiesAfterUpdate,
@@ -58,10 +61,10 @@ const bob = db.users.indexes.primary.get("2");
 console.log("Bob after deletion:", bob); // Should be undefined
 
 // Verify that indexes are updated
-const usersInTwentiesAfterDeletion = db.users.indexes.regularIndex.findInRange(
-  20,
-  29,
-);
+const usersInTwentiesAfterDeletion = db.users.indexes.regularIndex.findInRange({
+  gte: 20,
+  lte: 29,
+});
 console.log(
   "Users in their twenties after deletion:",
   usersInTwentiesAfterDeletion,

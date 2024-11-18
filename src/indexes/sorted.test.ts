@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { beforeEach, describe, expect, test } from "vitest";
 import { PimSortedIndex } from "./sorted";
 
 interface TestDoc {
@@ -96,20 +96,20 @@ test("returns results sorted by id regardless of insertion order", () => {
   index.insert({ id: "2", name: "aaa" });
 
   // Matching documents secondarily sorted by id
-  expect(index.findInRange("aaa", "aaa")).toEqual([
+  expect(index.findInRange({ gte: "aaa", lte: "aaa" })).toEqual([
     { id: "1", name: "aaa" },
     { id: "2", name: "aaa" },
     { id: "4", name: "aaa" },
   ]);
 
   // Matching documents secondarily sorted by id
-  expect(index.findInRange("bbb", "bbb")).toEqual([
+  expect(index.findInRange({ gte: "bbb", lte: "bbb" })).toEqual([
     { id: "6", name: "bbb" },
     { id: "7", name: "bbb" },
   ]);
 
   // Matching documents secondarily sorted by id
-  expect(index.findInRange("ccc", "ccc")).toEqual([
+  expect(index.findInRange({ gte: "ccc", lte: "ccc" })).toEqual([
     { id: "0", name: "ccc" },
     { id: "3", name: "ccc" },
   ]);
@@ -165,4 +165,94 @@ test("find with upper and lower case", () => {
 
   // Query for unknown value returns empty array
   expect(index.find("unknown")).toEqual([]);
+});
+
+/**
+ * findInRange
+ */
+describe("findInRange", () => {
+  let index: PimSortedIndex<TestDoc>;
+
+  beforeEach(() => {
+    index = new PimSortedIndex<TestDoc>("name");
+    // Insert documents in random order to verify sorting
+    [
+      { id: "1", name: "aaa" },
+      { id: "2", name: "aaa" },
+      { id: "6", name: "bbb" },
+      { id: "7", name: "bbb" },
+      { id: "0", name: "ccc" },
+      { id: "3", name: "ccc" },
+      { id: "5", name: "ddd" },
+    ].forEach((doc) => index.insert(doc));
+  });
+
+  test("returns empty array when range is after all values", () => {
+    expect(index.findInRange({ gte: "zzz", lte: "zzzz" })).toEqual([]);
+  });
+
+  test("returns empty array when range is before all values", () => {
+    expect(index.findInRange({ gte: "000", lte: "999" })).toEqual([]);
+  });
+
+  test("handles non-existent boundary values", () => {
+    // Should include everything >= "bb" and <= "cc"
+    expect(index.findInRange({ gte: "bb", lte: "cc" })).toEqual([
+      { id: "6", name: "bbb" },
+      { id: "7", name: "bbb" },
+    ]);
+  });
+
+  test("handles exact boundary values", () => {
+    // Should include everything >= "bbb" and <= "ccc"
+    expect(index.findInRange({ gte: "bbb", lte: "ccc" })).toEqual([
+      { id: "6", name: "bbb" },
+      { id: "7", name: "bbb" },
+      { id: "0", name: "ccc" },
+      { id: "3", name: "ccc" },
+    ]);
+  });
+
+  test("handles undefined start", () => {
+    // Should include everything <= "bbb"
+    expect(index.findInRange({ lte: "bbb" })).toEqual([
+      { id: "1", name: "aaa" },
+      { id: "2", name: "aaa" },
+      { id: "6", name: "bbb" },
+      { id: "7", name: "bbb" },
+    ]);
+  });
+
+  test("handles undefined end", () => {
+    // Should include everything >= "ccc"
+    expect(index.findInRange({ gte: "ccc" })).toEqual([
+      { id: "0", name: "ccc" },
+      { id: "3", name: "ccc" },
+      { id: "5", name: "ddd" },
+    ]);
+  });
+
+  test("handles both undefined bounds", () => {
+    // Should return all documents
+    expect(index.findInRange({})).toEqual([
+      { id: "1", name: "aaa" },
+      { id: "2", name: "aaa" },
+      { id: "6", name: "bbb" },
+      { id: "7", name: "bbb" },
+      { id: "0", name: "ccc" },
+      { id: "3", name: "ccc" },
+      { id: "5", name: "ddd" },
+    ]);
+
+    // Should return all documents
+    expect(index.findInRange()).toEqual([
+      { id: "1", name: "aaa" },
+      { id: "2", name: "aaa" },
+      { id: "6", name: "bbb" },
+      { id: "7", name: "bbb" },
+      { id: "0", name: "ccc" },
+      { id: "3", name: "ccc" },
+      { id: "5", name: "ddd" },
+    ]);
+  });
 });
