@@ -3,6 +3,9 @@ import { BaseDocument, Index } from "../pimdb";
 /**
  * Sorted Index
  *
+ * This index relies on binary search to find individual documents and ranges
+ * of documents.
+ *
  * Write operations work with document references, mutating the documents in
  * place, allowing documents to be shared across multiple indexes.
  *

@@ -3,7 +3,13 @@ import { BaseDocument, Index } from "../pimdb";
 /**
  * Primary Index
  *
- * This is a unique primary index.
+ * This is a unique index.
+ *
+ * Write operations work with document references, mutating the documents in
+ * place, allowing documents to be shared across multiple indexes.
+ *
+ * Read operations return a new array containing references (not clones) to the
+ * indexed documents.
  */
 export class PrimaryIndex<T extends BaseDocument> implements Index<T> {
   private map = new Map<T["id"], T>();
