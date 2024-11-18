@@ -52,14 +52,30 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
     this.documents.splice(left, 0, doc);
   }
 
-  update(doc: T): void {
-    console.log("update", doc);
-    // TODO: Implement
+  update(doc: T): boolean {
+    // Find and remove the existing document with matching id
+    const existingIndex = this.documents.findIndex((d) => d.id === doc.id);
+    if (existingIndex === -1) {
+      return false;
+    }
+
+    // Remove the existing document
+    this.documents.splice(existingIndex, 1);
+
+    // Insert the updated document in the correct sorted position
+    this.insert(doc);
+    return true;
   }
 
-  delete(doc: T): void {
-    console.log("delete", doc);
-    // TODO: Implement
+  delete(doc: T): boolean {
+    // Find and remove the existing document with matching id
+    const existingIndex = this.documents.findIndex((d) => d.id === doc.id);
+    if (existingIndex === -1) {
+      return false;
+    }
+
+    this.documents.splice(existingIndex, 1);
+    return true;
   }
 
   find(value?: T[typeof this.indexKey]): T[] {

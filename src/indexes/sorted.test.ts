@@ -240,3 +240,133 @@ describe("findInRange", () => {
     ]);
   });
 });
+
+/**
+ * update
+ */
+describe("update", () => {
+  let index: PimSortedIndex<TestDoc>;
+
+  beforeEach(() => {
+    // Reset index before each test
+    index = new PimSortedIndex<TestDoc>("name");
+    // Insert documents in random order to verify sorting
+    [
+      { id: "3", name: "ccc" },
+      { id: "5", name: "ccccc" },
+      { id: "7", name: "bbb" },
+      { id: "6", name: "bbb" },
+      { id: "0", name: "ccc" },
+      { id: "9", name: "" },
+      { id: "11", name: "BBB" },
+      { id: "10", name: "AAA" },
+      { id: "8", name: "" },
+      { id: "4", name: "aaa" },
+      { id: "1", name: "aaa" },
+      { id: "2", name: "aaa" },
+    ].forEach((doc) => index.insert(doc));
+  });
+
+  test("updating a document with unknown id has no effect", () => {
+    index.update({ id: "not-an-id", name: "new value" });
+
+    expect(index.find()).toEqual([
+      { id: "8", name: "" },
+      { id: "9", name: "" },
+      { id: "10", name: "AAA" },
+      { id: "11", name: "BBB" },
+      { id: "1", name: "aaa" },
+      { id: "2", name: "aaa" },
+      { id: "4", name: "aaa" },
+      { id: "6", name: "bbb" },
+      { id: "7", name: "bbb" },
+      { id: "0", name: "ccc" },
+      { id: "3", name: "ccc" },
+      { id: "5", name: "ccccc" },
+    ]);
+  });
+
+  test("updating a document by id updates the document and maintains sorted order", () => {
+    index.update({ id: "2", name: "bbbb new value" });
+
+    expect(index.find()).toEqual([
+      { id: "8", name: "" },
+      { id: "9", name: "" },
+      { id: "10", name: "AAA" },
+      { id: "11", name: "BBB" },
+      { id: "1", name: "aaa" },
+      { id: "4", name: "aaa" },
+      { id: "6", name: "bbb" },
+      { id: "7", name: "bbb" },
+      { id: "2", name: "bbbb new value" }, // Here
+      { id: "0", name: "ccc" },
+      { id: "3", name: "ccc" },
+      { id: "5", name: "ccccc" },
+    ]);
+  });
+});
+
+/**
+ * delete
+ */
+describe("delete", () => {
+  let index: PimSortedIndex<TestDoc>;
+
+  beforeEach(() => {
+    // Reset index before each test
+    index = new PimSortedIndex<TestDoc>("name");
+    // Insert documents in random order to verify sorting
+    [
+      { id: "3", name: "ccc" },
+      { id: "5", name: "ccccc" },
+      { id: "7", name: "bbb" },
+      { id: "6", name: "bbb" },
+      { id: "0", name: "ccc" },
+      { id: "9", name: "" },
+      { id: "11", name: "BBB" },
+      { id: "10", name: "AAA" },
+      { id: "8", name: "" },
+      { id: "4", name: "aaa" },
+      { id: "1", name: "aaa" },
+      { id: "2", name: "aaa" },
+    ].forEach((doc) => index.insert(doc));
+  });
+
+  test("deleting a document with unknown id has no effect", () => {
+    index.delete({ id: "not-an-id", name: "not-an-name" });
+
+    expect(index.find()).toEqual([
+      { id: "8", name: "" },
+      { id: "9", name: "" },
+      { id: "10", name: "AAA" },
+      { id: "11", name: "BBB" },
+      { id: "1", name: "aaa" },
+      { id: "2", name: "aaa" },
+      { id: "4", name: "aaa" },
+      { id: "6", name: "bbb" },
+      { id: "7", name: "bbb" },
+      { id: "0", name: "ccc" },
+      { id: "3", name: "ccc" },
+      { id: "5", name: "ccccc" },
+    ]);
+  });
+
+  test("deleting a document by id removes the document and maintains sorted order", () => {
+    index.delete({ id: "2", name: "___todo___" });
+
+    expect(index.find()).toEqual([
+      { id: "8", name: "" },
+      { id: "9", name: "" },
+      { id: "10", name: "AAA" },
+      { id: "11", name: "BBB" },
+      { id: "1", name: "aaa" },
+      // { id: "2", name: "aaa" }, // Removed
+      { id: "4", name: "aaa" },
+      { id: "6", name: "bbb" },
+      { id: "7", name: "bbb" },
+      { id: "0", name: "ccc" },
+      { id: "3", name: "ccc" },
+      { id: "5", name: "ccccc" },
+    ]);
+  });
+});
