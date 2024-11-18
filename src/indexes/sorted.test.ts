@@ -20,7 +20,7 @@ test("find with upper and lower case", () => {
   index.insert({ id: "g", name: "aaa" });
 
   // Empty query returns all documents
-  expect(index.find()).toEqual([
+  expect(index.find()).toStrictEqual([
     { id: "d", name: "" },
     { id: "h", name: "" },
     { id: "f", name: "AAA" },
@@ -32,7 +32,7 @@ test("find with upper and lower case", () => {
   ]);
 
   // Query for unknown value returns empty array
-  expect(index.find("unknown")).toEqual([]);
+  expect(index.find("unknown")).toStrictEqual([]);
 });
 
 /**
@@ -63,7 +63,7 @@ describe("find", () => {
 
   test("undefined query returns all documents, secondarily sorted by id", () => {
     // All documents secondarily sorted by id
-    expect(index.find()).toEqual([
+    expect(index.find()).toStrictEqual([
       { id: "8", name: "" },
       { id: "9", name: "" },
       { id: "10", name: "AAA" },
@@ -80,15 +80,15 @@ describe("find", () => {
   });
 
   test("returns 'AAA' documents sorted by id", () => {
-    expect(index.find("AAA")).toEqual([{ id: "10", name: "AAA" }]);
+    expect(index.find("AAA")).toStrictEqual([{ id: "10", name: "AAA" }]);
   });
 
   test("returns 'BBB' documents sorted by id", () => {
-    expect(index.find("BBB")).toEqual([{ id: "11", name: "BBB" }]);
+    expect(index.find("BBB")).toStrictEqual([{ id: "11", name: "BBB" }]);
   });
 
   test("returns 'aaa' documents sorted by id", () => {
-    expect(index.find("aaa")).toEqual([
+    expect(index.find("aaa")).toStrictEqual([
       { id: "1", name: "aaa" },
       { id: "2", name: "aaa" },
       { id: "4", name: "aaa" },
@@ -96,28 +96,28 @@ describe("find", () => {
   });
 
   test("returns 'bbb' documents sorted by id", () => {
-    expect(index.find("bbb")).toEqual([
+    expect(index.find("bbb")).toStrictEqual([
       { id: "6", name: "bbb" },
       { id: "7", name: "bbb" },
     ]);
   });
 
   test("returns 'ccc' documents sorted by id", () => {
-    expect(index.find("ccc")).toEqual([
+    expect(index.find("ccc")).toStrictEqual([
       { id: "0", name: "ccc" },
       { id: "3", name: "ccc" },
     ]);
   });
 
   test("returns '' documents sorted by id", () => {
-    expect(index.find("")).toEqual([
+    expect(index.find("")).toStrictEqual([
       { id: "8", name: "" },
       { id: "9", name: "" },
     ]);
   });
 
   test("returns empty array when no match", () => {
-    expect(index.find("unknown")).toEqual([]);
+    expect(index.find("unknown")).toStrictEqual([]);
   });
 });
 
@@ -164,12 +164,12 @@ describe("findInRange", () => {
     ];
 
     // Empty object or undefined returns all documents
-    expect(index.findInRange({})).toEqual(expected);
-    expect(index.findInRange()).toEqual(expected);
+    expect(index.findInRange({})).toStrictEqual(expected);
+    expect(index.findInRange()).toStrictEqual(expected);
   });
 
   test("returns 'aaa' documents sorted by id", () => {
-    expect(index.findInRange({ gte: "aaa", lte: "aaa" })).toEqual([
+    expect(index.findInRange({ gte: "aaa", lte: "aaa" })).toStrictEqual([
       { id: "1", name: "aaa" },
       { id: "2", name: "aaa" },
       { id: "4", name: "aaa" },
@@ -177,30 +177,30 @@ describe("findInRange", () => {
   });
 
   test("returns 'bbb' documents sorted by id", () => {
-    expect(index.findInRange({ gte: "bbb", lte: "bbb" })).toEqual([
+    expect(index.findInRange({ gte: "bbb", lte: "bbb" })).toStrictEqual([
       { id: "6", name: "bbb" },
       { id: "7", name: "bbb" },
     ]);
   });
 
   test("returns 'ccc' documents sorted by id", () => {
-    expect(index.findInRange({ gte: "ccc", lte: "ccc" })).toEqual([
+    expect(index.findInRange({ gte: "ccc", lte: "ccc" })).toStrictEqual([
       { id: "0", name: "ccc" },
       { id: "3", name: "ccc" },
     ]);
   });
 
   test("returns empty array when range is after all values", () => {
-    expect(index.findInRange({ gte: "zzz", lte: "zzzz" })).toEqual([]);
+    expect(index.findInRange({ gte: "zzz", lte: "zzzz" })).toStrictEqual([]);
   });
 
   test("returns empty array when range is before all values", () => {
-    expect(index.findInRange({ gte: "000", lte: "999" })).toEqual([]);
+    expect(index.findInRange({ gte: "000", lte: "999" })).toStrictEqual([]);
   });
 
   test("handles non-existent boundary values", () => {
     // Should include everything >= "bb" and <= "cc"
-    expect(index.findInRange({ gte: "bb", lte: "cc" })).toEqual([
+    expect(index.findInRange({ gte: "bb", lte: "cc" })).toStrictEqual([
       { id: "6", name: "bbb" },
       { id: "7", name: "bbb" },
     ]);
@@ -208,7 +208,7 @@ describe("findInRange", () => {
 
   test("handles exact boundary values", () => {
     // Should include everything >= "bbb" and <= "ccc"
-    expect(index.findInRange({ gte: "bbb", lte: "ccc" })).toEqual([
+    expect(index.findInRange({ gte: "bbb", lte: "ccc" })).toStrictEqual([
       { id: "6", name: "bbb" },
       { id: "7", name: "bbb" },
       { id: "0", name: "ccc" },
@@ -218,7 +218,7 @@ describe("findInRange", () => {
 
   test("handles undefined lower bound", () => {
     // Should include everything <= "bbb"
-    expect(index.findInRange({ lte: "bbb" })).toEqual([
+    expect(index.findInRange({ lte: "bbb" })).toStrictEqual([
       { id: "8", name: "" },
       { id: "9", name: "" },
       { id: "10", name: "AAA" },
@@ -233,7 +233,7 @@ describe("findInRange", () => {
 
   test("handles undefined upper bound", () => {
     // Should include everything >= "ccc"
-    expect(index.findInRange({ gte: "ccc" })).toEqual([
+    expect(index.findInRange({ gte: "ccc" })).toStrictEqual([
       { id: "0", name: "ccc" },
       { id: "3", name: "ccc" },
       { id: "5", name: "ccccc" },
@@ -270,7 +270,7 @@ describe("update", () => {
   test("updating a document with unknown id has no effect", () => {
     index.update({ id: "not-an-id", name: "new value" });
 
-    expect(index.find()).toEqual([
+    expect(index.find()).toStrictEqual([
       { id: "8", name: "" },
       { id: "9", name: "" },
       { id: "10", name: "AAA" },
@@ -289,7 +289,7 @@ describe("update", () => {
   test("updating a document by id updates the document and maintains sorted order", () => {
     index.update({ id: "2", name: "bbbb new value" });
 
-    expect(index.find()).toEqual([
+    expect(index.find()).toStrictEqual([
       { id: "8", name: "" },
       { id: "9", name: "" },
       { id: "10", name: "AAA" },
@@ -335,7 +335,7 @@ describe("delete", () => {
   test("deleting a document with unknown id has no effect", () => {
     index.delete({ id: "not-an-id", name: "not-an-name" });
 
-    expect(index.find()).toEqual([
+    expect(index.find()).toStrictEqual([
       { id: "8", name: "" },
       { id: "9", name: "" },
       { id: "10", name: "AAA" },
@@ -354,7 +354,7 @@ describe("delete", () => {
   test("deleting a document by id removes the document and maintains sorted order", () => {
     index.delete({ id: "2", name: "___todo___" });
 
-    expect(index.find()).toEqual([
+    expect(index.find()).toStrictEqual([
       { id: "8", name: "" },
       { id: "9", name: "" },
       { id: "10", name: "AAA" },
