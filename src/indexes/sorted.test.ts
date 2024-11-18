@@ -13,24 +13,26 @@ interface TestDoc {
 describe("find", () => {
   let index: PimSortedIndex<TestDoc>;
 
+  const docs = [
+    { id: "3", name: "ccc" },
+    { id: "5", name: "ccccc" },
+    { id: "7", name: "bbb" },
+    { id: "6", name: "bbb" },
+    { id: "0", name: "ccc" },
+    { id: "9", name: "" },
+    { id: "11", name: "BBB" },
+    { id: "10", name: "AAA" },
+    { id: "8", name: "" },
+    { id: "4", name: "aaa" },
+    { id: "1", name: "aaa" },
+    { id: "2", name: "aaa" },
+  ];
+
   beforeEach(() => {
     // Reset index before each test
     index = new PimSortedIndex<TestDoc>("name");
     // Insert documents in random order to verify sorting
-    [
-      { id: "3", name: "ccc" },
-      { id: "5", name: "ccccc" },
-      { id: "7", name: "bbb" },
-      { id: "6", name: "bbb" },
-      { id: "0", name: "ccc" },
-      { id: "9", name: "" },
-      { id: "11", name: "BBB" },
-      { id: "10", name: "AAA" },
-      { id: "8", name: "" },
-      { id: "4", name: "aaa" },
-      { id: "1", name: "aaa" },
-      { id: "2", name: "aaa" },
-    ].forEach((doc) => index.insert(doc));
+    docs.forEach((doc) => index.insert(doc));
   });
 
   test("undefined query returns all documents, secondarily sorted by id", () => {
@@ -214,29 +216,88 @@ describe("findInRange", () => {
 });
 
 /**
- * update
+ * insert
  */
-describe("update", () => {
+describe("insert", () => {
   let index: PimSortedIndex<TestDoc>;
+
+  const docs = [
+    { id: "3", name: "ccc" },
+    { id: "5", name: "ccccc" },
+    { id: "7", name: "bbb" },
+    { id: "6", name: "bbb" },
+    { id: "0", name: "ccc" },
+    { id: "9", name: "" },
+    { id: "11", name: "BBB" },
+    { id: "10", name: "AAA" },
+    { id: "8", name: "" },
+    { id: "4", name: "aaa" },
+    { id: "1", name: "aaa" },
+    { id: "2", name: "aaa" },
+  ];
 
   beforeEach(() => {
     // Reset index before each test
     index = new PimSortedIndex<TestDoc>("name");
     // Insert documents in random order to verify sorting
-    [
-      { id: "3", name: "ccc" },
-      { id: "5", name: "ccccc" },
-      { id: "7", name: "bbb" },
-      { id: "6", name: "bbb" },
-      { id: "0", name: "ccc" },
-      { id: "9", name: "" },
-      { id: "11", name: "BBB" },
-      { id: "10", name: "AAA" },
+    docs.forEach((doc) => index.insert(doc));
+  });
+
+  test("inserted documents are in sorted order", () => {
+    const result = index.find();
+    expect(result).toStrictEqual([
       { id: "8", name: "" },
-      { id: "4", name: "aaa" },
+      { id: "9", name: "" },
+      { id: "10", name: "AAA" },
+      { id: "11", name: "BBB" },
       { id: "1", name: "aaa" },
       { id: "2", name: "aaa" },
-    ].forEach((doc) => index.insert(doc));
+      { id: "4", name: "aaa" },
+      { id: "6", name: "bbb" },
+      { id: "7", name: "bbb" },
+      { id: "0", name: "ccc" },
+      { id: "3", name: "ccc" },
+      { id: "5", name: "ccccc" },
+    ]);
+  });
+
+  test("inserted document references the same object as the indexed documents", () => {
+    const result = index.find();
+
+    // The index should return the same object reference as the one inserted.
+    // This is the intended behavior.
+    docs.forEach((doc) => {
+      expect(doc).toBe(result.find((r) => r.id === doc.id));
+    });
+  });
+});
+
+/**
+ * update
+ */
+describe("update", () => {
+  let index: PimSortedIndex<TestDoc>;
+
+  const docs = [
+    { id: "3", name: "ccc" },
+    { id: "5", name: "ccccc" },
+    { id: "7", name: "bbb" },
+    { id: "6", name: "bbb" },
+    { id: "0", name: "ccc" },
+    { id: "9", name: "" },
+    { id: "11", name: "BBB" },
+    { id: "10", name: "AAA" },
+    { id: "8", name: "" },
+    { id: "4", name: "aaa" },
+    { id: "1", name: "aaa" },
+    { id: "2", name: "aaa" },
+  ];
+
+  beforeEach(() => {
+    // Reset index before each test
+    index = new PimSortedIndex<TestDoc>("name");
+    // Insert documents in random order to verify sorting
+    docs.forEach((doc) => index.insert(doc));
   });
 
   test("updating a document with unknown id has no effect", () => {
@@ -275,6 +336,18 @@ describe("update", () => {
       { id: "3", name: "ccc" },
       { id: "5", name: "ccccc" },
     ]);
+  });
+
+  test("updated document references the same object as the indexed documents", () => {
+    // Update a document
+    index.update({ id: "2", name: "bbbb new value" });
+
+    // The index should return the same object reference as the one
+    // inserted/updated. This is the intended behavior.
+    const result = index.find();
+    docs.forEach((doc) => {
+      expect(doc).toBe(result.find((r) => r.id === doc.id));
+    });
   });
 });
 

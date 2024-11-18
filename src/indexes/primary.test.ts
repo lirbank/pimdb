@@ -24,9 +24,9 @@ describe("primary index", () => {
 
     // The index should return the same object reference as the one inserted.
     // This is the intended behavior.
-    expect(i.get("1") === a).toBe(true);
-    expect(i.get("2") === b).toBe(true);
-    expect(i.get("3") === c).toBe(true);
+    expect(i.get("1")).toBe(a);
+    expect(i.get("2")).toBe(b);
+    expect(i.get("3")).toBe(c);
   });
 
   test("getAll", () => {
@@ -48,9 +48,9 @@ describe("primary index", () => {
 
     // The index should return the same object reference as the one inserted.
     // This is the intended behavior.
-    expect(i.getAll()[0] === a).toBe(true);
-    expect(i.getAll()[1] === b).toBe(true);
-    expect(i.getAll()[2] === c).toBe(true);
+    expect(i.getAll()[0]).toBe(a);
+    expect(i.getAll()[1]).toBe(b);
+    expect(i.getAll()[2]).toBe(c);
   });
 
   test("insert", () => {
@@ -72,16 +72,16 @@ describe("primary index", () => {
 
     // The index should return the same object reference as the one inserted.
     // This is the intended behavior.
-    expect(i.get("1") === a).toBe(true);
-    expect(i.get("2") === b).toBe(true);
-    expect(i.get("3") === c).toBe(true);
+    expect(i.get("1")).toBe(a);
+    expect(i.get("2")).toBe(b);
+    expect(i.get("3")).toBe(c);
 
     // The index should return the same object reference as the one inserted.
     // This is the intended behavior.
     const arr = i.getAll();
-    expect(arr[0] === a).toBe(true);
-    expect(arr[1] === b).toBe(true);
-    expect(arr[2] === c).toBe(true);
+    expect(arr[0]).toBe(a);
+    expect(arr[1]).toBe(b);
+    expect(arr[2]).toBe(c);
   });
 
   test("update", () => {
@@ -124,15 +124,15 @@ describe("primary index", () => {
 
     // The index should return the same object reference as the one inserted.
     // This is the intended behavior.
-    expect(i.get("1") === a).toBe(true);
-    expect(i.get("2") === b).toBe(true);
-    expect(i.get("3") === c).toBe(true);
+    expect(i.get("1")).toBe(a);
+    expect(i.get("2")).toBe(b);
+    expect(i.get("3")).toBe(c);
 
     // The index should return the same object reference as the one inserted.
     // This is the intended behavior.
     const arr = i.getAll();
-    expect(arr[0] === a).toBe(true);
-    expect(arr[1] === b).toBe(true);
-    expect(arr[2] === c).toBe(true);
+    expect(arr[0]).toBe(a);
+    expect(arr[1]).toBe(b);
+    expect(arr[2]).toBe(c);
   });
 });

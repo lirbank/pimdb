@@ -53,17 +53,30 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
   }
 
   update(doc: T): boolean {
-    // Find and remove the existing document with matching id
+    // Find the existing document with matching id
     const existingIndex = this.documents.findIndex((d) => d.id === doc.id);
     if (existingIndex === -1) {
       return false;
     }
 
-    // Remove the existing document
-    this.documents.splice(existingIndex, 1);
+    const existingDoc = this.documents[existingIndex];
+    if (!existingDoc) {
+      throw new Error(`Invalid document at index ${existingIndex}`);
+    }
+    const oldValue = existingDoc[this.indexKey];
+    const newValue = doc[this.indexKey];
 
-    // Insert the updated document in the correct sorted position
-    this.insert(doc);
+    // Copy all properties from doc to existingDoc
+    Object.assign(existingDoc, doc);
+
+    // If the indexed value changed, we need to reposition the document
+    if (oldValue !== newValue) {
+      // Remove the document from its current position
+      this.documents.splice(existingIndex, 1);
+      // Reinsert it in the correct sorted position
+      this.insert(existingDoc);
+    }
+
     return true;
   }
 
