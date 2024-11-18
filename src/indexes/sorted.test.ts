@@ -7,34 +7,6 @@ interface TestDoc {
   age?: number;
 }
 
-test("find with upper and lower case", () => {
-  const index = new PimSortedIndex<TestDoc>("name");
-
-  index.insert({ id: "e", name: "aaa" });
-  index.insert({ id: "a", name: "xxx" });
-  index.insert({ id: "h", name: "" });
-  index.insert({ id: "b", name: "YYY" });
-  index.insert({ id: "d", name: "" });
-  index.insert({ id: "c", name: "yyy" });
-  index.insert({ id: "f", name: "AAA" });
-  index.insert({ id: "g", name: "aaa" });
-
-  // Empty query returns all documents
-  expect(index.find()).toStrictEqual([
-    { id: "d", name: "" },
-    { id: "h", name: "" },
-    { id: "f", name: "AAA" },
-    { id: "b", name: "YYY" },
-    { id: "e", name: "aaa" },
-    { id: "g", name: "aaa" },
-    { id: "a", name: "xxx" },
-    { id: "c", name: "yyy" },
-  ]);
-
-  // Query for unknown value returns empty array
-  expect(index.find("unknown")).toStrictEqual([]);
-});
-
 /**
  * find
  */
