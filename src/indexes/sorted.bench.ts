@@ -9,6 +9,10 @@ interface Spaceship {
   name: string;
 }
 
+function getMiddleDoc(arr: Spaceship[]) {
+  return arr[Math.floor(arr.length / 2)]!;
+}
+
 /**
  * find
  */
@@ -155,10 +159,6 @@ describe("delete", () => {
 
   const index100000 = new PimSortedIndex<Spaceship>("name");
   testData100000.forEach((doc) => index100000.insert(doc));
-
-  function getMiddleDoc(arr: Spaceship[]) {
-    return arr[Math.floor(arr.length / 2)]!;
-  }
 
   // Middle doc
   {
