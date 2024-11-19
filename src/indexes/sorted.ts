@@ -218,8 +218,4 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
 
     return this.documents.slice(startIndex, endIndex);
   }
-
-  all(): T[] {
-    return this.documents;
-  }
 }
