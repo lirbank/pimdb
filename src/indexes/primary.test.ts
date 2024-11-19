@@ -8,39 +8,39 @@ interface Spaceship {
 
 describe("primary index", () => {
   test("get", () => {
-    const i = new PrimaryIndex<Spaceship>();
+    const index = new PrimaryIndex<Spaceship>();
 
     const a = { id: "1", name: "a" };
     const b = { id: "2", name: "b" };
     const c = { id: "3", name: "c" };
 
-    i.insert(a);
-    i.insert(b);
-    i.insert(c);
+    index.insert(a);
+    index.insert(b);
+    index.insert(c);
 
-    expect(i.get("1")).toStrictEqual({ id: "1", name: "a" });
-    expect(i.get("2")).toStrictEqual({ id: "2", name: "b" });
-    expect(i.get("3")).toStrictEqual({ id: "3", name: "c" });
+    expect(index.get("1")).toStrictEqual({ id: "1", name: "a" });
+    expect(index.get("2")).toStrictEqual({ id: "2", name: "b" });
+    expect(index.get("3")).toStrictEqual({ id: "3", name: "c" });
 
     // The index should return the same object reference as the one inserted.
     // This is the intended behavior.
-    expect(i.get("1")).toBe(a);
-    expect(i.get("2")).toBe(b);
-    expect(i.get("3")).toBe(c);
+    expect(index.get("1")).toBe(a);
+    expect(index.get("2")).toBe(b);
+    expect(index.get("3")).toBe(c);
   });
 
   test("getAll", () => {
-    const i = new PrimaryIndex<Spaceship>();
+    const index = new PrimaryIndex<Spaceship>();
 
     const a = { id: "1", name: "a" };
     const b = { id: "2", name: "b" };
     const c = { id: "3", name: "c" };
 
-    i.insert(a);
-    i.insert(b);
-    i.insert(c);
+    index.insert(a);
+    index.insert(b);
+    index.insert(c);
 
-    expect(i.getAll()).toStrictEqual([
+    expect(index.getAll()).toStrictEqual([
       { id: "1", name: "a" },
       { id: "2", name: "b" },
       { id: "3", name: "c" },
@@ -48,23 +48,23 @@ describe("primary index", () => {
 
     // The index should return the same object reference as the one inserted.
     // This is the intended behavior.
-    expect(i.getAll()[0]).toBe(a);
-    expect(i.getAll()[1]).toBe(b);
-    expect(i.getAll()[2]).toBe(c);
+    expect(index.getAll()[0]).toBe(a);
+    expect(index.getAll()[1]).toBe(b);
+    expect(index.getAll()[2]).toBe(c);
   });
 
   test("insert", () => {
-    const i = new PrimaryIndex<Spaceship>();
+    const index = new PrimaryIndex<Spaceship>();
 
     const a = { id: "1", name: "a" };
     const b = { id: "2", name: "b" };
     const c = { id: "3", name: "c" };
 
-    i.insert(a);
-    i.insert(b);
-    i.insert(c);
+    index.insert(a);
+    index.insert(b);
+    index.insert(c);
 
-    expect(i.getAll()).toStrictEqual([
+    expect(index.getAll()).toStrictEqual([
       { id: "1", name: "a" },
       { id: "2", name: "b" },
       { id: "3", name: "c" },
@@ -72,51 +72,51 @@ describe("primary index", () => {
 
     // The index should return the same object reference as the one inserted.
     // This is the intended behavior.
-    expect(i.get("1")).toBe(a);
-    expect(i.get("2")).toBe(b);
-    expect(i.get("3")).toBe(c);
+    expect(index.get("1")).toBe(a);
+    expect(index.get("2")).toBe(b);
+    expect(index.get("3")).toBe(c);
 
     // The index should return the same object reference as the one inserted.
     // This is the intended behavior.
-    const arr = i.getAll();
+    const arr = index.getAll();
     expect(arr[0]).toBe(a);
     expect(arr[1]).toBe(b);
     expect(arr[2]).toBe(c);
   });
 
   test("update", () => {
-    const i = new PrimaryIndex<Spaceship>();
+    const index = new PrimaryIndex<Spaceship>();
 
     const a = { id: "1", name: "a" };
     const b = { id: "2", name: "b" };
     const c = { id: "3", name: "c" };
 
-    i.insert(a);
-    i.insert(b);
-    i.insert(c);
+    index.insert(a);
+    index.insert(b);
+    index.insert(c);
 
-    expect(i.getAll()).toStrictEqual([
+    expect(index.getAll()).toStrictEqual([
       { id: "1", name: "a" },
       { id: "2", name: "b" },
       { id: "3", name: "c" },
     ]);
 
-    i.update({ id: "1", name: "x" });
-    expect(i.getAll()).toStrictEqual([
+    index.update({ id: "1", name: "x" });
+    expect(index.getAll()).toStrictEqual([
       { id: "1", name: "x" },
       { id: "2", name: "b" },
       { id: "3", name: "c" },
     ]);
 
-    i.update({ id: "2", name: "y" });
-    expect(i.getAll()).toStrictEqual([
+    index.update({ id: "2", name: "y" });
+    expect(index.getAll()).toStrictEqual([
       { id: "1", name: "x" },
       { id: "2", name: "y" },
       { id: "3", name: "c" },
     ]);
 
-    i.update({ id: "3", name: "z" });
-    expect(i.getAll()).toStrictEqual([
+    index.update({ id: "3", name: "z" });
+    expect(index.getAll()).toStrictEqual([
       { id: "1", name: "x" },
       { id: "2", name: "y" },
       { id: "3", name: "z" },
@@ -124,13 +124,13 @@ describe("primary index", () => {
 
     // The index should return the same object reference as the one inserted.
     // This is the intended behavior.
-    expect(i.get("1")).toBe(a);
-    expect(i.get("2")).toBe(b);
-    expect(i.get("3")).toBe(c);
+    expect(index.get("1")).toBe(a);
+    expect(index.get("2")).toBe(b);
+    expect(index.get("3")).toBe(c);
 
     // The index should return the same object reference as the one inserted.
     // This is the intended behavior.
-    const arr = i.getAll();
+    const arr = index.getAll();
     expect(arr[0]).toBe(a);
     expect(arr[1]).toBe(b);
     expect(arr[2]).toBe(c);

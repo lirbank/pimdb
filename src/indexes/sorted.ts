@@ -20,6 +20,11 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
     this.indexField = indexField;
   }
 
+  /**
+   * Insert a document into the index.
+   *
+   * Returns true if the document was updated, false if it was not found.
+   */
   insert(doc: T): boolean {
     const value = doc[this.indexField];
     let left = 0;
@@ -55,6 +60,11 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
     return true;
   }
 
+  /**
+   * Update a document in the index.
+   *
+   * Returns true if the document was updated, false if it was not found.
+   */
   update(doc: T): boolean {
     // Find the existing document with matching id
     const existingIndex = this.documents.findIndex((d) => d.id === doc.id);
@@ -83,6 +93,11 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
     return true;
   }
 
+  /**
+   * Delete a document from the index.
+   *
+   * Returns true if the document was deleted, false if it was not found.
+   */
   delete(doc: T): boolean {
     // Find and remove the existing document with matching id
     const existingIndex = this.documents.findIndex((d) => d.id === doc.id);
@@ -94,6 +109,13 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
     return true;
   }
 
+  /**
+   * Find documents in the index.
+   *
+   * - Returns all documents if no value is provided.
+   * - Matches are case sensitive.
+   * - Documents are secondarily sorted by id.
+   */
   find(value?: T[typeof this.indexField]): T[] {
     // Special case: undefined query returns all documents
     if (value === undefined) {
@@ -147,6 +169,15 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
     return results;
   }
 
+  /**
+   * Find documents in a range.
+   *
+   * - Returns all documents if no range is provided.
+   * - Matches are case sensitive.
+   * - Documents are secondarily sorted by id.
+   * - Includes exact matches at both boundaries.
+   * - Can use either or both bounds (gte/lte).
+   */
   findInRange(
     range: {
       gte?: string | number;
