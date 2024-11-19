@@ -1,7 +1,7 @@
 import { createPimDB, PimCollection } from "./pimdb";
 import { PimTextIndex } from "./indexes/text";
 import { PimSortedIndex } from "./indexes/sorted";
-import { PrimaryIndex } from "./indexes/primary";
+import { PimPrimaryIndex } from "./indexes/primary";
 
 // Define User and Post interfaces
 interface User {
@@ -18,14 +18,14 @@ interface Post {
 }
 
 const usersIdx = {
-  primary: new PrimaryIndex<User>(),
+  primary: new PimPrimaryIndex<User>(),
   regularIndex: new PimSortedIndex<User>("name"),
   textIndexName: new PimTextIndex<User>("name"),
   textIndexUsername: new PimTextIndex<User>("username"),
 };
 
 const postsIdx = {
-  primary: new PrimaryIndex<Post>(),
+  primary: new PimPrimaryIndex<Post>(),
   regularIndex: new PimSortedIndex<Post>("title"),
   textIndex: new PimTextIndex<Post>("title"),
 };

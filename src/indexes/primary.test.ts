@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { PrimaryIndex } from "./primary";
+import { PimPrimaryIndex } from "./primary";
 
 interface Spaceship {
   id: string;
@@ -8,7 +8,7 @@ interface Spaceship {
 
 describe("primary index", () => {
   test("get", () => {
-    const index = new PrimaryIndex<Spaceship>();
+    const index = new PimPrimaryIndex<Spaceship>();
 
     const a = { id: "1", name: "a" };
     const b = { id: "2", name: "b" };
@@ -30,7 +30,7 @@ describe("primary index", () => {
   });
 
   test("all", () => {
-    const index = new PrimaryIndex<Spaceship>();
+    const index = new PimPrimaryIndex<Spaceship>();
 
     const a = { id: "1", name: "a" };
     const b = { id: "2", name: "b" };
@@ -54,7 +54,7 @@ describe("primary index", () => {
   });
 
   test("insert", () => {
-    const index = new PrimaryIndex<Spaceship>();
+    const index = new PimPrimaryIndex<Spaceship>();
 
     const a = { id: "1", name: "a" };
     const b = { id: "2", name: "b" };
@@ -85,7 +85,7 @@ describe("primary index", () => {
   });
 
   test("update", () => {
-    const index = new PrimaryIndex<Spaceship>();
+    const index = new PimPrimaryIndex<Spaceship>();
 
     const a = { id: "1", name: "a" };
     const b = { id: "2", name: "b" };
