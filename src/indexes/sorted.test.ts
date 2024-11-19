@@ -1,17 +1,16 @@
 import { beforeEach, describe, expect, test } from "vitest";
 import { PimSortedIndex } from "./sorted";
 
-interface TestDoc {
+interface Spaceship {
   id: string;
   name: string;
-  age?: number;
 }
 
 /**
  * all
  */
 describe("all", () => {
-  let index: PimSortedIndex<TestDoc>;
+  let index: PimSortedIndex<Spaceship>;
 
   const docs = [
     { id: "3", name: "ccc" },
@@ -29,7 +28,7 @@ describe("all", () => {
   ];
 
   beforeEach(() => {
-    index = new PimSortedIndex<TestDoc>("name");
+    index = new PimSortedIndex<Spaceship>("name");
     docs.forEach((doc) => index.insert(doc));
   });
 
@@ -55,7 +54,7 @@ describe("all", () => {
  * find
  */
 describe("find", () => {
-  let index: PimSortedIndex<TestDoc>;
+  let index: PimSortedIndex<Spaceship>;
 
   const docs = [
     { id: "3", name: "ccc" },
@@ -74,7 +73,7 @@ describe("find", () => {
 
   beforeEach(() => {
     // Reset index before each test
-    index = new PimSortedIndex<TestDoc>("name");
+    index = new PimSortedIndex<Spaceship>("name");
     // Insert documents in random order to verify sorting
     docs.forEach((doc) => index.insert(doc));
   });
@@ -143,11 +142,11 @@ describe("find", () => {
  * findInRange
  */
 describe("findInRange", () => {
-  let index: PimSortedIndex<TestDoc>;
+  let index: PimSortedIndex<Spaceship>;
 
   beforeEach(() => {
     // Reset index before each test
-    index = new PimSortedIndex<TestDoc>("name");
+    index = new PimSortedIndex<Spaceship>("name");
     // Insert documents in random order to verify sorting
     [
       { id: "3", name: "ccc" },
@@ -263,7 +262,7 @@ describe("findInRange", () => {
  * insert
  */
 describe("insert", () => {
-  let index: PimSortedIndex<TestDoc>;
+  let index: PimSortedIndex<Spaceship>;
 
   const docs = [
     { id: "3", name: "ccc" },
@@ -282,7 +281,7 @@ describe("insert", () => {
 
   beforeEach(() => {
     // Reset index before each test
-    index = new PimSortedIndex<TestDoc>("name");
+    index = new PimSortedIndex<Spaceship>("name");
     // Insert documents in random order to verify sorting
     docs.forEach((doc) => index.insert(doc));
   });
@@ -320,7 +319,7 @@ describe("insert", () => {
  * update
  */
 describe("update", () => {
-  let index: PimSortedIndex<TestDoc>;
+  let index: PimSortedIndex<Spaceship>;
 
   const docs = [
     { id: "3", name: "ccc" },
@@ -339,7 +338,7 @@ describe("update", () => {
 
   beforeEach(() => {
     // Reset index before each test
-    index = new PimSortedIndex<TestDoc>("name");
+    index = new PimSortedIndex<Spaceship>("name");
     // Insert documents in random order to verify sorting
     docs.forEach((doc) => index.insert(doc));
   });
@@ -399,11 +398,11 @@ describe("update", () => {
  * delete
  */
 describe("delete", () => {
-  let index: PimSortedIndex<TestDoc>;
+  let index: PimSortedIndex<Spaceship>;
 
   beforeEach(() => {
     // Reset index before each test
-    index = new PimSortedIndex<TestDoc>("name");
+    index = new PimSortedIndex<Spaceship>("name");
     // Insert documents in random order to verify sorting
     [
       { id: "3", name: "ccc" },

@@ -1,14 +1,14 @@
 import { describe, expect, test } from "vitest";
 import { PrimaryIndex } from "./primary";
 
-interface TestDoc {
+interface Spaceship {
   id: string;
   name: string;
 }
 
 describe("primary index", () => {
   test("get", () => {
-    const i = new PrimaryIndex<TestDoc>();
+    const i = new PrimaryIndex<Spaceship>();
 
     const a = { id: "1", name: "a" };
     const b = { id: "2", name: "b" };
@@ -30,7 +30,7 @@ describe("primary index", () => {
   });
 
   test("getAll", () => {
-    const i = new PrimaryIndex<TestDoc>();
+    const i = new PrimaryIndex<Spaceship>();
 
     const a = { id: "1", name: "a" };
     const b = { id: "2", name: "b" };
@@ -54,7 +54,7 @@ describe("primary index", () => {
   });
 
   test("insert", () => {
-    const i = new PrimaryIndex<TestDoc>();
+    const i = new PrimaryIndex<Spaceship>();
 
     const a = { id: "1", name: "a" };
     const b = { id: "2", name: "b" };
@@ -85,7 +85,7 @@ describe("primary index", () => {
   });
 
   test("update", () => {
-    const i = new PrimaryIndex<TestDoc>();
+    const i = new PrimaryIndex<Spaceship>();
 
     const a = { id: "1", name: "a" };
     const b = { id: "2", name: "b" };
