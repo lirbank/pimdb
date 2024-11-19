@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, test } from "vitest";
-import { PimTextIndex } from "./text";
+import { PimSubstringIndex } from "./substring";
 
 interface Spaceship {
   id: string;
@@ -23,10 +23,10 @@ const spaceships = [
  * search
  */
 describe("search", () => {
-  let index: PimTextIndex<Spaceship>;
+  let index: PimSubstringIndex<Spaceship>;
 
   beforeEach(() => {
-    index = new PimTextIndex<Spaceship>("name");
+    index = new PimSubstringIndex<Spaceship>("name");
     spaceships.forEach((doc) => index.insert(doc));
   });
 
@@ -60,10 +60,10 @@ describe("search", () => {
  * insert
  */
 describe("insert", () => {
-  let index: PimTextIndex<Spaceship>;
+  let index: PimSubstringIndex<Spaceship>;
 
   beforeEach(() => {
-    index = new PimTextIndex<Spaceship>("name");
+    index = new PimSubstringIndex<Spaceship>("name");
     spaceships.forEach((doc) => index.insert(doc));
   });
 
@@ -89,10 +89,10 @@ describe("insert", () => {
  * update
  */
 describe("update", () => {
-  let index: PimTextIndex<Spaceship>;
+  let index: PimSubstringIndex<Spaceship>;
 
   beforeEach(() => {
-    index = new PimTextIndex<Spaceship>("name");
+    index = new PimSubstringIndex<Spaceship>("name");
     spaceships.forEach((doc) => index.insert(doc));
   });
 
@@ -128,10 +128,10 @@ describe("update", () => {
  * delete
  */
 describe("delete", () => {
-  let index: PimTextIndex<Spaceship>;
+  let index: PimSubstringIndex<Spaceship>;
 
   beforeEach(() => {
-    index = new PimTextIndex<Spaceship>("name");
+    index = new PimSubstringIndex<Spaceship>("name");
     spaceships.forEach((doc) => index.insert(doc));
   });
 

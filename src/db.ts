@@ -1,5 +1,5 @@
 import { createPimDB, PimCollection } from "./pimdb";
-import { PimTextIndex } from "./indexes/text";
+import { PimSubstringIndex } from "./indexes/substring";
 import { PimSortedIndex } from "./indexes/sorted";
 import { PimPrimaryIndex } from "./indexes/primary";
 
@@ -20,14 +20,14 @@ interface Post {
 const usersIdx = {
   primary: new PimPrimaryIndex<User>(),
   regularIndex: new PimSortedIndex<User>("name"),
-  textIndexName: new PimTextIndex<User>("name"),
-  textIndexUsername: new PimTextIndex<User>("username"),
+  substringIndexName: new PimSubstringIndex<User>("name"),
+  substringIndexUsername: new PimSubstringIndex<User>("username"),
 };
 
 const postsIdx = {
   primary: new PimPrimaryIndex<Post>(),
   regularIndex: new PimSortedIndex<Post>("title"),
-  textIndex: new PimTextIndex<Post>("title"),
+  substringIndex: new PimSubstringIndex<Post>("title"),
 };
 
 export const db = createPimDB({

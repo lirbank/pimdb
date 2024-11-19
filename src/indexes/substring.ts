@@ -1,14 +1,14 @@
 import { BaseDocument, Index } from "../pimdb";
 
 /**
- * Text Index
+ * Substring Index
  *
  * This is a plain partial text search index.
  *
  * It is not a full-text search index and as such does not support advanced
  * features like stemming, synonyms, or relevance scoring.
  */
-export class PimTextIndex<T extends BaseDocument> implements Index<T> {
+export class PimSubstringIndex<T extends BaseDocument> implements Index<T> {
   private documents: T[] = [];
   private indexField: {
     [K in keyof T]: T[K] extends string ? K : never;
