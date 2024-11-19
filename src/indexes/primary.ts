@@ -61,7 +61,7 @@ export class PrimaryIndex<T extends BaseDocument> implements Index<T> {
   /**
    * Get all documents from the index.
    */
-  getAll(): T[] {
+  all(): T[] {
     return Array.from(this.map.values());
   }
 }

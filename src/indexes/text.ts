@@ -22,10 +22,6 @@ export class PimTextIndex<T extends BaseDocument> implements Index<T> {
     this.indexField = indexField;
   }
 
-  private getAllDocuments(): T[] {
-    return [...this.documents];
-  }
-
   /**
    * Insert a document into the index.
    *
@@ -85,7 +81,7 @@ export class PimTextIndex<T extends BaseDocument> implements Index<T> {
    */
   search(query: string): T[] {
     if (query === "") {
-      return this.getAllDocuments();
+      return [...this.documents];
     }
 
     return this.documents.filter((doc) => {

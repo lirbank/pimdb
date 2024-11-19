@@ -70,5 +70,5 @@ console.log(
   usersInTwentiesAfterDeletion,
 );
 
-const allUsers = db.users.indexes.primary.getAll();
+const allUsers = db.users.indexes.primary.all();
 console.log("All users:", allUsers);
