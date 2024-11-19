@@ -2,12 +2,15 @@ import { bench, describe } from "vitest";
 import { PimSortedIndex } from "./sorted";
 import testData1000 from "./benchmarks/benchmark-data-1000.json";
 import testData10000 from "./benchmarks/benchmark-data-10000.json";
-import testData100000 from "./benchmarks/benchmark-data-100000.json";
+import testData100000_ from "./benchmarks/benchmark-data-100000.json";
 
 interface Spaceship {
   id: string;
   name: string;
 }
+
+// VSCode doesn't import the types from the larger JSON file, so we need to cast it
+const testData100000 = testData100000_ as Spaceship[];
 
 function getMiddleDoc(arr: Spaceship[]) {
   return arr[Math.floor(arr.length / 2)]!;

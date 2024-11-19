@@ -8,6 +8,50 @@ interface TestDoc {
 }
 
 /**
+ * all
+ */
+describe("all", () => {
+  let index: PimSortedIndex<TestDoc>;
+
+  const docs = [
+    { id: "3", name: "ccc" },
+    { id: "5", name: "ccccc" },
+    { id: "7", name: "bbb" },
+    { id: "6", name: "bbb" },
+    { id: "0", name: "ccc" },
+    { id: "9", name: "" },
+    { id: "11", name: "BBB" },
+    { id: "10", name: "AAA" },
+    { id: "8", name: "" },
+    { id: "4", name: "aaa" },
+    { id: "1", name: "aaa" },
+    { id: "2", name: "aaa" },
+  ];
+
+  beforeEach(() => {
+    index = new PimSortedIndex<TestDoc>("name");
+    docs.forEach((doc) => index.insert(doc));
+  });
+
+  test("returns all documents", () => {
+    expect(index.all()).toEqual([
+      { id: "8", name: "" },
+      { id: "9", name: "" },
+      { id: "10", name: "AAA" },
+      { id: "11", name: "BBB" },
+      { id: "1", name: "aaa" },
+      { id: "2", name: "aaa" },
+      { id: "4", name: "aaa" },
+      { id: "6", name: "bbb" },
+      { id: "7", name: "bbb" },
+      { id: "0", name: "ccc" },
+      { id: "3", name: "ccc" },
+      { id: "5", name: "ccccc" },
+    ]);
+  });
+});
+
+/**
  * find
  */
 describe("find", () => {

@@ -8,6 +8,7 @@
     "format": "prettier --write .",
     "lint": "eslint --fix .",
     "test": "vitest",
+    "benchmark": "vitest bench",
     "benchmark:compare": "vitest bench --compare benchmarks.json",
     "benchmark:store": "vitest bench --run --outputJson benchmarks.json",
     "generate-1k": "bun src/indexes/benchmarks/generate-test-data.ts 1000",
