@@ -10,9 +10,9 @@ export interface BaseDocument {
  * Index interface
  */
 export interface Index<T> {
-  insert(item: T): void;
-  update(item: T): void;
-  delete(item: T): void;
+  insert(item: T): boolean;
+  update(item: T): boolean;
+  delete(item: T): boolean;
 }
 
 /**

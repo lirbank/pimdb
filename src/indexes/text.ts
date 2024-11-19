@@ -5,50 +5,95 @@ import { BaseDocument, Index } from "../pimdb";
  *
  * This is a plain partial text search index.
  *
- * It is not a full-text search index
- * and does not support advanced features like stemming, synonyms, or relevance
- * scoring.
+ * It is not a full-text search index and as such does not support advanced
+ * features like stemming, synonyms, or relevance scoring.
  */
 export class PimTextIndex<T extends BaseDocument> implements Index<T> {
-  private indexKey: {
+  private documents: T[] = [];
+  private indexField: {
     [K in keyof T]: T[K] extends string ? K : never;
   }[keyof T];
 
   constructor(
-    indexKey: {
+    indexField: {
       [K in keyof T]: T[K] extends string ? K : never;
     }[keyof T],
   ) {
-    this.indexKey = indexKey;
-    console.log(this.indexKey);
-    // TODO: Implement
+    this.indexField = indexField;
   }
 
-  insert(doc: T): void {
-    console.log("insert", doc);
-    // TODO: Implement
+  private getAllDocuments(): T[] {
+    return [...this.documents];
   }
 
-  update(doc: T): void {
-    console.log("update", doc);
-    // TODO: Implement
+  /**
+   * Insert a document into the index.
+   *
+   * Returns true if the document was updated, false if it was not found.
+   */
+  insert(doc: T): boolean {
+    if (this.documents.find((d) => d.id === doc.id)) {
+      return false;
+    }
+
+    this.documents.push(doc);
+
+    return true;
   }
 
-  delete(doc: T): void {
-    console.log("delete", doc);
-    // TODO: Implement
+  /**
+   * Update a document in the index.
+   *
+   * Returns true if the document was updated, false if it was not found.
+   */
+  update(doc: T): boolean {
+    const index = this.documents.findIndex((d) => d.id === doc.id);
+
+    if (index === -1) {
+      return false;
+    }
+
+    this.documents[index] = doc;
+
+    return true;
   }
 
-  search(
-    query: string,
-    options?: {
-      caseSensitive?: boolean;
-      exact?: boolean;
-      limit?: number;
-    },
-  ): T[] {
-    console.log("search", query, options);
-    return [];
-    // TODO: Implement
+  /**
+   * Delete a document from the index.
+   *
+   * Returns true if the document was deleted, false if it was not found.
+   */
+  delete(doc: T): boolean {
+    const index = this.documents.findIndex((d) => d.id === doc.id);
+
+    if (index === -1) {
+      return false;
+    }
+
+    this.documents.splice(index, 1);
+
+    return true;
+  }
+
+  /**
+   * Search for documents by a query string.
+   *
+   * - An empty query string will return all documents.
+   * - The query is case insensitive.
+   * - The search result is currently not sorted, documents are returned in the
+   *   order they were inserted (this restriction will be lifted in the future).
+   */
+  search(query: string): T[] {
+    if (query === "") {
+      return this.getAllDocuments();
+    }
+
+    return this.documents.filter((doc) => {
+      const fieldValue = doc[this.indexField];
+
+      if (typeof fieldValue !== "string") return false;
+
+      return fieldValue.toLowerCase().includes(query.toLowerCase());
+    });
   }
 }

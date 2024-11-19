@@ -14,21 +14,22 @@ import { BaseDocument, Index } from "../pimdb";
 export class PrimaryIndex<T extends BaseDocument> implements Index<T> {
   private map = new Map<T["id"], T>();
 
-  insert(doc: T): void {
-    if (this.map.has(doc.id)) {
-      throw new Error(`Duplicate primary key: ${doc.id}`);
-    }
+  insert(doc: T): boolean {
+    if (this.map.has(doc.id)) return false;
+
     this.map.set(doc.id, doc);
+
+    return true;
   }
 
-  update(doc: T): void {
+  update(doc: T): boolean {
     const existing = this.map.get(doc.id);
-    if (!existing) {
-      throw new Error(`Record with primary key ${doc.id} does not exist`);
-    }
+    if (!existing) return false;
 
     // Mutate the existing object in place.
     Object.assign(existing, doc);
+
+    return true;
   }
 
   /**

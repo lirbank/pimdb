@@ -13,15 +13,15 @@ import { BaseDocument, Index } from "../pimdb";
  * indexed documents.
  */
 export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
-  private indexKey: keyof T;
+  private indexField: keyof T;
   private documents: T[] = [];
 
-  constructor(indexKey: keyof T) {
-    this.indexKey = indexKey;
+  constructor(indexField: keyof T) {
+    this.indexField = indexField;
   }
 
-  insert(doc: T): void {
-    const value = doc[this.indexKey];
+  insert(doc: T): boolean {
+    const value = doc[this.indexField];
     let left = 0;
     let right = this.documents.length - 1;
 
@@ -31,11 +31,9 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
       const midDoc = this.documents[mid];
 
       // Add null checks
-      if (!midDoc) {
-        throw new Error(`Invalid document at index ${mid}`);
-      }
+      if (!midDoc) return false;
 
-      const midValue = midDoc[this.indexKey];
+      const midValue = midDoc[this.indexField];
 
       if (midValue < value) {
         left = mid + 1;
@@ -53,6 +51,8 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
 
     // Insert at the correct position to maintain sorted order
     this.documents.splice(left, 0, doc);
+
+    return true;
   }
 
   update(doc: T): boolean {
@@ -66,8 +66,8 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
     if (!existingDoc) {
       throw new Error(`Invalid document at index ${existingIndex}`);
     }
-    const oldValue = existingDoc[this.indexKey];
-    const newValue = doc[this.indexKey];
+    const oldValue = existingDoc[this.indexField];
+    const newValue = doc[this.indexField];
 
     // Copy all properties from doc to existingDoc
     Object.assign(existingDoc, doc);
@@ -94,7 +94,7 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
     return true;
   }
 
-  find(value?: T[typeof this.indexKey]): T[] {
+  find(value?: T[typeof this.indexField]): T[] {
     // Special case: undefined query returns all documents
     if (value === undefined) {
       return [...this.documents];
@@ -115,7 +115,7 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
         throw new Error(`Invalid document at index ${mid}`);
       }
 
-      const midValue = midDoc[this.indexKey];
+      const midValue = midDoc[this.indexField];
 
       if (midValue === value) {
         firstMatch = mid;
@@ -139,7 +139,7 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
     while (i < this.documents.length) {
       const doc = this.documents[i];
       if (!doc) break;
-      if (doc[this.indexKey] !== value) break;
+      if (doc[this.indexField] !== value) break;
       results.push(doc);
       i++;
     }
@@ -174,7 +174,7 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
           throw new Error(`Invalid document at index ${mid}`);
         }
 
-        const midValue = midDoc[this.indexKey];
+        const midValue = midDoc[this.indexField];
 
         // Changed comparison to find first value >= gte
         if (midValue < range.gte) {
@@ -199,7 +199,7 @@ export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
           throw new Error(`Invalid document at index ${mid}`);
         }
 
-        const midValue = midDoc[this.indexKey];
+        const midValue = midDoc[this.indexField];
 
         // Changed comparison to find first value > lte
         if (midValue <= range.lte) {
