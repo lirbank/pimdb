@@ -41,8 +41,15 @@ describe("search", () => {
     expect(result[0]).toBe(spaceships[0]);
   });
 
-  test("search is case-insensitive", () => {
+  test("search is case-insensitive (lowercase)", () => {
     expect(index.search("gal")).toStrictEqual([
+      { id: "ship000001", name: "ISS Galaxy Mark-II" },
+      { id: "ship000007", name: "Galaxy Supreme-897" },
+    ]);
+  });
+
+  test("search is case-insensitive (uppercase)", () => {
+    expect(index.search("GAL")).toStrictEqual([
       { id: "ship000001", name: "ISS Galaxy Mark-II" },
       { id: "ship000007", name: "Galaxy Supreme-897" },
     ]);
