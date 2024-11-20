@@ -1,7 +1,10 @@
-import { createPimDB, PimCollection } from "./pimdb";
-import { PimSubstringIndex } from "./indexes/substring";
-import { PimSortedIndex } from "./indexes/sorted";
-import { PimPrimaryIndex } from "./indexes/primary";
+import {
+  createPimDB,
+  PimCollection,
+  PimSubstringIndex,
+  PimSortedIndex,
+  PimPrimaryIndex,
+} from "../src/index";
 
 interface User {
   id: string;

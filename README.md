@@ -1,6 +1,6 @@
 # PimDB
 
-A lightweight **Persistent In-Memory Database** written in TypeScript.
+A lightweight **Persisted In-Memory Database** written in TypeScript.
 
 ⚠️ **Alpha notice:** PimDB is in an early stage of development. Persistence is not yet available, and features as well as the API are subject to change. Use with caution in experimental or non-critical projects.
 
@@ -284,6 +284,6 @@ Authored and maintained by Mikael Lirbank ([@lirbank](https://github.com/lirbank
 
 If you find this project helpful, consider giving it a ⭐️ on [GitHub](https://github.com/lirbank/pimdb)!
 
-## Consulting & commercial support
+## About the author
 
-Need professional help? I'm available for consulting. Visit [lirbank.com](https://www.lirbank.com/) for more information and contact details.
+I'm an experienced developer passionate about building performant and elegant solutions. Currently open to new consulting projects or full-time opportunities. Visit [lirbank.com](https://www.lirbank.com/) to connect.

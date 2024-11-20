@@ -1,8 +1,21 @@
 {
   "name": "pimdb",
+  "version": "0.1.0",
+  "description": "A lightweight Persisted In-Memory Database for the browser",
+  "license": "MIT",
+  "author": {
+    "name": "Mikael Lirbank",
+    "url": "https://www.lirbank.com/"
+  },
   "type": "module",
-  "module": "src/index.ts",
+  "module": "dist/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "prepublishOnly": "bun run build",
     "dev": "bun --watch src/index.ts",
     "build": "prettier --check . && eslint . && vitest run && tsc --noEmit false",
     "format": "prettier --write .",
