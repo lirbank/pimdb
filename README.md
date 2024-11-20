@@ -42,49 +42,71 @@ await db.set("users", { id: 1, name: "John" });
 const user = await db.get("users");
 ```
 
-## API reference
-
-### `PimDB`
-
-#### `set(key: string, value: any): Promise<void>`
-
-Store data in the database.
-
-#### `get(key: string): Promise<any>`
-
-Retrieve data from the database.
-
-[Add other main methods here...]
-
-## Examples
+## Example usage
 
 ```typescript
-// More detailed usage examples
-const db = new PimDB();
+// db.ts
 
-// Store multiple items
-await db.set("users", [
-  { id: 1, name: "John" },
-  { id: 2, name: "Jane" },
-]);
+interface User {
+  id: string;
+  name: string;
+  age: number;
+}
 
-// Retrieve data
-const users = await db.get("users");
+interface Post {
+  id: string;
+  title: string;
+  content: string;
+  isPublished?: boolean;
+}
+
+// Define indexes
+const userIndexes = {
+  primary: new PimPrimaryIndex<User>(),
+  byName: new PimSortedIndex<User>("name"),
+  nameSearch: new PimSubstringIndex<User>("name"),
+};
+
+const postIndexes = {
+  primary: new PimPrimaryIndex<Post>(),
+  byTitle: new PimSortedIndex<Post>("title"),
+  titleSearch: new PimSubstringIndex<Post>("title"),
+};
+
+// Create collection
+export const db = createPimDB({
+  users: new PimCollection<User, typeof userIndexes>(userIndexes),
+  posts: new PimCollection<Post, typeof postIndexes>(postIndexes),
+});
 ```
 
-## Contributing
+```typescript
+import { db } from "./db";
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+// Insert data
+db.users.insert({
+  id: "1",
+  name: "Alice",
+  age: 30,
+});
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+db.posts.insert({
+  id: "1",
+  title: "Hello, world!",
+  content: "Welcome to the universe.",
+  isPublished: true,
+});
+
+// All read operations are performed directly on the indexes
+const user = db.users.indexes.primary.get("1");
+const aliceUsers = db.users.indexes.byName.find("Alice");
+const searchResults = db.users.indexes.nameSearch.search("li");
+const thirtyPlus = db.users.indexes.byAge.findInRange({ gte: 30 });
+```
 
 ## Indexes
 
-PimDB comes with three powerful index types to optimize your data queries:
+PimDB comes with three index types to optimize your data queries.
 
 ### Primary index
 
@@ -92,34 +114,33 @@ PimDB comes with three powerful index types to optimize your data queries:
 const primaryIndex = new PimPrimaryIndex<User>();
 ```
 
-- Required for each collection
-- Provides O(1) lookups by document ID
-- Ensures unique document IDs
-- Supports `get()` and `all()` operations
+- Unique index, mandatory for each collection
+- Supports retrieving single documents or all documents in the collection
+- Provides O(1) performance for lookups by document ID
 
 ### Sorted index
 
 ```typescript
-const nameIndex = new PimSortedIndex<User>("name");
+const sortedIndex = new PimSortedIndex<User>("name");
 ```
 
-- Maintains documents in sorted order by the specified field
-- Enables efficient range queries with `findInRange()`
-- Supports exact matches with `find()`
-- Secondary sorting by ID for documents with identical values
-- O(log n) lookup complexity
+- Enables efficient exact matches and range queries (case-sensitive)
+- Maintains documents sorted by a specified field, with document ID as a tie-breaker for consistent result ordering
+- Provides O(log n) performance for lookups
 
 ### Substring index
 
 ```typescript
-const nameSearchIndex = new PimSubstringIndex<User>("name");
+const substringIndex = new PimSubstringIndex<User>("name");
 ```
 
-- Enables fast substring searches on text fields
-- Case-insensitive matching
-- O(1) lookup time for exact substring matches
-- Perfect for implementing search features
-- Supports partial text matching anywhere in the field
+- Optimized for real-time search and partial text matching
+- Supports case-insensitive substring searches within text fields
+- Provides O(1) performance for partial matches
+
+### Trigram index
+
+- Coming soon.
 
 ### Custom index
 
@@ -173,61 +194,47 @@ export class MyIndex<T extends BaseDocument> implements PimIndex<T> {
 }
 ```
 
-## Example usage
+<!--
+## API reference
 
-```typescript
-interface User {
-  id: string;
-  name: string;
-  age: number;
-}
+### factory createPimDB
 
-interface Post {
-  id: string;
-  title: string;
-  content: string;
-  isPublished?: boolean;
-}
+TBD
 
-// Define indexes
-const userIndexes = {
-  primary: new PimPrimaryIndex<User>(),
-  byName: new PimSortedIndex<User>("name"),
-  nameSearch: new PimSubstringIndex<User>("name"),
-};
+### class PimDB
 
-const postIndexes = {
-  primary: new PimPrimaryIndex<Post>(),
-  byTitle: new PimSortedIndex<Post>("title"),
-  titleSearch: new PimSubstringIndex<Post>("title"),
-};
+TBD
 
-// Create collection
-const db = createPimDB({
-  users: new PimCollection<User, typeof userIndexes>(userIndexes),
-  posts: new PimCollection<Post, typeof postIndexes>(postIndexes),
-});
+### class PimCollection
 
-// Insert data
-db.users.insert({
-  id: "1",
-  name: "Alice",
-  age: 30,
-});
+TBD
 
-db.posts.insert({
-  id: "1",
-  title: "Hello, world!",
-  content: "Welcome to the universe.",
-  isPublished: true,
-});
+### interface PimIndex
 
-// Query examples - all reads are directly on indexes
-const user = db.users.indexes.primary.get("1");
-const aliceUsers = db.users.indexes.byName.find("Alice");
-const searchResults = db.users.indexes.nameSearch.search("li");
-const thirtyPlus = db.users.indexes.byAge.findInRange({ gte: 30 });
-```
+TBD
+
+### class PimPrimaryIndex
+
+TBD
+
+### class PimSortedIndex
+
+TBD
+
+### class PimSubstringIndex
+
+TBD
+-->
+
+## Contributing
+
+Contributions are welcome! Please feel free to [submit a Pull Request](https://github.com/lirbank/pimdb/pulls).
+
+1. [Fork the repository](https://github.com/lirbank/pimdb/fork)
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. [Open a Pull Request](https://github.com/lirbank/pimdb/compare)
 
 ## License
 
