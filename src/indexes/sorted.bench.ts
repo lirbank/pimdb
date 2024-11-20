@@ -12,7 +12,7 @@ interface Spaceship {
 const testData = {
   1000: testData1000,
   10000: testData10000,
-  // VSCode doesn't import the types from the larger JSON file, so casting it
+  // VSCode doesn't infer the types from the larger JSON file, so casting it
   100000: testData100000 as Spaceship[],
 };
 

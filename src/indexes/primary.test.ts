@@ -51,6 +51,12 @@ describe("primary index", () => {
     expect(index.all()[0]).toBe(a);
     expect(index.all()[1]).toBe(b);
     expect(index.all()[2]).toBe(c);
+
+    // The index should return the same object reference as the one inserted.
+    // This is the intended behavior.
+    expect(index.all()[0]).toBe(index.get("1"));
+    expect(index.all()[1]).toBe(index.get("2"));
+    expect(index.all()[2]).toBe(index.get("3"));
   });
 
   test("insert", () => {

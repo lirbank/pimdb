@@ -12,9 +12,9 @@ import { BaseDocument, Index } from "../pimdb";
  * - Supports document updates and deletions
  *
  * Limitations:
- * - Higher memory usage due to storing all possible substrings
- * - No advanced text search features (stemming, synonyms, relevance scoring)
  * - Results are returned in insertion order
+ * - Not a compound index (only supports indexing a single field)
+ * - No advanced text search features (stemming, synonyms, relevance scoring)
  */
 export class PimSubstringIndex<T extends BaseDocument> implements Index<T> {
   private substringMap: Map<string, Set<T>> = new Map();
@@ -66,12 +66,11 @@ export class PimSubstringIndex<T extends BaseDocument> implements Index<T> {
   /**
    * Insert a document into the index.
    *
-   * Returns true if the document was updated, false if it was not found.
+   * Returns true if the document was inserted, false if it was already in the
+   * index.
    */
   insert(doc: T): boolean {
-    if (this.map.has(doc.id)) {
-      return false;
-    }
+    if (this.map.has(doc.id)) return false;
 
     this.map.set(doc.id, doc);
     this.indexDocument(doc);

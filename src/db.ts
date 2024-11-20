@@ -3,7 +3,6 @@ import { PimSubstringIndex } from "./indexes/substring";
 import { PimSortedIndex } from "./indexes/sorted";
 import { PimPrimaryIndex } from "./indexes/primary";
 
-// Define User and Post interfaces
 interface User {
   id: string;
   name: string;
