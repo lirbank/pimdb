@@ -23,7 +23,7 @@ const query = "Nostromo";
 /**
  * index.search vs array.filter on 1000 docs
  */
-describe("index.search vs array.filter on 1000 docs", () => {
+describe.skip("index.search vs array.filter on 1000 docs", () => {
   const unsortedDocs = testData1000;
   const index = new PimSubstringIndex<Spaceship>(indexField);
   unsortedDocs.forEach((doc) => index.insert(doc));
@@ -40,7 +40,7 @@ describe("index.search vs array.filter on 1000 docs", () => {
 /**
  * index.search vs array.filter on 10000 docs
  */
-describe("index.search vs array.filter on 10000 docs", () => {
+describe.skip("index.search vs array.filter on 10000 docs", () => {
   const unsortedDocs = testData10000;
   const index = new PimSubstringIndex<Spaceship>(indexField);
   unsortedDocs.forEach((doc) => index.insert(doc));

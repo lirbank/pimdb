@@ -93,7 +93,7 @@ describe.skip(`findInRange on 10000 docs`, () => {
   });
 });
 
-describe(`findInRange on 100000 docs`, () => {
+describe.skip(`findInRange on 100000 docs`, () => {
   const { index } = indexFactory(100000);
 
   bench(`findInRange Nostromo - Nostromo`, () => {
@@ -120,7 +120,7 @@ describe.skip(`insert on 10000 docs`, () => {
   });
 });
 
-describe(`insert on 100000 docs`, () => {
+describe.skip(`insert on 100000 docs`, () => {
   const { index } = indexFactory(100000);
 
   bench(`insert - Nostromo`, () => {
@@ -147,7 +147,7 @@ describe.skip(`update on 10000 docs`, () => {
   });
 });
 
-describe(`update on 100000 docs`, () => {
+describe.skip(`update on 100000 docs`, () => {
   const { index } = indexFactory(100000);
 
   bench(`update - Nostromo`, () => {
@@ -180,7 +180,7 @@ describe.skip(`delete on 10000 docs`, () => {
   });
 });
 
-describe(`delete on 100000 docs`, () => {
+describe.skip(`delete on 100000 docs`, () => {
   const { index, unsortedDocs } = indexFactory(100000);
   const doc = getMiddleDoc(unsortedDocs);
 
