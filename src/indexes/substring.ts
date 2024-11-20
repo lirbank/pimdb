@@ -83,11 +83,13 @@ export class PimSubstringIndex<T extends BaseDocument> implements Index<T> {
    * Returns true if the document was updated, false if it was not found.
    */
   update(doc: T): boolean {
-    if (!this.map.has(doc.id)) return false;
+    const existing = this.map.get(doc.id);
+    if (!existing) return false;
 
-    this.removeFromIndex(doc);
-    this.map.set(doc.id, doc);
-    this.indexDocument(doc);
+    this.removeFromIndex(existing);
+    // Mutate the existing object in place.
+    Object.assign(existing, doc);
+    this.indexDocument(existing);
     return true;
   }
 
@@ -113,12 +115,9 @@ export class PimSubstringIndex<T extends BaseDocument> implements Index<T> {
    *   order they were inserted (this restriction will be lifted in the future).
    */
   search(query: string): T[] {
-    if (query === "") {
-      return Array.from(this.map.values());
-    }
+    if (query === "") return Array.from(this.map.values());
 
-    const queryLower = query.toLowerCase();
-    const matchingDocs = this.substringMap.get(queryLower);
+    const matchingDocs = this.substringMap.get(query.toLowerCase());
     return matchingDocs ? Array.from(matchingDocs) : [];
   }
 }

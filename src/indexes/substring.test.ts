@@ -75,13 +75,16 @@ describe("insert", () => {
   });
 
   test("returns true if the document is added", () => {
-    expect(index.insert({ id: "ship000010", name: "New name" })).toBe(true);
+    const d = { id: "ship000010", name: "New name" };
+    expect(index.insert(d)).toBe(true);
 
     // Verify that the document was added
-    expect(index.search("")).toStrictEqual([
-      ...spaceships,
-      { id: "ship000010", name: "New name" },
-    ]);
+    expect(index.search("")).toStrictEqual([...spaceships, d]);
+
+    // Verify that the document is a reference to the original document
+    [...spaceships, d].forEach((doc) => {
+      expect(doc).toBe(index.search("").find((r) => r.id === doc.id));
+    });
   });
 });
 
@@ -121,6 +124,11 @@ describe("update", () => {
       { id: "ship000008", name: "Sevastopol Alpha" },
       { id: "ship000009", name: "Sevastopol Two" },
     ]);
+
+    // Verify that the document is a reference to the original document
+    spaceships.forEach((doc) => {
+      expect(doc).toBe(index.search("").find((r) => r.id === doc.id));
+    });
   });
 });
 
