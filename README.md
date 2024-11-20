@@ -232,7 +232,7 @@ Setup: [100,000 documents](src/indexes/benchmarks/benchmark-data-100000.json) wi
 | `array.filter` | 132.14    | 5.5725 | 13.7257 | 7.5679 | 7.8342 | 13.7257 | 13.7257 | 13.7257 | ±4.31% | 67      |         |
 | `index.search` | 96,649.82 | 0.0070 | 1.2095  | 0.0103 | 0.0073 | 0.0104  | 0.4675  | 0.5119  | ±3.50% | 48,325  | Fastest |
 
-Summary: **731.44xx faster** than native [Array.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
+Summary: **731.44x faster** than native [Array.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
 
 <!--
 ## API reference
@@ -280,7 +280,7 @@ Contributions are welcome! Please feel free to [submit a Pull Request](https://g
 
 This project is [open-source](https://github.com/lirbank/pimdb) and available under the [MIT License](LICENSE). Feel free to use it in your projects!
 
-Authored and maintained by [Mikael Lirbank](https://github.com/lirbank).
+Authored and maintained by Mikael Lirbank ([@lirbank](https://github.com/lirbank)).
 
 If you find this project helpful, consider giving it a ⭐️ on [GitHub](https://github.com/lirbank/pimdb)!
 
