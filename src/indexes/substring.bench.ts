@@ -16,22 +16,24 @@ const makePredicate =
   (indexField: keyof Spaceship) => (query: string) => (doc: Spaceship) =>
     doc[indexField].toLowerCase().includes(query.toLowerCase());
 
-const predicate = makePredicate("name");
+const indexField = "name";
+const predicate = makePredicate(indexField);
+const query = "Nostromo";
 
 /**
  * index.search vs array.filter on 1000 docs
  */
-describe.only("index.search vs array.filter on 1000 docs", () => {
+describe("index.search vs array.filter on 1000 docs", () => {
   const unsortedDocs = testData1000;
-  const index = new PimSubstringIndex<Spaceship>("name");
+  const index = new PimSubstringIndex<Spaceship>(indexField);
   unsortedDocs.forEach((doc) => index.insert(doc));
 
   bench("array.filter", () => {
-    unsortedDocs.filter(predicate("Nostromo"));
+    unsortedDocs.filter(predicate(query));
   });
 
   bench("index.search", () => {
-    index.search("Nostromo");
+    index.search(query);
   });
 });
 
@@ -40,15 +42,15 @@ describe.only("index.search vs array.filter on 1000 docs", () => {
  */
 describe("index.search vs array.filter on 10000 docs", () => {
   const unsortedDocs = testData10000;
-  const index = new PimSubstringIndex<Spaceship>("name");
+  const index = new PimSubstringIndex<Spaceship>(indexField);
   unsortedDocs.forEach((doc) => index.insert(doc));
 
   bench("array.filter", () => {
-    unsortedDocs.filter(predicate("Nostromo"));
+    unsortedDocs.filter(predicate(query));
   });
 
   bench("index.search", () => {
-    index.search("Nostromo");
+    index.search(query);
   });
 });
 
@@ -57,14 +59,14 @@ describe("index.search vs array.filter on 10000 docs", () => {
  */
 describe("index.search vs array.filter on 100000 docs", () => {
   const unsortedDocs = testData100000;
-  const index = new PimSubstringIndex<Spaceship>("name");
+  const index = new PimSubstringIndex<Spaceship>(indexField);
   unsortedDocs.forEach((doc) => index.insert(doc));
 
   bench("array.filter", () => {
-    unsortedDocs.filter(predicate("Nostromo"));
+    unsortedDocs.filter(predicate(query));
   });
 
   bench("index.search", () => {
-    index.search("Nostromo");
+    index.search(query);
   });
 });
