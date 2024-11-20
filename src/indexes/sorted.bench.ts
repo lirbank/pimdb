@@ -9,12 +9,10 @@ interface Spaceship {
   name: string;
 }
 
-// const testData100000 = testData100000_ as Spaceship[];
-
 const testData = {
   1000: testData1000,
   10000: testData10000,
-  // VSCode doesn't import the types from the larger JSON file, so we need to cast it
+  // VSCode doesn't import the types from the larger JSON file, so casting it
   100000: testData100000 as Spaceship[],
 };
 
@@ -34,7 +32,7 @@ function indexFactory(docCount: keyof typeof testData) {
 /**
  * index.find vs array.filter on 1000 docs
  */
-describe(`index.find vs array.filter on 1000 docs`, () => {
+describe.skip(`index.find vs array.filter on 1000 docs`, () => {
   const { index, unsortedDocs } = indexFactory(1000);
 
   bench("array.filter", () => {
@@ -49,7 +47,7 @@ describe(`index.find vs array.filter on 1000 docs`, () => {
 /**
  * index.find vs array.filter on 10000 docs
  */
-describe(`index.find vs array.filter on 10000 docs`, () => {
+describe.skip(`index.find vs array.filter on 10000 docs`, () => {
   const { index, unsortedDocs } = indexFactory(10000);
 
   bench("array.filter", () => {
@@ -79,7 +77,7 @@ describe(`index.find vs array.filter on 100000 docs`, () => {
 /**
  * findInRange
  */
-describe(`findInRange on 1000 docs`, () => {
+describe.skip(`findInRange on 1000 docs`, () => {
   const { index } = indexFactory(1000);
 
   bench(`findInRange Nostromo - Nostromo`, () => {
@@ -87,7 +85,7 @@ describe(`findInRange on 1000 docs`, () => {
   });
 });
 
-describe(`findInRange on 10000 docs`, () => {
+describe.skip(`findInRange on 10000 docs`, () => {
   const { index } = indexFactory(10000);
 
   bench(`findInRange Nostromo - Nostromo`, () => {
@@ -106,7 +104,7 @@ describe(`findInRange on 100000 docs`, () => {
 /**
  * insert
  */
-describe(`insert on 1000 docs`, () => {
+describe.skip(`insert on 1000 docs`, () => {
   const { index } = indexFactory(1000);
 
   bench(`insert - Nostromo`, () => {
@@ -114,7 +112,7 @@ describe(`insert on 1000 docs`, () => {
   });
 });
 
-describe(`insert on 10000 docs`, () => {
+describe.skip(`insert on 10000 docs`, () => {
   const { index } = indexFactory(10000);
 
   bench(`insert - Nostromo`, () => {
@@ -133,7 +131,7 @@ describe(`insert on 100000 docs`, () => {
 /**
  * update
  */
-describe(`update on 1000 docs`, () => {
+describe.skip(`update on 1000 docs`, () => {
   const { index } = indexFactory(1000);
 
   bench(`update - Nostromo`, () => {
@@ -141,7 +139,7 @@ describe(`update on 1000 docs`, () => {
   });
 });
 
-describe(`update on 10000 docs`, () => {
+describe.skip(`update on 10000 docs`, () => {
   const { index } = indexFactory(10000);
 
   bench(`update - Nostromo`, () => {
@@ -164,7 +162,7 @@ function getMiddleDoc(arr: Spaceship[]) {
   return arr[Math.floor(arr.length / 2)]!;
 }
 
-describe(`delete on 1000 docs`, () => {
+describe.skip(`delete on 1000 docs`, () => {
   const { index, unsortedDocs } = indexFactory(1000);
   const doc = getMiddleDoc(unsortedDocs);
 
@@ -173,7 +171,7 @@ describe(`delete on 1000 docs`, () => {
   });
 });
 
-describe(`delete on 10000 docs`, () => {
+describe.skip(`delete on 10000 docs`, () => {
   const { index, unsortedDocs } = indexFactory(10000);
   const doc = getMiddleDoc(unsortedDocs);
 
