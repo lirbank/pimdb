@@ -21,7 +21,7 @@ const predicate = makePredicate("name");
 /**
  * index.search vs array.filter on 1000 docs
  */
-describe("index.search vs array.filter on 1000 docs", () => {
+describe.only("index.search vs array.filter on 1000 docs", () => {
   const unsortedDocs = testData1000;
   const index = new PimSubstringIndex<Spaceship>("name");
   unsortedDocs.forEach((doc) => index.insert(doc));

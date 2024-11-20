@@ -3,13 +3,22 @@ import { BaseDocument, Index } from "../pimdb";
 /**
  * Substring Index
  *
- * This is a plain partial text search index.
+ * A fast substring search index that enables partial text matching on document fields.
  *
- * It is not a full-text search index and as such does not support advanced
- * features like stemming, synonyms, or relevance scoring.
+ * Features:
+ * - Case-insensitive matching
+ * - Matches any part of the indexed text field
+ * - O(1) lookup time for exact substring matches
+ * - Supports document updates and deletions
+ *
+ * Limitations:
+ * - Higher memory usage due to storing all possible substrings
+ * - No advanced text search features (stemming, synonyms, relevance scoring)
+ * - Results are returned in insertion order
  */
 export class PimSubstringIndex<T extends BaseDocument> implements Index<T> {
-  private documents: T[] = [];
+  private substringMap: Map<string, Set<T>> = new Map();
+  private map = new Map<T["id"], T>();
   private indexField: {
     [K in keyof T]: T[K] extends string ? K : never;
   }[keyof T];
@@ -22,18 +31,50 @@ export class PimSubstringIndex<T extends BaseDocument> implements Index<T> {
     this.indexField = indexField;
   }
 
+  private indexDocument(doc: T) {
+    const fieldValue = doc[this.indexField];
+    if (typeof fieldValue !== "string") return;
+
+    const text = fieldValue.toLowerCase();
+    for (let i = 0; i < text.length; i++) {
+      for (let j = i + 1; j <= text.length; j++) {
+        const substring = text.slice(i, j);
+        if (!this.substringMap.has(substring)) {
+          this.substringMap.set(substring, new Set());
+        }
+        this.substringMap.get(substring)!.add(doc);
+      }
+    }
+  }
+
+  private removeFromIndex(doc: T) {
+    const fieldValue = doc[this.indexField];
+    if (typeof fieldValue !== "string") return;
+
+    const text = fieldValue.toLowerCase();
+    for (let i = 0; i < text.length; i++) {
+      for (let j = i + 1; j <= text.length; j++) {
+        const substring = text.slice(i, j);
+        this.substringMap.get(substring)?.delete(doc);
+        if (this.substringMap.get(substring)?.size === 0) {
+          this.substringMap.delete(substring);
+        }
+      }
+    }
+  }
+
   /**
    * Insert a document into the index.
    *
    * Returns true if the document was updated, false if it was not found.
    */
   insert(doc: T): boolean {
-    if (this.documents.find((d) => d.id === doc.id)) {
+    if (this.map.has(doc.id)) {
       return false;
     }
 
-    this.documents.push(doc);
-
+    this.map.set(doc.id, doc);
+    this.indexDocument(doc);
     return true;
   }
 
@@ -43,14 +84,11 @@ export class PimSubstringIndex<T extends BaseDocument> implements Index<T> {
    * Returns true if the document was updated, false if it was not found.
    */
   update(doc: T): boolean {
-    const index = this.documents.findIndex((d) => d.id === doc.id);
+    if (!this.map.has(doc.id)) return false;
 
-    if (index === -1) {
-      return false;
-    }
-
-    this.documents[index] = doc;
-
+    this.removeFromIndex(doc);
+    this.map.set(doc.id, doc);
+    this.indexDocument(doc);
     return true;
   }
 
@@ -60,14 +98,10 @@ export class PimSubstringIndex<T extends BaseDocument> implements Index<T> {
    * Returns true if the document was deleted, false if it was not found.
    */
   delete(doc: T): boolean {
-    const index = this.documents.findIndex((d) => d.id === doc.id);
+    if (!this.map.has(doc.id)) return false;
 
-    if (index === -1) {
-      return false;
-    }
-
-    this.documents.splice(index, 1);
-
+    this.removeFromIndex(doc);
+    this.map.delete(doc.id);
     return true;
   }
 
@@ -81,15 +115,11 @@ export class PimSubstringIndex<T extends BaseDocument> implements Index<T> {
    */
   search(query: string): T[] {
     if (query === "") {
-      return [...this.documents];
+      return Array.from(this.map.values());
     }
 
-    return this.documents.filter((doc) => {
-      const fieldValue = doc[this.indexField];
-
-      if (typeof fieldValue !== "string") return false;
-
-      return fieldValue.toLowerCase().includes(query.toLowerCase());
-    });
+    const queryLower = query.toLowerCase();
+    const matchingDocs = this.substringMap.get(queryLower);
+    return matchingDocs ? Array.from(matchingDocs) : [];
   }
 }
