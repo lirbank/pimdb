@@ -18,6 +18,8 @@ PimDB is designed for browser-based applications but can also be used on the ser
 
 ## Installation
 
+PimDB is published on [npmjs.com](https://www.npmjs.com/package/pimdb).
+
 ```bash
 # Using bun
 bun add pimdb
