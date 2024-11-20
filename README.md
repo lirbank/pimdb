@@ -14,6 +14,7 @@ PimDB is designed for browser-based applications but can also be used on the ser
 - 🔒 Type-safe operations
 - 🛠️ Simple API
 - 🔍 Pluggable indexes
+- 🔄 _Reactivity (React hook coming soon)_
 
 ## Installation
 
@@ -206,6 +207,32 @@ export class MyIndex<T extends BaseDocument> implements PimIndex<T> {
   }
 }
 ```
+
+## Benchmarks
+
+Initial benchmarks were conducted on a MacBook Pro M1 Max with 64 GB RAM.
+
+### Sorted index
+
+Setup: [100,000 documents](src/indexes/benchmarks/benchmark-data-100000.json) with a `name` field.
+
+| Name           | Hz           | Min    | Max    | Mean   | P75    | P99    | P995   | P999   | RME    | Samples   | Notes   |
+| -------------- | ------------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | --------- | ------- |
+| `array.filter` | 1,055.57     | 0.8226 | 2.5986 | 0.9474 | 0.9021 | 1.9051 | 2.4339 | 2.5986 | ±2.22% | 529       |         |
+| `index.find`   | 4,878,894.99 | 0.0001 | 0.2773 | 0.0002 | 0.0002 | 0.0002 | 0.0003 | 0.0004 | ±0.55% | 2,439,448 | Fastest |
+
+Summary: **4622.03x faster** than native [Array.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
+
+### Substring index
+
+Setup: [100,000 documents](src/indexes/benchmarks/benchmark-data-100000.json) with a `title` field.
+
+| Name           | Hz        | Min    | Max     | Mean   | P75    | P99     | P995    | P999    | RME    | Samples | Notes   |
+| -------------- | --------- | ------ | ------- | ------ | ------ | ------- | ------- | ------- | ------ | ------- | ------- |
+| `array.filter` | 132.14    | 5.5725 | 13.7257 | 7.5679 | 7.8342 | 13.7257 | 13.7257 | 13.7257 | ±4.31% | 67      |         |
+| `index.search` | 96,649.82 | 0.0070 | 1.2095  | 0.0103 | 0.0073 | 0.0104  | 0.4675  | 0.5119  | ±3.50% | 48,325  | Fastest |
+
+Summary: **731.44xx faster** than native [Array.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
 
 <!--
 ## API reference
