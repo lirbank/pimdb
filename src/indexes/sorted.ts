@@ -1,4 +1,4 @@
-import { BaseDocument, Index } from "../pimdb";
+import { BaseDocument, PimIndex } from "../pimdb";
 
 /**
  * Sorted Index
@@ -12,7 +12,7 @@ import { BaseDocument, Index } from "../pimdb";
  * Read operations return a new array containing references (not clones) to the
  * indexed documents.
  */
-export class PimSortedIndex<T extends BaseDocument> implements Index<T> {
+export class PimSortedIndex<T extends BaseDocument> implements PimIndex<T> {
   private indexField: keyof T;
   private documents: T[] = [];
 

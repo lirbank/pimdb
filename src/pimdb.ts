@@ -11,7 +11,7 @@ export interface BaseDocument {
 /**
  * Index interface
  */
-export interface Index<T> {
+export interface PimIndex<T> {
   insert(item: T): boolean;
   update(item: T): boolean;
   delete(item: T): boolean;
@@ -24,8 +24,8 @@ export interface Index<T> {
  */
 export class PimCollection<
   T extends BaseDocument,
-  TIndexes extends Record<string, Index<T>>,
-> implements Index<T>
+  TIndexes extends Record<string, PimIndex<T>>,
+> implements PimIndex<T>
 {
   indexes: TIndexes;
   primary: PimPrimaryIndex<T>;
@@ -80,7 +80,7 @@ export class PimCollection<
 class PimDB<
   TCollections extends Record<
     string,
-    PimCollection<BaseDocument, Record<string, Index<BaseDocument>>>
+    PimCollection<BaseDocument, Record<string, PimIndex<BaseDocument>>>
   >,
 > {
   constructor(collections: TCollections) {
@@ -94,7 +94,7 @@ class PimDB<
 export function createPimDB<
   TCollections extends Record<
     string,
-    PimCollection<BaseDocument, Record<string, Index<BaseDocument>>>
+    PimCollection<BaseDocument, Record<string, PimIndex<BaseDocument>>>
   >,
 >(collections: TCollections): PimDB<TCollections> & TCollections {
   return Object.assign(new PimDB(collections), collections);

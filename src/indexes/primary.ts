@@ -1,4 +1,4 @@
-import { BaseDocument, Index } from "../pimdb";
+import { BaseDocument, PimIndex } from "../pimdb";
 
 /**
  * Primary Index
@@ -11,7 +11,7 @@ import { BaseDocument, Index } from "../pimdb";
  * Read operations return a new array containing references (not clones) to the
  * indexed documents.
  */
-export class PimPrimaryIndex<T extends BaseDocument> implements Index<T> {
+export class PimPrimaryIndex<T extends BaseDocument> implements PimIndex<T> {
   private map = new Map<T["id"], T>();
 
   /**

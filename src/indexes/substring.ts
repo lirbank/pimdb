@@ -1,4 +1,4 @@
-import { BaseDocument, Index } from "../pimdb";
+import { BaseDocument, PimIndex } from "../pimdb";
 
 /**
  * Substring Index
@@ -16,7 +16,7 @@ import { BaseDocument, Index } from "../pimdb";
  * - Not a compound index (only supports indexing a single field)
  * - No advanced text search features (stemming, synonyms, relevance scoring)
  */
-export class PimSubstringIndex<T extends BaseDocument> implements Index<T> {
+export class PimSubstringIndex<T extends BaseDocument> implements PimIndex<T> {
   private substringMap: Map<string, Set<T>> = new Map();
   private map = new Map<T["id"], T>();
   private indexField: {
