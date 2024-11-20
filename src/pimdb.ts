@@ -1,3 +1,5 @@
+import { PimPrimaryIndex } from "./indexes/primary";
+
 /**
  * BaseDocument
  */
@@ -23,29 +25,50 @@ export interface Index<T> {
 export class PimCollection<
   T extends BaseDocument,
   TIndexes extends Record<string, Index<T>>,
-> {
+> implements Index<T>
+{
   indexes: TIndexes;
+  primary: PimPrimaryIndex<T>;
 
   constructor(indexes: TIndexes) {
     this.indexes = indexes;
+
+    const primary = Object.values(this.indexes).find(
+      (index) => index instanceof PimPrimaryIndex,
+    );
+    if (!primary) throw new Error("Primary index not found");
+
+    this.primary = primary;
   }
 
-  insert(doc: T): void {
+  insert(doc: T): boolean {
+    if (this.primary.get(doc.id)) return false;
+
     for (const index of Object.values(this.indexes)) {
       index.insert(doc);
     }
+
+    return true;
   }
 
-  update(doc: T): void {
+  update(doc: T): boolean {
+    if (!this.primary.get(doc.id)) return false;
+
     for (const index of Object.values(this.indexes)) {
       index.update(doc);
     }
+
+    return true;
   }
 
-  delete(doc: T): void {
+  delete(doc: T): boolean {
+    if (!this.primary.get(doc.id)) return false;
+
     for (const index of Object.values(this.indexes)) {
       index.delete(doc);
     }
+
+    return true;
   }
 }
 
