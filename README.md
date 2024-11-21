@@ -36,7 +36,7 @@ yarn add pimdb
 
 ## Quick start
 
-### 1. Setting Up the Database
+### 1. Setting up the database
 
 ```typescript
 // db.ts
@@ -83,7 +83,7 @@ export const db = createPimDB({
 });
 ```
 
-### 2. Using the Database
+### 2. Using the database
 
 ```typescript
 import { db } from "./db";
@@ -265,7 +265,7 @@ Contributions are welcome! Please feel free to [submit a Pull Request](https://g
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
-5. [Open a Pull Request](https://github.com/lirbank/pimdb/compare)
+5. [Open a pull request](https://github.com/lirbank/pimdb/compare)
 
 ## License
 
