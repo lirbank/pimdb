@@ -4,7 +4,7 @@ A lightweight **Persisted In-Memory Database** written in TypeScript.
 
 ⚠️ **Alpha notice:** PimDB is in an early stage of development. Persistence is not yet available, and features as well as the API are subject to change. Use with caution in experimental or non-critical projects.
 
-PimDB is designed for browser-based applications but can also be used on the server. Its core features are actively being developed to deliver a lightweight and fast in-memory database for the browser.
+A lightweight, persisted in-memory database built from the ground up for the browser. PimDB delivers fast and efficient text indexing with substring, n-gram, and sorted indexes, enabling quick lookups for both partial and exact matches. On a dataset of 100,000 documents, it's currently **4,000x+ faster** than `Array.filter` for sorted lookups and **700x+ faster** for substring searches.
 
 ## Features
 
@@ -36,20 +36,7 @@ yarn add pimdb
 
 ## Quick start
 
-```typescript
-import { PimDB } from "pimdb";
-
-// Initialize the database
-const db = new PimDB();
-
-// Store data
-await db.set("users", { id: 1, name: "John" });
-
-// Retrieve data
-const user = await db.get("users");
-```
-
-## Example usage
+### 1. Setting Up the Database
 
 ```typescript
 // db.ts
@@ -95,6 +82,8 @@ export const db = createPimDB({
   posts: new PimCollection<Post, typeof postIndexes>(postIndexes),
 });
 ```
+
+### 2. Using the Database
 
 ```typescript
 import { db } from "./db";

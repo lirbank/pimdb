@@ -1,6 +1,6 @@
 {
   "name": "pimdb",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A lightweight Persisted In-Memory Database for the browser",
   "license": "MIT",
   "keywords": [
