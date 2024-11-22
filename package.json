@@ -3,6 +3,7 @@
   "private": true,
   "workspaces": [
     "pimdb",
-    "pimdb-react"
+    "pimdb-react",
+    "website"
   ]
 }
