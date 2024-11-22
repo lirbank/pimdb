@@ -1,0 +1,8 @@
+{
+  "name": "pimdb-monorepo",
+  "private": true,
+  "workspaces": [
+    "pimdb",
+    "pimdb-react"
+  ]
+}
