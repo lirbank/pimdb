@@ -1,55 +1,9 @@
 {
-  "name": "pimdb",
-  "version": "0.1.1",
-  "description": "A lightweight Persisted In-Memory Database for the browser",
-  "license": "MIT",
-  "keywords": [
-    "database",
-    "browser",
-    "in-memory",
-    "persisted",
-    "indexeddb",
-    "opfs",
-    "typescript"
-  ],
-  "homepage": "https://github.com/lirbank/pimdb#readme",
-  "author": {
-    "name": "Mikael Lirbank",
-    "url": "https://www.lirbank.com/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lirbank/pimdb.git"
-  },
-  "type": "module",
-  "module": "dist/index.js",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "prepublishOnly": "bun run build",
-    "dev": "bun --watch src/index.ts",
-    "build": "rm -rf dist && prettier --check . && eslint . && vitest run && tsc -p tsconfig.build.json",
-    "format": "prettier --write .",
-    "lint": "eslint --fix .",
-    "test": "vitest",
-    "benchmark": "vitest bench",
-    "benchmark:compare": "vitest bench --compare benchmarks.json",
-    "benchmark:store": "vitest bench --run --outputJson benchmarks.json",
-    "generate-1k": "bun src/indexes/benchmarks/generate-test-data.ts 1000",
-    "generate-10k": "bun src/indexes/benchmarks/generate-test-data.ts 10000",
-    "generate-100k": "bun src/indexes/benchmarks/generate-test-data.ts 100000"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.15.0",
-    "@types/bun": "latest",
-    "eslint": "^9.15.0",
-    "globals": "^15.12.0",
-    "prettier": "^3.3.3",
-    "typescript": "^5.7.2",
-    "typescript-eslint": "^8.15.0",
-    "vitest": "^2.1.5"
-  }
+  "name": "pimdb-monorepo",
+  "private": true,
+  "workspaces": [
+    "pimdb",
+    "pimdb-react",
+    "website"
+  ]
 }
