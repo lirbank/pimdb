@@ -30,7 +30,8 @@
   ],
   "scripts": {
     "prepublishOnly": "bun run build",
-    "dev": "bun --watch src/index.ts",
+    "dev:bun": "bun --watch src/index.ts",
+    "dev:tsc": "tsc -p tsconfig.build.json --watch --incremental",
     "build": "rm -rf dist && prettier --check . && eslint . && vitest run && tsc -p tsconfig.build.json",
     "format": "prettier --write .",
     "lint": "eslint --fix .",
