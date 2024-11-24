@@ -17,3 +17,14 @@ export const makeExactMatchPredicate =
 export function getMiddleDoc(arr: Spaceship[]) {
   return arr[Math.floor(arr.length / 2)]!;
 }
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Performance/memory#value
+interface Memory {
+  totalJSHeapSize: number;
+  usedJSHeapSize: number;
+  jsHeapSizeLimit: number;
+}
+
+export function memory(): Memory {
+  return (performance as unknown as { memory: Memory }).memory;
+}
