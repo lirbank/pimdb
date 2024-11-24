@@ -1,10 +1,6 @@
 import { beforeEach, describe, expect, test } from "vitest";
 import { PimSortedIndex } from "./sorted";
-
-interface Spaceship {
-  id: string;
-  name: string;
-}
+import { Spaceship } from "../test-helpers";
 
 /**
  * find

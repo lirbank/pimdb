@@ -1,7 +1,11 @@
 import { bench, describe } from "vitest";
 import { PimSortedIndex } from "./sorted";
 import testData100000 from "./benchmarks/benchmark-data.json";
-import { getMiddleDoc, makeExactMatchPredicate, Spaceship } from "./shared";
+import {
+  getMiddleDoc,
+  makeExactMatchPredicate,
+  Spaceship,
+} from "../test-helpers";
 const unsortedDocs = testData100000 as Spaceship[];
 
 // The number of documents to test

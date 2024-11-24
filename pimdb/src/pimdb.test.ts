@@ -3,11 +3,7 @@ import { createPimDB, PimCollection } from "./pimdb";
 import { PimSubstringIndex } from "./indexes/substring";
 import { PimSortedIndex } from "./indexes/sorted";
 import { PimPrimaryIndex } from "./indexes/primary";
-
-interface Spaceship {
-  id: string;
-  name: string;
-}
+import { Spaceship } from "./test-helpers";
 
 function testFactory() {
   const spaceships = [
