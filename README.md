@@ -205,7 +205,7 @@ Initial benchmarks were conducted on a MacBook Pro M1 Max with 64 GB RAM.
 
 ### Sorted index - Chromium
 
-Setup: [100,000 documents](src/indexes/benchmarks/benchmark-data.json) with a `name` field.
+Setup: [100,000 documents](pimdb/src/indexes/benchmarks/benchmark-data.json) with a `name` field.
 
 | Name           | Hz           | Min    | Max    | Mean   | P75    | P99    | P995   | P999   | RME    | Samples |
 | -------------- | ------------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------- |
@@ -216,7 +216,7 @@ Summary: **2184.87x faster** than native [Array.filter()](https://developer.mozi
 
 ### Substring index - Chromium
 
-Setup: [100,000 documents](src/indexes/benchmarks/benchmark-data.json) with a `title` field.
+Setup: [100,000 documents](pimdb/src/indexes/benchmarks/benchmark-data.json) with a `title` field.
 
 | Name               | Hz         | Min    | Max    | Mean   | P75    | P99    | P995   | P999   | RME    | Samples | Notes   |
 | ------------------ | ---------- | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------- | ------- |
