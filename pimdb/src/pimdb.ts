@@ -25,8 +25,7 @@ export interface PimIndex<T> {
 export class PimCollection<
   T extends BaseDocument,
   TIndexes extends Record<string, PimIndex<T>>,
-> implements PimIndex<T>
-{
+> {
   indexes: TIndexes;
   primary: PimPrimaryIndex<T>;
 
@@ -56,15 +55,18 @@ export class PimCollection<
   update(doc: T): boolean {
     if (!this.primary.get(doc.id)) return false;
 
+    const clonedDoc = structuredClone(doc);
+
     for (const index of Object.values(this.indexes)) {
-      index.update(doc);
+      index.update(clonedDoc);
     }
 
     return true;
   }
 
-  delete(doc: T): boolean {
-    if (!this.primary.get(doc.id)) return false;
+  delete(id: string): boolean {
+    const doc = this.primary.get(id);
+    if (!doc) return false;
 
     for (const index of Object.values(this.indexes)) {
       index.delete(doc);

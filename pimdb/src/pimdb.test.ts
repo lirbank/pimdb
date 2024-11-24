@@ -135,13 +135,11 @@ describe("delete", () => {
   const { db, spaceships } = testFactory();
 
   test("returns false if the document id is not in the index", () => {
-    expect(db.spaceships.delete({ id: "ship000010", name: "New name" })).toBe(
-      false,
-    );
+    expect(db.spaceships.delete("ship000010")).toBe(false);
   });
 
   test("returns true if the document is deleted", () => {
-    expect(db.spaceships.delete(spaceships[0]!)).toBe(true);
+    expect(db.spaceships.delete(spaceships[0]!.id)).toBe(true);
 
     // Verify that the document is deleted
     expect(
