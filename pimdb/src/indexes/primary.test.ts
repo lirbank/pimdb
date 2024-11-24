@@ -1,10 +1,6 @@
 import { describe, expect, test } from "vitest";
 import { PimPrimaryIndex } from "./primary";
-
-interface Spaceship {
-  id: string;
-  name: string;
-}
+import { Spaceship } from "../test-helpers";
 
 describe("primary index", () => {
   test("get", () => {

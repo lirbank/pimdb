@@ -1,10 +1,6 @@
 import { beforeEach, describe, expect, test } from "vitest";
 import { PimSubstringIndex } from "./substring";
-
-interface Spaceship {
-  id: string;
-  name: string;
-}
+import { Spaceship } from "../test-helpers";
 
 const spaceships = [
   { id: "ship000000", name: "BG Prometheus Two-821" },
