@@ -11,19 +11,20 @@ const query = "Nostromo";
 const indexField: keyof Spaceship = "name";
 const predicate = makePredicate(indexField)(query);
 
-marks.forEach((count) => {
-  describe(`substring.search on ${count} docs`, () => {
-    const docs = unsortedDocs.slice(0, count);
+/**
+ * search
+ */
+describe.each(marks)(`substring.search on %d docs`, (count) => {
+  const docs = unsortedDocs.slice(0, count);
 
-    const index = new PimSubstringIndex<Spaceship>(indexField);
-    docs.forEach((doc) => index.insert(doc));
+  const index = new PimSubstringIndex<Spaceship>(indexField);
+  docs.forEach((doc) => index.insert(doc));
 
-    bench(`array.filter ${count}`, () => {
-      docs.filter(predicate);
-    });
+  bench(`array.filter ${count}`, () => {
+    docs.filter(predicate);
+  });
 
-    bench(`index.search ${count}`, () => {
-      index.search(query);
-    });
+  bench(`index.search ${count}`, () => {
+    index.search(query);
   });
 });
