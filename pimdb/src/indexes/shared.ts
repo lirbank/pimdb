@@ -3,9 +3,13 @@ export interface Spaceship {
   name: string;
 }
 
-export const makePredicate =
+export const makeSubstringPredicate =
   (indexField: keyof Spaceship) => (query: string) => (doc: Spaceship) =>
     doc[indexField].toLowerCase().includes(query.toLowerCase());
+
+export const makeExactMatchPredicate =
+  (indexField: keyof Spaceship) => (query: string) => (doc: Spaceship) =>
+    doc[indexField] === query;
 
 export function getMiddleDoc(arr: Spaceship[]) {
   return arr[Math.floor(arr.length / 2)]!;
