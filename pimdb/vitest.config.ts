@@ -10,6 +10,7 @@ export default defineConfig({
       provider: "playwright",
       // https://playwright.dev
       providerOptions: {},
+      screenshotFailures: false,
     },
   },
 });

@@ -79,7 +79,7 @@ export class PimCollection<
  *
  * This is a database of collections.
  */
-class PimDB<
+export class PimDB<
   TCollections extends Record<
     string,
     PimCollection<BaseDocument, Record<string, PimIndex<BaseDocument>>>
