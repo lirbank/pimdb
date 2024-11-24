@@ -1,6 +1,6 @@
 import { bench, describe } from "vitest";
 import { PimSubstringIndex } from "./substring";
-import testData100000 from "./benchmarks/benchmark-data-100000.json";
+import testData100000 from "./benchmarks/benchmark-data.json";
 import { makeSubstringPredicate, Spaceship } from "./shared";
 const unsortedDocs = testData100000 as Spaceship[];
 
