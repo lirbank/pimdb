@@ -44,8 +44,10 @@ export class PimCollection<
   insert(doc: T): boolean {
     if (this.primary.get(doc.id)) return false;
 
+    const clonedDoc = structuredClone(doc);
+
     for (const index of Object.values(this.indexes)) {
-      index.insert(doc);
+      index.insert(clonedDoc);
     }
 
     return true;

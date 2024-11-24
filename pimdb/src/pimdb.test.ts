@@ -78,7 +78,7 @@ describe("update", () => {
 
     // Verify that the document is a reference to the original document
     spaceships.forEach((doc) => {
-      expect(doc).toBe(db.spaceships.indexes.primary.get(doc.id));
+      expect(doc).not.toBe(db.spaceships.indexes.primary.get(doc.id));
     });
   });
 });
@@ -155,14 +155,31 @@ describe("search", () => {
 /**
  * references
  */
-describe("references", () => {
+describe("object references", () => {
+  test("equality", () => {
+    const { db } = testFactory();
+    const spaceship = { id: "ship000010", name: "Sulaco" };
+    db.spaceships.insert(spaceship);
+
+    // Mutate the original object
+    spaceship.name = "Nostromo";
+
+    const result = db.spaceships.indexes.primary.get(spaceship.id);
+
+    // Verify that the object in the store is not mutated
+    expect(result).toStrictEqual({ id: "ship000010", name: "Sulaco" });
+
+    // Verify that the object in the store is not the same as the original object
+    expect(result).not.toBe(spaceship);
+  });
+
   const { db, spaceships } = testFactory();
 
   test("substring.search: indexes return references to the original documents", () => {
     const result = db.spaceships.indexes.substring.search("");
 
     spaceships.forEach((doc) => {
-      expect(doc).toBe(result.find((r) => r.id === doc.id));
+      expect(doc).not.toBe(result.find((r) => r.id === doc.id));
     });
   });
 
@@ -170,7 +187,7 @@ describe("references", () => {
     const result = db.spaceships.indexes.primary.all();
 
     spaceships.forEach((doc) => {
-      expect(doc).toBe(result.find((r) => r.id === doc.id));
+      expect(doc).not.toBe(result.find((r) => r.id === doc.id));
     });
   });
 
@@ -178,7 +195,7 @@ describe("references", () => {
     const result = db.spaceships.indexes.sorted.find();
 
     spaceships.forEach((doc) => {
-      expect(doc).toBe(result.find((r) => r.id === doc.id));
+      expect(doc).not.toBe(result.find((r) => r.id === doc.id));
     });
   });
 });
