@@ -203,27 +203,27 @@ export class MyIndex<T extends BaseDocument> implements PimIndex<T> {
 
 Initial benchmarks were conducted on a MacBook Pro M1 Max with 64 GB RAM.
 
-### Sorted index
+### Sorted index - Chromium
 
-Setup: [100,000 documents](src/indexes/benchmarks/benchmark-data-100000.json) with a `name` field.
+Setup: [100,000 documents](pimdb/src/indexes/benchmarks/benchmark-data.json) with a `name` field.
 
-| Name           | Hz           | Min    | Max    | Mean   | P75    | P99    | P995   | P999   | RME    | Samples   | Notes   |
-| -------------- | ------------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | --------- | ------- |
-| `array.filter` | 1,055.57     | 0.8226 | 2.5986 | 0.9474 | 0.9021 | 1.9051 | 2.4339 | 2.5986 | ±2.22% | 529       |         |
-| `index.find`   | 4,878,894.99 | 0.0001 | 0.2773 | 0.0002 | 0.0002 | 0.0002 | 0.0003 | 0.0004 | ±0.55% | 2,439,448 | Fastest |
+| Name           | Hz           | Min    | Max    | Mean   | P75    | P99    | P995   | P999   | RME    | Samples |
+| -------------- | ------------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------- |
+| `array.filter` | 1,593.88     | 0.5000 | 1.1000 | 0.6274 | 0.7000 | 0.9000 | 1.0000 | 1.1000 | ±0.86% | 1000    |
+| `sorted.find`  | 3,482,412.00 | 0.0000 | 3.8000 | 0.0003 | 0.0000 | 0.0000 | 0.0000 | 0.1000 | ±3.13% | 1741206 |
 
-Summary: **4622.03x faster** than native [Array.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
+Summary: **2184.87x faster** than native [Array.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
 
-### Substring index
+### Substring index - Chromium
 
-Setup: [100,000 documents](src/indexes/benchmarks/benchmark-data-100000.json) with a `title` field.
+Setup: [100,000 documents](pimdb/src/indexes/benchmarks/benchmark-data.json) with a `title` field.
 
-| Name           | Hz        | Min    | Max     | Mean   | P75    | P99     | P995    | P999    | RME    | Samples | Notes   |
-| -------------- | --------- | ------ | ------- | ------ | ------ | ------- | ------- | ------- | ------ | ------- | ------- |
-| `array.filter` | 132.14    | 5.5725 | 13.7257 | 7.5679 | 7.8342 | 13.7257 | 13.7257 | 13.7257 | ±4.31% | 67      |         |
-| `index.search` | 96,649.82 | 0.0070 | 1.2095  | 0.0103 | 0.0073 | 0.0104  | 0.4675  | 0.5119  | ±3.50% | 48,325  | Fastest |
+| Name               | Hz         | Min    | Max    | Mean   | P75    | P99    | P995   | P999   | RME    | Samples | Notes   |
+| ------------------ | ---------- | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------- | ------- |
+| `array.filter`     | 183.81     | 4.8000 | 7.2000 | 5.4404 | 5.6000 | 6.5000 | 6.8000 | 7.0000 | ±0.43% | 1000    |         |
+| `substring.search` | 151,486.00 | 0.0000 | 0.3000 | 0.0066 | 0.0000 | 0.1000 | 0.1000 | 0.1000 | ±2.72% | 75743   | Fastest |
 
-Summary: **731.44x faster** than native [Array.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
+Summary: **824.14x faster** than native [Array.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
 
 <!--
 ## API reference

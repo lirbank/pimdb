@@ -26,6 +26,8 @@ export class PimSortedIndex<T extends BaseDocument> implements PimIndex<T> {
    * Returns true if the document was updated, false if it was not found.
    */
   insert(doc: T): boolean {
+    // TODO: Check for duplicates
+
     const value = doc[this.indexField];
     let left = 0;
     let right = this.documents.length - 1;

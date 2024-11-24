@@ -54,7 +54,7 @@ console.log(
 );
 
 // Delete Bob
-db.users.delete({ id: "2", name: "Bob", username: "bob", age: 25 });
+db.users.delete("2");
 
 // Verify deletion
 const bob = db.users.indexes.primary.get("2");
