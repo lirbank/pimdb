@@ -4,8 +4,11 @@ export interface Spaceship {
 }
 
 export const makeSubstringPredicate =
-  (indexField: keyof Spaceship) => (query: string) => (doc: Spaceship) =>
-    doc[indexField].toLowerCase().includes(query.toLowerCase());
+  (indexField: keyof Spaceship) => (query: string) => {
+    const queryLower = query.toLowerCase();
+    return (doc: Spaceship) =>
+      doc[indexField].toLowerCase().includes(queryLower);
+  };
 
 export const makeExactMatchPredicate =
   (indexField: keyof Spaceship) => (query: string) => (doc: Spaceship) =>
