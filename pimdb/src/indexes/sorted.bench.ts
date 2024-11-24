@@ -1,190 +1,104 @@
 import { bench, describe } from "vitest";
 import { PimSortedIndex } from "./sorted";
-import testData1000 from "./benchmarks/benchmark-data-1000.json";
-import testData10000 from "./benchmarks/benchmark-data-10000.json";
 import testData100000 from "./benchmarks/benchmark-data-100000.json";
+import { getMiddleDoc, Spaceship } from "./shared";
+const unsortedDocs = testData100000 as Spaceship[];
 
-interface Spaceship {
-  id: string;
-  name: string;
-}
-
-const testData = {
-  1000: testData1000,
-  10000: testData10000,
-  // VSCode doesn't infer the types from the larger JSON file, so casting it
-  100000: testData100000 as Spaceship[],
-};
+// The number of documents to test
+// const marks = [1000, 10000, 100000];
 
 const query = "Nostromo";
-const indexField = "name";
+const indexField: keyof Spaceship = "name";
 const predicate = (doc: Spaceship) => doc[indexField] === query;
 
-function indexFactory(docCount: keyof typeof testData) {
-  const unsortedDocs = testData[docCount];
-
-  const index = new PimSortedIndex<Spaceship>(indexField);
-  unsortedDocs.forEach((doc) => index.insert(doc));
-
-  return { index, unsortedDocs };
-}
-
 /**
- * index.find vs array.filter on 1000 docs
+ * find
  */
-describe.skip(`index.find vs array.filter on 1000 docs`, () => {
-  const { index, unsortedDocs } = indexFactory(1000);
+[1000, 10000, 100000].forEach((count) => {
+  return;
 
-  bench("array.filter", () => {
-    unsortedDocs.filter(predicate);
-  });
+  describe(`sorted.find on ${count} docs`, () => {
+    const docs = unsortedDocs.slice(0, count);
 
-  bench("index.find", () => {
-    index.find(query);
-  });
-});
+    const index = new PimSortedIndex<Spaceship>(indexField);
+    docs.forEach((doc) => index.insert(doc));
 
-/**
- * index.find vs array.filter on 10000 docs
- */
-describe.skip(`index.find vs array.filter on 10000 docs`, () => {
-  const { index, unsortedDocs } = indexFactory(10000);
+    bench(`array.filter ${count}`, () => {
+      docs.filter(predicate);
+    });
 
-  bench("array.filter", () => {
-    unsortedDocs.filter(predicate);
-  });
-
-  bench("index.find", () => {
-    index.find(query);
-  });
-});
-
-/**
- * index.find vs array.filter on 100000 docs
- */
-describe(`index.find vs array.filter on 100000 docs`, () => {
-  const { index, unsortedDocs } = indexFactory(100000);
-
-  bench("array.filter", () => {
-    unsortedDocs.filter(predicate);
-  });
-
-  bench("index.find", () => {
-    index.find(query);
+    bench(`index.find ${count}`, () => {
+      index.find(query);
+    });
   });
 });
 
 /**
  * findInRange
  */
-describe.skip(`findInRange on 1000 docs`, () => {
-  const { index } = indexFactory(1000);
+[1000, 10000, 100000].forEach((count) => {
+  return;
 
-  bench(`findInRange Nostromo - Nostromo`, () => {
-    index.findInRange({ gte: "Nostromo", lte: "Nostromo" });
-  });
-});
+  describe(`sorted.findInRange on ${count} docs`, () => {
+    const docs = unsortedDocs.slice(0, count);
 
-describe.skip(`findInRange on 10000 docs`, () => {
-  const { index } = indexFactory(10000);
+    const index = new PimSortedIndex<Spaceship>(indexField);
+    docs.forEach((doc) => index.insert(doc));
 
-  bench(`findInRange Nostromo - Nostromo`, () => {
-    index.findInRange({ gte: "Nostromo", lte: "Nostromo" });
-  });
-});
-
-describe.skip(`findInRange on 100000 docs`, () => {
-  const { index } = indexFactory(100000);
-
-  bench(`findInRange Nostromo - Nostromo`, () => {
-    index.findInRange({ gte: "Nostromo", lte: "Nostromo" });
+    bench(`index.findInRange ${count}`, () => {
+      index.findInRange({ gte: "Nostromo", lte: "Nostromo" });
+    });
   });
 });
 
 /**
  * insert
  */
-describe.skip(`insert on 1000 docs`, () => {
-  const { index } = indexFactory(1000);
+[1000, 10000, 100000].forEach((count) => {
+  return;
 
-  bench(`insert - Nostromo`, () => {
-    index.insert({ id: "some-id", name: "Nostromo" });
-  });
-});
+  describe(`sorted.insert on ${count} docs`, () => {
+    const docs = unsortedDocs.slice(0, count);
 
-describe.skip(`insert on 10000 docs`, () => {
-  const { index } = indexFactory(10000);
+    const index = new PimSortedIndex<Spaceship>(indexField);
+    docs.forEach((doc) => index.insert(doc));
 
-  bench(`insert - Nostromo`, () => {
-    index.insert({ id: "some-id", name: "Nostromo" });
-  });
-});
-
-describe.skip(`insert on 100000 docs`, () => {
-  const { index } = indexFactory(100000);
-
-  bench(`insert - Nostromo`, () => {
-    index.insert({ id: "some-id", name: "Nostromo" });
+    bench(`index.insert ${count}`, () => {
+      index.insert({ id: "some-id", name: "Nostromo" });
+    });
   });
 });
 
 /**
  * update
  */
-describe.skip(`update on 1000 docs`, () => {
-  const { index } = indexFactory(1000);
+[1000, 10000, 100000].forEach((count) => {
+  describe(`sorted.update on ${count} docs`, () => {
+    const docs = unsortedDocs.slice(0, count);
 
-  bench(`update - Nostromo`, () => {
-    index.update({ id: "some-id", name: "Nostromo" });
-  });
-});
+    const index = new PimSortedIndex<Spaceship>(indexField);
+    docs.forEach((doc) => index.insert(doc));
 
-describe.skip(`update on 10000 docs`, () => {
-  const { index } = indexFactory(10000);
-
-  bench(`update - Nostromo`, () => {
-    index.update({ id: "some-id", name: "Nostromo" });
-  });
-});
-
-describe.skip(`update on 100000 docs`, () => {
-  const { index } = indexFactory(100000);
-
-  bench(`update - Nostromo`, () => {
-    index.update({ id: "some-id", name: "Nostromo" });
+    bench(`index.update ${count}`, () => {
+      // TODO: This is not matching any IDs
+      index.update({ id: "some-id", name: "Nostromo" });
+    });
   });
 });
 
 /**
  * delete
  */
-function getMiddleDoc(arr: Spaceship[]) {
-  return arr[Math.floor(arr.length / 2)]!;
-}
+[1000, 10000, 100000].forEach((count) => {
+  describe(`sorted.delete on ${count} docs`, () => {
+    const docs = unsortedDocs.slice(0, count);
 
-describe.skip(`delete on 1000 docs`, () => {
-  const { index, unsortedDocs } = indexFactory(1000);
-  const doc = getMiddleDoc(unsortedDocs);
+    const index = new PimSortedIndex<Spaceship>(indexField);
+    docs.forEach((doc) => index.insert(doc));
 
-  bench(`delete - ${doc.name}`, () => {
-    index.delete(doc);
-  });
-});
-
-describe.skip(`delete on 10000 docs`, () => {
-  const { index, unsortedDocs } = indexFactory(10000);
-  const doc = getMiddleDoc(unsortedDocs);
-
-  bench(`delete - ${doc.name}`, () => {
-    index.delete(doc);
-  });
-});
-
-describe.skip(`delete on 100000 docs`, () => {
-  const { index, unsortedDocs } = indexFactory(100000);
-  const doc = getMiddleDoc(unsortedDocs);
-
-  bench(`delete - ${doc.name}`, () => {
-    index.delete(doc);
+    bench(`index.delete ${count}`, () => {
+      // TODO: This is not matching any IDs
+      index.delete(getMiddleDoc(docs));
+    });
   });
 });
