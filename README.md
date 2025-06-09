@@ -259,22 +259,16 @@ TBD
 
 ## Contributing
 
-Contributions are welcome! Please feel free to [submit a Pull Request](https://github.com/lirbank/pimdb/pulls).
-
-1. [Fork the repository](https://github.com/lirbank/pimdb/fork)
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. [Open a pull request](https://github.com/lirbank/pimdb/compare)
+Contributions are welcome! Please open issues or pull requests on [GitHub](https://github.com/lirbank/pimdb/pulls).
 
 ## License
 
-This project is [open-source](https://github.com/lirbank/pimdb) and available under the [MIT License](LICENSE). Feel free to use it in your projects!
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Authored and maintained by Mikael Lirbank ([@lirbank](https://github.com/lirbank)).
+## Need expert help?
 
-If you find this project helpful, consider giving it a ⭐️ on [GitHub](https://github.com/lirbank/pimdb)!
+I take on a few consulting projects each year where I can build, unblock, and ship.
 
-## About the author
+**[STΛR MODΞ](https://www.starmode.dev/)** — The AI development studio I run with AI/ML expert and data scientist Spencer Smith. We help companies build accurate AI solutions: AI-first apps, advanced workflows, and agentic systems.
 
-I'm an experienced developer passionate about building performant and elegant solutions. Currently open to new consulting projects or full-time opportunities. Visit [lirbank.com](https://www.lirbank.com/) to connect.
+**[Mikael Lirbank](https://www.lirbank.com/)** — My solo practice, focused on web app development, test automation, code quality, and technical architecture. I'm around, friendly, and happy to help with the hard stuff.
