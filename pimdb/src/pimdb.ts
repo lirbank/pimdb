@@ -45,6 +45,7 @@ export class PimCollection<
 
     const clonedDoc = structuredClone(doc);
 
+    // Update all indexes
     for (const index of Object.values(this.indexes)) {
       index.insert(clonedDoc);
     }
@@ -57,6 +58,7 @@ export class PimCollection<
 
     const clonedDoc = structuredClone(doc);
 
+    // Update all indexes
     for (const index of Object.values(this.indexes)) {
       index.update(clonedDoc);
     }
@@ -68,6 +70,7 @@ export class PimCollection<
     const doc = this.primary.get(id);
     if (!doc) return false;
 
+    // Update all indexes
     for (const index of Object.values(this.indexes)) {
       index.delete(doc);
     }

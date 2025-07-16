@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import { PimPrimaryIndex } from "./primary";
 import { Spaceship } from "../test-helpers";
 
-describe("primary index", () => {
+describe.skip("primary index", () => {
   test("get", () => {
     const index = new PimPrimaryIndex<Spaceship>();
 

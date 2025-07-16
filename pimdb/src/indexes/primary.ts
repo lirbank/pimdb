@@ -55,13 +55,13 @@ export class PimPrimaryIndex<T extends BaseDocument> implements PimIndex<T> {
    * Get a document from the index by id.
    */
   get(id: T["id"]): T | undefined {
-    return this.map.get(id);
+    return structuredClone(this.map.get(id));
   }
 
   /**
    * Get all documents from the index.
    */
   all(): T[] {
-    return Array.from(this.map.values());
+    return structuredClone(Array.from(this.map.values()));
   }
 }
