@@ -3,7 +3,8 @@ import { BaseDocument, PimIndex } from "../pimdb";
 /**
  * Substring Index
  *
- * A fast substring search index that enables partial text matching on document fields.
+ * A fast substring search index that enables partial text matching on document
+ * fields.
  *
  * Features:
  * - Case-insensitive matching
