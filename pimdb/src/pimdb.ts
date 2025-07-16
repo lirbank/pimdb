@@ -12,9 +12,9 @@ export interface BaseDocument {
  * Index interface
  */
 export interface PimIndex<T> {
-  insert(item: T): boolean;
-  update(item: T): boolean;
-  delete(item: T): boolean;
+  insert(doc: T): boolean;
+  update(doc: T): boolean;
+  delete(doc: T): boolean;
 }
 
 /**
