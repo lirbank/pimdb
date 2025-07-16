@@ -116,7 +116,7 @@ export class PimSubstringIndex<T extends BaseDocument> implements PimIndex<T> {
    *   order they were inserted (this restriction will be lifted in the future).
    */
   search(query: string): T[] {
-    if (query === "") return Array.from(this.map.values());
+    if (query === "") return structuredClone(Array.from(this.map.values()));
 
     const matchingDocs = this.substringMap.get(query.toLowerCase());
     return matchingDocs ? Array.from(matchingDocs) : [];

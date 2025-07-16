@@ -6,7 +6,7 @@ import { PimPrimaryIndex } from "./indexes/primary";
 import { Spaceship } from "./test-helpers";
 
 function testFactory() {
-  const spaceships = [
+  const insertedSpaceships = [
     { id: "ship000000", name: "BG Prometheus Two-821" },
     { id: "ship000001", name: "ISS Galaxy Mark-II" },
     { id: "ship000002", name: "BG Nova" },
@@ -31,9 +31,9 @@ function testFactory() {
     ),
   });
 
-  spaceships.forEach((doc) => db.spaceships.insert(doc));
+  insertedSpaceships.forEach((doc) => db.spaceships.insert(doc));
 
-  return { db, spaceships };
+  return { db, insertedSpaceships };
 }
 
 /**
@@ -81,7 +81,7 @@ describe("insert", () => {
  * update
  */
 describe("update", () => {
-  const { db, spaceships } = testFactory();
+  const { db, insertedSpaceships } = testFactory();
 
   test("returns false if the document id does not exist", () => {
     expect(db.spaceships.update({ id: "ship000010", name: "New name" })).toBe(
@@ -101,7 +101,7 @@ describe("update", () => {
     });
 
     // Verify that the document is a reference to the original document
-    spaceships.forEach((doc) => {
+    insertedSpaceships.forEach((doc) => {
       expect(doc).not.toBe(db.spaceships.indexes.primary.get(doc.id));
     });
   });
@@ -132,40 +132,76 @@ describe("update", () => {
  * delete
  */
 describe("delete", () => {
-  const { db, spaceships } = testFactory();
+  const { db, insertedSpaceships } = testFactory();
 
   test("returns false if the document id is not in the index", () => {
     expect(db.spaceships.delete("ship000010")).toBe(false);
   });
 
   test("returns true if the document is deleted", () => {
-    expect(db.spaceships.delete(spaceships[0]!.id)).toBe(true);
+    expect(db.spaceships.delete(insertedSpaceships[0]!.id)).toBe(true);
 
     // Verify that the document is deleted
     expect(
-      db.spaceships.indexes.primary.get(spaceships[0]!.id),
+      db.spaceships.indexes.primary.get(insertedSpaceships[0]!.id),
     ).toBeUndefined();
   });
 });
 
 /**
- * search
+ * substring.search
  */
 describe("substring.search", () => {
-  test("returns clones, not references", () => {
-    const { db, spaceships } = testFactory();
+  test("inserts clones, not references", () => {
+    const { db, insertedSpaceships } = testFactory();
     const result = db.spaceships.indexes.substring.search("");
 
-    spaceships.forEach((doc) => {
-      expect(doc).not.toBe(result.find((r) => r.id === doc.id));
-    });
+    expect(result.length).toBe(insertedSpaceships.length);
+    expect(result).toStrictEqual(insertedSpaceships);
+
+    for (let i = 0; i < insertedSpaceships.length; i++) {
+      const insertedSpaceship = insertedSpaceships[i];
+      const resultSpaceship = result[i];
+
+      expect(insertedSpaceship).toBeDefined();
+      expect(resultSpaceship).toBeDefined();
+
+      // Same content
+      expect(insertedSpaceship).toStrictEqual(resultSpaceship);
+
+      // Different reference
+      expect(insertedSpaceship).not.toBe(resultSpaceship);
+    }
   });
 
-  test("empty query returns all documents (as inserted)", () => {
-    const { db, spaceships } = testFactory();
+  test("returns clones, not references", () => {
+    const { db } = testFactory();
+    const resultA = db.spaceships.indexes.substring.search("");
+    const resultB = db.spaceships.indexes.substring.search("");
+
+    expect(resultA.length).toBe(resultB.length);
+    expect(resultA).toStrictEqual(resultB);
+
+    for (let i = 0; i < resultA.length; i++) {
+      const docA = resultA[i];
+      const docB = resultB[i];
+
+      expect(docA).toBeDefined();
+      expect(docB).toBeDefined();
+
+      // Same content
+      expect(docA).toStrictEqual(docB);
+
+      // Different reference
+      expect(docA).not.toBe(docB);
+    }
+  });
+
+  test("empty query returns all documents in the order they were inserted", () => {
+    const { db, insertedSpaceships } = testFactory();
 
     expect(db.spaceships.indexes.substring.search("")).toStrictEqual(
-      spaceships,
+      insertedSpaceships,
     );
   });
 });
@@ -175,10 +211,10 @@ describe("substring.search", () => {
  */
 describe("sorted.find", () => {
   test("returns clones, not references", () => {
-    const { db, spaceships } = testFactory();
+    const { db, insertedSpaceships } = testFactory();
     const result = db.spaceships.indexes.sorted.find();
 
-    spaceships.forEach((doc) => {
+    insertedSpaceships.forEach((doc) => {
       expect(doc).not.toBe(result.find((r) => r.id === doc.id));
     });
   });
@@ -206,10 +242,10 @@ describe("sorted.find", () => {
  */
 describe("sorted.findInRange", () => {
   test("returns clones, not references", () => {
-    const { db, spaceships } = testFactory();
+    const { db, insertedSpaceships } = testFactory();
     const result = db.spaceships.indexes.sorted.findInRange({});
 
-    spaceships.forEach((doc) => {
+    insertedSpaceships.forEach((doc) => {
       expect(doc).not.toBe(result.find((r) => r.id === doc.id));
     });
   });
@@ -237,16 +273,16 @@ describe("sorted.findInRange", () => {
  */
 describe("primary.get", () => {
   test("inserts clones, not references", () => {
-    const { db, spaceships } = testFactory();
-    const insertedSpaceship = spaceships[0]!;
+    const { db, insertedSpaceships } = testFactory();
+    const insertedSpaceship = insertedSpaceships[0]!;
 
     const result = db.spaceships.indexes.primary.get(insertedSpaceship.id);
     expect(insertedSpaceship).not.toBe(result);
   });
 
   test("returns clones, not references", () => {
-    const { db, spaceships } = testFactory();
-    const insertedSpaceship = spaceships[0]!;
+    const { db, insertedSpaceships } = testFactory();
+    const insertedSpaceship = insertedSpaceships[0]!;
 
     const resultA = db.spaceships.indexes.primary.get(insertedSpaceship.id);
     const resultB = db.spaceships.indexes.primary.get(insertedSpaceship.id);
@@ -259,8 +295,7 @@ describe("primary.get", () => {
  */
 describe("primary.all", () => {
   test("inserts clones, not references", () => {
-    const { db, spaceships } = testFactory();
-    const insertedSpaceships = spaceships;
+    const { db, insertedSpaceships } = testFactory();
     const result = db.spaceships.indexes.primary.all();
 
     insertedSpaceships.forEach((insertedSpaceship) => {
@@ -288,12 +323,16 @@ describe("primary.all", () => {
 
       // Ensure it's not the same reference
       expect(docA).not.toBe(docB);
+
+      expect(docA).toStrictEqual(docB);
     });
   });
 
-  test("empty query returns all documents (as inserted)", () => {
-    const { db, spaceships } = testFactory();
+  test("returns all documents in the order they were inserted", () => {
+    const { db, insertedSpaceships } = testFactory();
 
-    expect(db.spaceships.indexes.primary.all()).toStrictEqual(spaceships);
+    expect(db.spaceships.indexes.primary.all()).toStrictEqual(
+      insertedSpaceships,
+    );
   });
 });
