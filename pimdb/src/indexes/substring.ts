@@ -119,6 +119,7 @@ export class PimSubstringIndex<T extends BaseDocument> implements PimIndex<T> {
     if (query === "") return structuredClone(Array.from(this.map.values()));
 
     const matchingDocs = this.substringMap.get(query.toLowerCase());
+    // TODO: Test with querystring that is not empty string
     return matchingDocs ? Array.from(matchingDocs) : [];
   }
 }

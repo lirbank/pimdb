@@ -4,7 +4,7 @@ import {
   PimSubstringIndex,
   PimSortedIndex,
   PimPrimaryIndex,
-} from "../pimdb/src/index";
+} from "../src/index";
 
 interface User {
   id: string;
