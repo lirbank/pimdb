@@ -16,7 +16,7 @@ const indexField: keyof Spaceship = "name";
 const predicate = makeExactMatchPredicate(indexField)(query);
 
 /**
- * find
+ * sorted.find
  */
 describe.each(marks)(`sorted.find on %d docs`, (count) => {
   const docs = unsortedDocs.slice(0, count);
@@ -42,7 +42,7 @@ describe.each(marks)(`sorted.find on %d docs`, (count) => {
 });
 
 /**
- * findInRange
+ * sorted.findInRange
  */
 describe.each(marks)(`sorted.findInRange on %d docs`, (count) => {
   const docs = unsortedDocs.slice(0, count);
@@ -60,9 +60,9 @@ describe.each(marks)(`sorted.findInRange on %d docs`, (count) => {
 });
 
 /**
- * insert
+ * sorted.insert
  */
-describe.each([])(`sorted.insert on %d docs`, (count) => {
+describe.each(marks)(`sorted.insert on %d docs`, (count) => {
   const docs = unsortedDocs.slice(0, count);
 
   const index = new PimSortedIndex<Spaceship>(indexField);
@@ -78,9 +78,9 @@ describe.each([])(`sorted.insert on %d docs`, (count) => {
 });
 
 /**
- * update
+ * sorted.update
  */
-describe.each([])(`sorted.update on %d docs`, (count) => {
+describe.each(marks)(`sorted.update on %d docs`, (count) => {
   const docs = unsortedDocs.slice(0, count);
 
   const index = new PimSortedIndex<Spaceship>(indexField);
@@ -97,9 +97,9 @@ describe.each([])(`sorted.update on %d docs`, (count) => {
 });
 
 /**
- * delete
+ * sorted.delete
  */
-describe.each([])(`sorted.delete on %d docs`, (count) => {
+describe.each(marks)(`sorted.delete on %d docs`, (count) => {
   const docs = unsortedDocs.slice(0, count);
 
   const index = new PimSortedIndex<Spaceship>(indexField);

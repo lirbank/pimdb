@@ -39,7 +39,7 @@
     "bench:run": "vitest bench --run",
     "bench:only:substring": "vitest bench --run src/indexes/substring.bench.ts",
     "bench:only:sorted": "vitest bench --run src/indexes/sorted.bench.ts",
-    "bench:compare": "vitest bench --compare benchmarks.json",
+    "bench:compare": "vitest bench --run --compare benchmarks.json",
     "bench:baseline": "vitest bench --run --outputJson benchmarks.json",
     "generate-1k": "bun src/indexes/benchmarks/generate-test-data.ts 1000",
     "generate-10k": "bun src/indexes/benchmarks/generate-test-data.ts 10000",
