@@ -22,10 +22,13 @@ jobs:
           bun-version: latest
 
       - name: Install dependencies
+        working-directory: pimdb
         run: bun install --frozen-lockfile
 
       - name: Security audit
+        working-directory: pimdb
         run: bun audit
 
       - name: Build project
+        working-directory: pimdb
         run: bun run build
