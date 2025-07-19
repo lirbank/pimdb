@@ -1,4 +1,10 @@
-import { createPimDB, buildCollection, primary, sorted, substring } from "../src";
+import {
+  createPimDB,
+  buildCollection,
+  primary,
+  sorted,
+  substring,
+} from "../src";
 
 interface User {
   id: string;

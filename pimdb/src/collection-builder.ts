@@ -13,7 +13,9 @@ export interface IndexFactory<T extends BaseDocument> {
 /**
  * Primary index factory
  */
-export class PrimaryIndexFactory<T extends BaseDocument> implements IndexFactory<T> {
+export class PrimaryIndexFactory<T extends BaseDocument>
+  implements IndexFactory<T>
+{
   create(): PimPrimaryIndex<T> {
     return new PimPrimaryIndex<T>();
   }
@@ -22,9 +24,11 @@ export class PrimaryIndexFactory<T extends BaseDocument> implements IndexFactory
 /**
  * Sorted index factory
  */
-export class SortedIndexFactory<T extends BaseDocument> implements IndexFactory<T> {
+export class SortedIndexFactory<T extends BaseDocument>
+  implements IndexFactory<T>
+{
   constructor(private field: keyof T) {}
-  
+
   create(): PimSortedIndex<T> {
     return new PimSortedIndex<T>(this.field);
   }
@@ -33,11 +37,15 @@ export class SortedIndexFactory<T extends BaseDocument> implements IndexFactory<
 /**
  * Substring index factory
  */
-export class SubstringIndexFactory<T extends BaseDocument> implements IndexFactory<T> {
-  constructor(private field: {
-    [K in keyof T]: T[K] extends string ? K : never;
-  }[keyof T]) {}
-  
+export class SubstringIndexFactory<T extends BaseDocument>
+  implements IndexFactory<T>
+{
+  constructor(
+    private field: {
+      [K in keyof T]: T[K] extends string ? K : never;
+    }[keyof T],
+  ) {}
+
   create(): PimSubstringIndex<T> {
     return new PimSubstringIndex<T>(this.field);
   }
@@ -48,7 +56,7 @@ export class SubstringIndexFactory<T extends BaseDocument> implements IndexFacto
  */
 export class CollectionBuilder<
   T extends BaseDocument,
-  TIndexes extends Record<string, PimIndex<T>> = {}
+  TIndexes extends Record<string, PimIndex<T>> = {},
 > {
   private indexFactories: Record<string, IndexFactory<T>>;
 
@@ -61,10 +69,12 @@ export class CollectionBuilder<
    */
   add<Name extends string>(
     name: Name,
-    factory: IndexFactory<T>
+    factory: IndexFactory<T>,
   ): CollectionBuilder<T, TIndexes & Record<Name, PimIndex<T>>> {
     const newFactories = { ...this.indexFactories, [name]: factory };
-    return new CollectionBuilder<T, TIndexes & Record<Name, PimIndex<T>>>(newFactories);
+    return new CollectionBuilder<T, TIndexes & Record<Name, PimIndex<T>>>(
+      newFactories,
+    );
   }
 
   /**
@@ -82,6 +92,9 @@ export class CollectionBuilder<
 /**
  * Factory function to create a new collection builder
  */
-export function buildCollection<T extends BaseDocument>(): CollectionBuilder<T, {}> {
+export function buildCollection<T extends BaseDocument>(): CollectionBuilder<
+  T,
+  {}
+> {
   return new CollectionBuilder<T, {}>();
 }

@@ -11,7 +11,13 @@ I have successfully implemented the new fluent API for PimDB as requested. The n
 The new API uses a fluent builder pattern with factory functions:
 
 ```typescript
-import { createPimDB, buildCollection, primary, sorted, substring } from "../src";
+import {
+  createPimDB,
+  buildCollection,
+  primary,
+  sorted,
+  substring,
+} from "../src";
 
 const db = createPimDB({
   users: buildCollection<User>()
@@ -47,7 +53,9 @@ const alices = db.users.getIndex("byName").find("Alice");
 const matches = db.users.getIndex("nameSub").search("ali");
 
 // 5) Range queries
-const midLifers = db.users.getIndex("byName").findInRange({ gte: "A", lte: "M" });
+const midLifers = db.users
+  .getIndex("byName")
+  .findInRange({ gte: "A", lte: "M" });
 
 // 6) Updates & deletes
 db.users.update({ id: "1", name: "Alicia", username: "alice", age: 31 });
@@ -86,7 +94,7 @@ const validIndex = db.users.getIndex("byName");
 
 // ❌ This fails with TypeScript error - invalid index name
 const invalidIndex = db.users.getIndex("foo");
-// Error: Argument of type '"foo"' is not assignable to parameter of type 
+// Error: Argument of type '"foo"' is not assignable to parameter of type
 // '"primary" | "byName" | "nameSub" | "userSub"'
 ```
 
@@ -95,7 +103,7 @@ const invalidIndex = db.users.getIndex("foo");
 The new API has been thoroughly tested:
 
 - ✅ TypeScript compilation passes
-- ✅ All CRUD operations work correctly  
+- ✅ All CRUD operations work correctly
 - ✅ Index queries (exact, range, substring) work correctly
 - ✅ Type safety enforced at compile time
 - ✅ Backward compatibility maintained

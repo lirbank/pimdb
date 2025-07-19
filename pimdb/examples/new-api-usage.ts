@@ -9,15 +9,11 @@ const alice = db.users.get("1");
 console.log("get by id:", alice);
 
 // 3) Sorted‐index lookup
-const alices = db.users
-  .getIndex("byName")
-  .find("Alice"); // → User[]
+const alices = db.users.getIndex("byName").find("Alice"); // → User[]
 console.log("find by name:", alices);
 
 // 4) Substring search
-const matches = db.users
-  .getIndex("nameSub")
-  .search("ali"); // → User[]
+const matches = db.users.getIndex("nameSub").search("ali"); // → User[]
 console.log("substring search:", matches);
 
 // 5) Range queries (on the sorted index)
