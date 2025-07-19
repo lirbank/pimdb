@@ -20,18 +20,11 @@ A lightweight, persisted in-memory database built from the ground up for the bro
 
 PimDB is published on [npmjs.com](https://www.npmjs.com/package/pimdb).
 
-```bash
-# Using bun
+```sh
 bun add pimdb
-
-# Using pnpm
 pnpm add pimdb
-
-# Using npm
-npm install pimdb
-
-# Using yarn
 yarn add pimdb
+npm install pimdb
 ```
 
 ## Quick start
