@@ -18,7 +18,7 @@ export interface PimIndex<T> {
 }
 
 /**
- * Public "read‐only" view of an index, ommiting the mutation methods so
+ * Public "read‐only" view of an index, omitting the mutation methods so
  * callers can only read.
  */
 type SafeIndex<I> = Omit<I, "insert" | "update" | "delete">;
