@@ -159,7 +159,7 @@ export class TypedCollectionBuilder<
 /**
  * Factory function to create a new collection builder
  */
-export function createTypedCollection<
+export function collection<
   T extends BaseDocument,
 >(): TypedCollectionBuilder<T> {
   return new TypedCollectionBuilder<T>();
@@ -362,19 +362,21 @@ interface Post extends BaseDocument {
 }
 
 // User sets up their collections using built-in and custom indexes
-const userCollection = createTypedCollection<User>()
-  .add("primary", new HashIndexFactory<User>())
-  .add("byName", new SortedIndexFactory<User>("name"))
-  .add("byAge", new SortedIndexFactory<User>("age"))
-  .add("search", new FullTextIndexFactory<User>("name")) // Custom index!
-  .build();
+const db = {
+  users: collection<User>()
+    .add("primary", new HashIndexFactory<User>())
+    .add("byName", new SortedIndexFactory<User>("name"))
+    .add("byAge", new SortedIndexFactory<User>("age"))
+    .add("search", new FullTextIndexFactory<User>("name")) // Custom index!
+    .build(),
 
-const postCollection = createTypedCollection<Post>()
-  .add("primary", new HashIndexFactory<Post>())
-  .add("byTitle", new SortedIndexFactory<Post>("title"))
-  .add("byAuthor", new SortedIndexFactory<Post>("authorId"))
-  .add("contentSearch", new FullTextIndexFactory<Post>("content")) // Same custom index type!
-  .build();
+  posts: collection<Post>()
+    .add("primary", new HashIndexFactory<Post>())
+    .add("byTitle", new SortedIndexFactory<Post>("title"))
+    .add("byAuthor", new SortedIndexFactory<Post>("authorId"))
+    .add("contentSearch", new FullTextIndexFactory<Post>("content")) // Same custom index type!
+    .build(),
+};
 
 // ============================================================================
 // USER USAGE CODE (user's application logic)
@@ -382,26 +384,26 @@ const postCollection = createTypedCollection<Post>()
 // This is where users actually use their database
 
 // Insert data
-userCollection.insert({
+db.users.insert({
   id: "1",
   name: "Alice",
   email: "alice@example.com",
   age: 30,
 });
-userCollection.insert({
+db.users.insert({
   id: "2",
   name: "Bob",
   email: "bob@example.com",
   age: 25,
 });
-userCollection.insert({
+db.users.insert({
   id: "3",
   name: "Charlie",
   email: "charlie@example.com",
   age: 35,
 });
 
-postCollection.insert({
+db.posts.insert({
   id: "1",
   title: "Hello World",
   content: "This is my first post",
@@ -410,15 +412,15 @@ postCollection.insert({
 });
 
 // Use built-in index methods
-const alice = userCollection.getIndex("byName").find("Alice");
-const youngUsers = userCollection.getIndex("byAge").findInRange({ lte: 30 });
+const alice = db.users.getIndex("byName").find("Alice");
+const youngUsers = db.users.getIndex("byAge").findInRange({ lte: 30 });
 
 // Use custom index methods (NO CORE CODE MODIFICATION NEEDED!)
-const searchResults = userCollection.getIndex("search").search("al");
-const prefixResults = userCollection.getIndex("search").getByPrefix("A");
+const searchResults = db.users.getIndex("search").search("al");
+const prefixResults = db.users.getIndex("search").getByPrefix("A");
 
 // Same custom index works with different document types
-const contentResults = postCollection.getIndex("contentSearch").search("first");
+const contentResults = db.posts.getIndex("contentSearch").search("first");
 
 console.log("=== Built-in Index Usage ===");
 console.log("Alice:", alice);
