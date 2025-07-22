@@ -365,14 +365,14 @@ export class FullTextIndexFactory<T extends BaseDocument>
 // This is where users define their document types and set up collections
 
 // User defines their document types
-interface User extends BaseDocument {
+interface User {
   id: string;
   name: string;
   email: string;
   age: number;
 }
 
-interface Post extends BaseDocument {
+interface Post {
   id: string;
   title: string;
   content: string;
