@@ -8,6 +8,7 @@ export default defineConfig({
       // https://vitest.dev/guide/browser/playwright
       instances: [{ browser: "chromium" }],
       headless: true,
+      screenshotFailures: false,
     },
   },
 });

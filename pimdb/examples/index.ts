@@ -16,15 +16,15 @@ db.users.insert({
   username: "charlie",
 });
 
-const alice = db.users.indexes.primary.get("1");
+const alice = db.users.getIndex("primary").get("1");
 console.log("Get by primary key (id = 1):", alice);
 
 // Access the name index
-const usersNamedAlice = db.users.indexes.regularIndex.find("Alice");
+const usersNamedAlice = db.users.getIndex("regularIndex").find("Alice");
 console.log("Users named Alice:", usersNamedAlice);
 
 // Access the age range index
-const usersInThirties = db.users.indexes.regularIndex.findInRange({
+const usersInThirties = db.users.getIndex("regularIndex").findInRange({
   gte: 30,
   lte: 39,
 });
@@ -40,14 +40,16 @@ db.users.update({
 });
 
 // Verify the update
-const updatedAlice = db.users.indexes.primary.get("1");
+const updatedAlice = db.users.getIndex("primary").get("1");
 console.log("Updated Alice:", updatedAlice);
 
 // Verify that indexes are updated
-const usersInThirtiesAfterUpdate = db.users.indexes.regularIndex.findInRange({
-  gte: 30,
-  lte: 39,
-});
+const usersInThirtiesAfterUpdate = db.users
+  .getIndex("regularIndex")
+  .findInRange({
+    gte: 30,
+    lte: 39,
+  });
 console.log(
   "Users in their thirties after update:",
   usersInThirtiesAfterUpdate,
@@ -57,18 +59,20 @@ console.log(
 db.users.delete("2");
 
 // Verify deletion
-const bob = db.users.indexes.primary.get("2");
+const bob = db.users.getIndex("primary").get("2");
 console.log("Bob after deletion:", bob); // Should be undefined
 
 // Verify that indexes are updated
-const usersInTwentiesAfterDeletion = db.users.indexes.regularIndex.findInRange({
-  gte: 20,
-  lte: 29,
-});
+const usersInTwentiesAfterDeletion = db.users
+  .getIndex("regularIndex")
+  .findInRange({
+    gte: 20,
+    lte: 29,
+  });
 console.log(
   "Users in their twenties after deletion:",
   usersInTwentiesAfterDeletion,
 );
 
-const allUsers = db.users.indexes.primary.all();
+const allUsers = db.users.getIndex("primary").all();
 console.log("All users:", allUsers);
