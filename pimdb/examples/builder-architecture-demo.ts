@@ -10,6 +10,14 @@ export interface BaseIndex<T extends BaseDocument> {
 }
 
 /**
+ * Primary index interface
+ */
+export interface PrimaryIndex<T extends BaseDocument> extends BaseIndex<T> {
+  get(id: string): T | undefined;
+  all(): T[];
+}
+
+/**
  * Type-safe read-only view of an index
  */
 export type ReadOnlyIndex<I> = Omit<I, "insert" | "update" | "delete">;
@@ -32,16 +40,38 @@ export class TypedCollection<
   TIndexes extends Record<string, BaseIndex<T>>,
 > {
   private indexes: TIndexes;
-  private primary: ReadOnlyIndex<TIndexes["primary"]>;
+  private primary: PrimaryIndex<T>;
 
   constructor(indexes: TIndexes) {
     if (!("primary" in indexes)) {
       throw new Error('A primary index under the key "primary" is required');
     }
+
+    // Runtime type guard to ensure primary index has required methods
+    if (!TypedCollection.isPrimaryIndex(indexes.primary)) {
+      throw new Error(
+        "The primary index must implement the PrimaryIndex interface",
+      );
+    }
+
     this.indexes = indexes;
-    this.primary = this.createReadOnlyView(indexes["primary"]) as ReadOnlyIndex<
-      TIndexes["primary"]
-    >;
+    this.primary = indexes.primary;
+  }
+
+  /**
+   * Runtime type guard to check if an index implements PrimaryIndex
+   */
+  private static isPrimaryIndex<T extends BaseDocument>(
+    index: BaseIndex<T>,
+  ): index is PrimaryIndex<T> {
+    return (
+      typeof index === "object" &&
+      index !== null &&
+      "get" in index &&
+      "all" in index &&
+      typeof (index as Record<string, unknown>).get === "function" &&
+      typeof (index as Record<string, unknown>).all === "function"
+    );
   }
 
   private createReadOnlyView<I extends BaseIndex<T>>(
@@ -100,8 +130,7 @@ export class TypedCollection<
   }
 
   delete(id: string): boolean {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const doc = (this.primary as any).get(id);
+    const doc = this.primary.get(id);
     if (!doc) return false;
 
     let success = true;
@@ -111,16 +140,6 @@ export class TypedCollection<
       }
     }
     return success;
-  }
-
-  get(id: string): T | undefined {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return (this.primary as any).get(id);
-  }
-
-  all(): T[] {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return (this.primary as any).all() || [];
   }
 }
 
