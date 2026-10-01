@@ -1,5 +1,24 @@
 import { PimPrimaryIndex } from "./indexes/primary";
 
+// SimpleEventEmitter.ts
+type Listener = () => void;
+
+export class SimpleEventEmitter {
+  private listeners: Set<Listener> = new Set();
+
+  addListener(listener: Listener) {
+    this.listeners.add(listener);
+  }
+
+  removeListener(listener: Listener) {
+    this.listeners.delete(listener);
+  }
+
+  protected emit() {
+    this.listeners.forEach((listener) => listener());
+  }
+}
+
 /**
  * BaseDocument
  */
@@ -25,11 +44,13 @@ export interface PimIndex<T> {
 export class PimCollection<
   T extends BaseDocument,
   TIndexes extends Record<string, PimIndex<T>>,
-> {
+> extends SimpleEventEmitter {
   indexes: TIndexes;
   primary: PimPrimaryIndex<T>;
 
   constructor(indexes: TIndexes) {
+    super();
+
     this.indexes = indexes;
 
     const primary = Object.values(this.indexes).find(
@@ -49,6 +70,8 @@ export class PimCollection<
       index.insert(clonedDoc);
     }
 
+    this.emit();
+
     return true;
   }
 
@@ -61,6 +84,8 @@ export class PimCollection<
       index.update(clonedDoc);
     }
 
+    this.emit();
+
     return true;
   }
 
@@ -71,6 +96,8 @@ export class PimCollection<
     for (const index of Object.values(this.indexes)) {
       index.delete(doc);
     }
+
+    this.emit();
 
     return true;
   }

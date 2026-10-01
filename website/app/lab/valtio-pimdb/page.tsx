@@ -1,14 +1,16 @@
 "use client";
 
-import { useRef, Fragment, memo } from "react";
+import { db } from "@/lib/db";
+import { useRef, Fragment, memo, useMemo } from "react";
 import { proxy, useSnapshot } from "valtio";
+// import { db } from './db';
 
 type Status = "pending" | "completed";
 type Filter = Status | "all";
 type Todo = {
   description: string;
   status: Status;
-  id: number;
+  id: string;
 };
 
 export const store = proxy<{ filter: Filter; todos: Todo[] }>({
@@ -20,18 +22,18 @@ const addTodo = (description: string) => {
   store.todos.push({
     description,
     status: "pending",
-    id: Date.now(),
+    id: crypto.randomUUID(),
   });
 };
 
-const removeTodo = (id: number) => {
+const removeTodo = (id: string) => {
   const index = store.todos.findIndex((todo) => todo.id === id);
   if (index >= 0) {
     store.todos.splice(index, 1);
   }
 };
 
-const toggleDone = (id: number, currentStatus: Status) => {
+const toggleDone = (id: string, currentStatus: Status) => {
   const nextStatus = currentStatus === "pending" ? "completed" : "pending";
   const todo = store.todos.find((todo) => todo.id === id);
   if (todo) {
@@ -96,6 +98,13 @@ const Todos = () => {
   console.log("Render Todos");
 
   const snap = useSnapshot(store);
+  // const x = useSnapshot(db.todos.indexes.substringIndex);
+
+  // Use useMemo to recompute the search results when the query or underlying data changes
+  // const users = useMemo(() => {
+  //   return db.todos.indexes.substringIndex.search("query");
+  // }, [db.todos.indexes.substringIndex]);
+
   return (
     <ul>
       {snap.todos
@@ -121,7 +130,20 @@ const CreateTodo = () => {
       />
       <button
         className="bg-cyan-300 px-3 py-1 rounded"
-        onClick={() => addTodo(inputRef.current?.value ?? "")}
+        onClick={() => {
+          addTodo(inputRef.current?.value ?? "");
+
+          db.todos.insert({
+            description: crypto.randomUUID(),
+            status: "pending",
+            id: crypto.randomUUID(),
+          });
+
+          console.log(db.todos.indexes.substringIndex);
+
+          // const r = db.todos.indexes.substringIndex.search("query");
+          // console.log("r", r);
+        }}
       >
         Add new
       </button>
