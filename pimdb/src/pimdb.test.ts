@@ -78,23 +78,23 @@ describe("insert", () => {
 });
 
 /**
- * update
+ * replace
  */
-describe("update", () => {
+describe("replace", () => {
   const { db, insertedSpaceships } = testFactory();
 
   test("returns false if the document id does not exist", () => {
-    expect(db.spaceships.update({ id: "ship000010", name: "New name" })).toBe(
+    expect(db.spaceships.replace({ id: "ship000010", name: "New name" })).toBe(
       false,
     );
   });
 
-  test("returns true if the document is updated", () => {
-    expect(db.spaceships.update({ id: "ship000000", name: "New name" })).toBe(
+  test("returns true if the document is replaced", () => {
+    expect(db.spaceships.replace({ id: "ship000000", name: "New name" })).toBe(
       true,
     );
 
-    // Verify that the document is updated
+    // Verify that the document is replaced
     expect(db.spaceships.getIndex("primary").get("ship000000")).toStrictEqual({
       id: "ship000000",
       name: "New name",
@@ -106,12 +106,12 @@ describe("update", () => {
     });
   });
 
-  test("updated documents are immutable", () => {
+  test("replaced documents are immutable", () => {
     const { db } = testFactory();
 
     const spaceship = { id: "ship000000", name: "Sulaco" };
 
-    db.spaceships.update(spaceship);
+    db.spaceships.replace(spaceship);
 
     // Mutate the original object
     spaceship.name = "Nostromo";
@@ -125,6 +125,61 @@ describe("update", () => {
     // Verify that the object in the store is not mutated (not a reference to
     // the original object)
     expect(result).not.toBe(spaceship);
+  });
+
+  test("replaces the whole document instead of merging", () => {
+    interface Ship {
+      id: string;
+      name: string;
+      class?: string;
+    }
+
+    const indexes = { primary: new PimPrimaryIndex<Ship>() };
+    const ships = new PimCollection<Ship, typeof indexes>(indexes);
+
+    ships.insert({ id: "1", name: "Sulaco", class: "Conestoga" });
+    ships.replace({ id: "1", name: "Nostromo" });
+
+    // Verify that the omitted optional field is removed, not kept
+    expect(ships.get("1")).toStrictEqual({ id: "1", name: "Nostromo" });
+  });
+
+  test("replacing an indexed value updates every index", () => {
+    const { db } = testFactory();
+
+    db.spaceships.replace({ id: "ship000000", name: "Zulu" });
+
+    // Verify that the sorted index finds the document by its new value only
+    expect(db.spaceships.getIndex("sorted").find("Zulu")).toStrictEqual([
+      { id: "ship000000", name: "Zulu" },
+    ]);
+    expect(
+      db.spaceships.getIndex("sorted").find("BG Prometheus Two-821"),
+    ).toStrictEqual([]);
+
+    // Verify that the sorted index maintains sorted order
+    expect(db.spaceships.getIndex("sorted").find()).toStrictEqual([
+      { id: "ship000003", name: "Auriga Commercial-148" },
+      { id: "ship000002", name: "BG Nova" },
+      { id: "ship000004", name: "Discovery Elite" },
+      { id: "ship000007", name: "Galaxy Supreme-897" },
+      { id: "ship000006", name: "ISS Discovery X" },
+      { id: "ship000001", name: "ISS Galaxy Mark-II" },
+      { id: "ship000008", name: "Sevastopol Alpha" },
+      { id: "ship000009", name: "Sevastopol Two" },
+      { id: "ship000005", name: "USS Prometheus Commercial-396" },
+      { id: "ship000000", name: "Zulu" }, // Here
+    ]);
+
+    // Verify that the substring index finds the document by its new value only
+    expect(db.spaceships.getIndex("substring").search("zulu")).toStrictEqual([
+      { id: "ship000000", name: "Zulu" },
+    ]);
+    expect(
+      db.spaceships.getIndex("substring").search("prometheus"),
+    ).toStrictEqual([
+      { id: "ship000005", name: "USS Prometheus Commercial-396" },
+    ]);
   });
 });
 
@@ -145,6 +200,44 @@ describe("delete", () => {
     expect(
       db.spaceships.getIndex("primary").get(insertedSpaceships[0]!.id),
     ).toBe(undefined);
+  });
+
+  test("deleting a document removes it from every index", () => {
+    const { db } = testFactory();
+
+    db.spaceships.delete("ship000000");
+
+    expect(db.spaceships.getIndex("primary").get("ship000000")).toBe(undefined);
+    expect(
+      db.spaceships.getIndex("sorted").find("BG Prometheus Two-821"),
+    ).toStrictEqual([]);
+    expect(db.spaceships.getIndex("sorted").find().length).toBe(9);
+    expect(
+      db.spaceships.getIndex("substring").search("prometheus"),
+    ).toStrictEqual([
+      { id: "ship000005", name: "USS Prometheus Commercial-396" },
+    ]);
+    expect(db.spaceships.getIndex("substring").search("").length).toBe(9);
+  });
+});
+
+/**
+ * getIndex
+ */
+describe("getIndex", () => {
+  test("does not expose the mutation methods", () => {
+    const { db } = testFactory();
+
+    for (const name of ["primary", "sorted", "substring"] as const) {
+      const index = db.spaceships.getIndex(name) as unknown as Record<
+        string,
+        unknown
+      >;
+
+      expect(index.insert).toBe(undefined);
+      expect(index.replace).toBe(undefined);
+      expect(index.delete).toBe(undefined);
+    }
   });
 });
 

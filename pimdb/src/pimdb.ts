@@ -10,10 +10,23 @@ export interface BaseDocument {
 
 /**
  * Index interface
+ *
+ * An index stores references to the documents it is given. It must never
+ * mutate a document.
  */
 export interface PimIndex<T> {
+  /**
+   * Add a document to the index.
+   */
   insert(doc: T): boolean;
-  update(doc: T): boolean;
+  /**
+   * Replace a document in the index. `prev` is the document currently in the
+   * index and `next` is its replacement. Both have the same id.
+   */
+  replace(prev: T, next: T): boolean;
+  /**
+   * Remove a document from the index.
+   */
   delete(doc: T): boolean;
 }
 
@@ -21,7 +34,7 @@ export interface PimIndex<T> {
  * Public "read‐only" view of an index, omitting the mutation methods so
  * callers can only read.
  */
-type SafeIndex<I> = Omit<I, "insert" | "update" | "delete">;
+type SafeIndex<I> = Omit<I, "insert" | "replace" | "delete">;
 
 /**
  * Collection
@@ -69,14 +82,21 @@ export class PimCollection<
     return true;
   }
 
-  update(record: T): boolean {
-    if (!this.primary.get(record.id)) return false;
+  /**
+   * Replace a document with a new version that has the same id.
+   *
+   * The whole document is replaced, so fields left out of `record` are removed.
+   * Returns true if the document was replaced, false if it was not found.
+   */
+  replace(record: T): boolean {
+    const prev = this.primary.get(record.id);
+    if (!prev) return false;
 
     const clone = structuredClone(record);
 
     // Update all indexes
     for (const idx of Object.values(this.indexes)) {
-      idx.update(clone);
+      idx.replace(prev, clone);
     }
 
     return true;
@@ -112,7 +132,7 @@ export class PimCollection<
     return new Proxy(idx, {
       get(target, prop: string) {
         // never expose mutation APIs
-        if (prop === "insert" || prop === "update" || prop === "delete") {
+        if (prop === "insert" || prop === "replace" || prop === "delete") {
           return undefined;
         }
         const orig = (target as unknown as Record<string, unknown>)[prop] as

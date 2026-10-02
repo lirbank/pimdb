@@ -79,18 +79,19 @@ export class PimSubstringIndex<T extends BaseDocument> implements PimIndex<T> {
   }
 
   /**
-   * Update a document in the index.
+   * Replace a document in the index.
    *
-   * Returns true if the document was updated, false if it was not found.
+   * Returns true if the document was replaced, false if it was not found.
    */
-  update(doc: T): boolean {
-    const existing = this.map.get(doc.id);
+  replace(prev: T, next: T): boolean {
+    const existing = this.map.get(prev.id);
     if (!existing) return false;
 
+    // Substring entries are removed by reference, so remove the stored document.
     this.removeFromIndex(existing);
-    // Mutate the existing object in place.
-    Object.assign(existing, doc);
-    this.indexDocument(existing);
+    // Setting an existing key keeps its insertion order.
+    this.map.set(next.id, next);
+    this.indexDocument(next);
     return true;
   }
 
@@ -100,9 +101,11 @@ export class PimSubstringIndex<T extends BaseDocument> implements PimIndex<T> {
    * Returns true if the document was deleted, false if it was not found.
    */
   delete(doc: T): boolean {
-    if (!this.map.has(doc.id)) return false;
+    const existing = this.map.get(doc.id);
+    if (!existing) return false;
 
-    this.removeFromIndex(doc);
+    // Substring entries are removed by reference, so remove the stored document.
+    this.removeFromIndex(existing);
     this.map.delete(doc.id);
     return true;
   }
@@ -116,10 +119,9 @@ export class PimSubstringIndex<T extends BaseDocument> implements PimIndex<T> {
    *   order they were inserted (this restriction will be lifted in the future).
    */
   search(query: string): T[] {
-    if (query === "") return structuredClone(Array.from(this.map.values()));
+    if (query === "") return Array.from(this.map.values());
 
     const matchingDocs = this.substringMap.get(query.toLowerCase());
-    // TODO: Test with querystring that is not empty string
     return matchingDocs ? Array.from(matchingDocs) : [];
   }
 }

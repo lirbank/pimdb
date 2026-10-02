@@ -6,8 +6,9 @@ import { BaseDocument, PimIndex } from "../pimdb";
  * This index relies on binary search to find individual documents and ranges
  * of documents.
  *
- * Write operations work with document references, mutating the documents in
- * place, allowing documents to be shared across multiple indexes.
+ * Write operations store document references, allowing documents to be shared
+ * across multiple indexes. Documents are never mutated, replacing a document
+ * swaps the stored reference.
  *
  * Read operations return a new array containing references (not clones) to the
  * indexed documents.
@@ -63,13 +64,13 @@ export class PimSortedIndex<T extends BaseDocument> implements PimIndex<T> {
   }
 
   /**
-   * Update a document in the index.
+   * Replace a document in the index.
    *
-   * Returns true if the document was updated, false if it was not found.
+   * Returns true if the document was replaced, false if it was not found.
    */
-  update(doc: T): boolean {
+  replace(prev: T, next: T): boolean {
     // Find the existing document with matching id
-    const existingIndex = this.documents.findIndex((d) => d.id === doc.id);
+    const existingIndex = this.documents.findIndex((d) => d.id === prev.id);
     if (existingIndex === -1) {
       return false;
     }
@@ -79,17 +80,16 @@ export class PimSortedIndex<T extends BaseDocument> implements PimIndex<T> {
       throw new Error(`Invalid document at index ${existingIndex}`);
     }
     const oldValue = existingDoc[this.indexField];
-    const newValue = doc[this.indexField];
+    const newValue = next[this.indexField];
 
-    // Copy all properties from doc to existingDoc
-    Object.assign(existingDoc, doc);
-
-    // If the indexed value changed, we need to reposition the document
-    if (oldValue !== newValue) {
+    if (oldValue === newValue) {
+      // The position is unchanged, so replace the document where it is
+      this.documents[existingIndex] = next;
+    } else {
       // Remove the document from its current position
       this.documents.splice(existingIndex, 1);
-      // Reinsert it in the correct sorted position
-      this.insert(existingDoc);
+      // Insert the new document in the correct sorted position
+      this.insert(next);
     }
 
     return true;

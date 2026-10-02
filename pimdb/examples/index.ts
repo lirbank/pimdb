@@ -30,8 +30,8 @@ const usersInThirties = db.users.getIndex("regularIndex").findInRange({
 });
 console.log("Users in their thirties:", usersInThirties);
 
-// Update Alice's age
-db.users.update({
+// Replace Alice's document with her new age
+db.users.replace({
   id: "1",
   name: "Alice",
   // email: "alice@example.com",

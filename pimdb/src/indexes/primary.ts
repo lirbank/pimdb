@@ -5,11 +5,11 @@ import { BaseDocument, PimIndex } from "../pimdb";
  *
  * This is a unique index.
  *
- * Write operations work with document references, mutating the documents in
- * place, allowing documents to be shared across multiple indexes.
+ * Write operations store document references, allowing documents to be shared
+ * across multiple indexes. Documents are never mutated, replacing a document
+ * swaps the stored reference.
  *
- * Read operations return a new array containing references (not clones) to the
- * indexed documents.
+ * Read operations return references (not clones) to the indexed documents.
  */
 export class PimPrimaryIndex<T extends BaseDocument> implements PimIndex<T> {
   private map = new Map<T["id"], T>();
@@ -28,16 +28,15 @@ export class PimPrimaryIndex<T extends BaseDocument> implements PimIndex<T> {
   }
 
   /**
-   * Update a document in the index.
+   * Replace a document in the index.
    *
-   * Returns true if the document was updated, false if it was not found.
+   * Returns true if the document was replaced, false if it was not found.
    */
-  update(doc: T): boolean {
-    const existing = this.map.get(doc.id);
-    if (!existing) return false;
+  replace(prev: T, next: T): boolean {
+    if (!this.map.has(prev.id)) return false;
 
-    // Mutate the existing object in place.
-    Object.assign(existing, doc);
+    // Setting an existing key keeps its insertion order.
+    this.map.set(next.id, next);
 
     return true;
   }
@@ -55,13 +54,13 @@ export class PimPrimaryIndex<T extends BaseDocument> implements PimIndex<T> {
    * Get a document from the index by id.
    */
   get(id: T["id"]): T | undefined {
-    return structuredClone(this.map.get(id));
+    return this.map.get(id);
   }
 
   /**
    * Get all documents from the index.
    */
   all(): T[] {
-    return structuredClone(Array.from(this.map.values()));
+    return Array.from(this.map.values());
   }
 }

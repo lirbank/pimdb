@@ -78,19 +78,21 @@ describe.each(marks)(`sorted.insert on %d docs`, (count) => {
 });
 
 /**
- * sorted.update
+ * sorted.replace
  */
-describe.each(marks)(`sorted.update on %d docs`, (count) => {
+describe.each(marks)(`sorted.replace on %d docs`, (count) => {
   const docs = unsortedDocs.slice(0, count);
 
   const index = new PimSortedIndex<Spaceship>(indexField);
   docs.forEach((doc) => index.insert(doc));
 
-  const doc = getMiddleDoc(docs);
+  let doc = getMiddleDoc(docs);
   bench(
-    `sorted.update ${count}`,
+    `sorted.replace ${count}`,
     () => {
-      index.update({ id: doc.id, name: "Nostromo" });
+      const next = { id: doc.id, name: "Nostromo" };
+      index.replace(doc, next);
+      doc = next;
     },
     { iterations: 1000 },
   );

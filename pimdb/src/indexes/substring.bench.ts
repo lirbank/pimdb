@@ -60,19 +60,21 @@ describe.each(marks)(`substring.insert on %d docs`, (count) => {
 });
 
 /**
- * substring.update
+ * substring.replace
  */
-describe.each(marks)(`substring.update on %d docs`, (count) => {
+describe.each(marks)(`substring.replace on %d docs`, (count) => {
   const docs = unsortedDocs.slice(0, count);
 
   const index = new PimSubstringIndex<Spaceship>(indexField);
   docs.forEach((doc) => index.insert(doc));
 
-  const doc = getMiddleDoc(docs);
+  let doc = getMiddleDoc(docs);
   bench(
-    `substring.update ${count}`,
+    `substring.replace ${count}`,
     () => {
-      index.update({ id: doc.id, name: "Nostromo" });
+      const next = { id: doc.id, name: "Nostromo" };
+      index.replace(doc, next);
+      doc = next;
     },
     { iterations: 1000 },
   );

@@ -268,9 +268,9 @@ describe("insert", () => {
 });
 
 /**
- * update
+ * replace
  */
-describe("update", () => {
+describe("replace", () => {
   let index: PimSortedIndex<Spaceship>;
 
   const docs = [
@@ -295,8 +295,15 @@ describe("update", () => {
     docs.forEach((doc) => index.insert(doc));
   });
 
-  test("updating a document with unknown id has no effect", () => {
-    index.update({ id: "not-an-id", name: "new value" });
+  const getDoc = (id: string) => docs.find((doc) => doc.id === id)!;
+
+  test("replacing a document with unknown id has no effect", () => {
+    expect(
+      index.replace(
+        { id: "not-an-id", name: "old value" },
+        { id: "not-an-id", name: "new value" },
+      ),
+    ).toBe(false);
 
     expect(index.find()).toStrictEqual([
       { id: "8", name: "" },
@@ -314,8 +321,10 @@ describe("update", () => {
     ]);
   });
 
-  test("updating a document by id updates the document and maintains sorted order", () => {
-    index.update({ id: "2", name: "bbbb new value" });
+  test("replacing a document by id replaces the document and maintains sorted order", () => {
+    expect(
+      index.replace(getDoc("2"), { id: "2", name: "bbbb new value" }),
+    ).toBe(true);
 
     expect(index.find()).toStrictEqual([
       { id: "8", name: "" },
@@ -333,16 +342,55 @@ describe("update", () => {
     ]);
   });
 
-  test("updated document references the same object as the indexed documents", () => {
-    // Update a document
-    index.update({ id: "2", name: "bbbb new value" });
+  test("replaced document is found by its new value, not its old value", () => {
+    index.replace(getDoc("2"), { id: "2", name: "bbbb new value" });
 
-    // The index should return the same object reference as the one
-    // inserted/updated. This is the intended behavior.
+    expect(index.find("bbbb new value")).toStrictEqual([
+      { id: "2", name: "bbbb new value" },
+    ]);
+    expect(index.find("aaa")).toStrictEqual([
+      { id: "1", name: "aaa" },
+      { id: "4", name: "aaa" },
+    ]);
+  });
+
+  test("replacing a document without changing the indexed value keeps its position", () => {
+    const next = { id: "2", name: "aaa" };
+    expect(index.replace(getDoc("2"), next)).toBe(true);
+
+    const result = index.find("aaa");
+    expect(result).toStrictEqual([
+      { id: "1", name: "aaa" },
+      { id: "2", name: "aaa" },
+      { id: "4", name: "aaa" },
+    ]);
+
+    // The stored reference is replaced by the new document
+    expect(result[1]).toBe(next);
+  });
+
+  test("replaced document is swapped for the new reference", () => {
+    const prev = getDoc("2");
+    const next = { id: "2", name: "bbbb new value" };
+
+    // Replace a document
+    index.replace(prev, next);
+
     const result = index.find();
-    docs.forEach((doc) => {
-      expect(doc).toBe(result.find((r) => r.id === doc.id));
-    });
+
+    // The replaced document is swapped for the new reference
+    expect(result.find((r) => r.id === "2")).toBe(next);
+
+    // The other documents are still the same object references as the ones
+    // inserted
+    docs
+      .filter((doc) => doc.id !== "2")
+      .forEach((doc) => {
+        expect(doc).toBe(result.find((r) => r.id === doc.id));
+      });
+
+    // The replaced document is not mutated
+    expect(prev).toStrictEqual({ id: "2", name: "aaa" });
   });
 });
 
