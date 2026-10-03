@@ -27,6 +27,11 @@ jobs:
       - name: Security audit
         run: bun audit
 
+      - name: Install Playwright browser
+        # Headless tests only need the headless shell build of Chromium
+        working-directory: pimdb
+        run: bunx playwright install --with-deps --only-shell chromium
+
       - name: Build project
         working-directory: pimdb
         run: bun run build
