@@ -20,18 +20,11 @@ A lightweight, persisted in-memory database built from the ground up for the bro
 
 PimDB is published on [npmjs.com](https://www.npmjs.com/package/pimdb).
 
-```bash
-# Using bun
+```sh
 bun add pimdb
-
-# Using pnpm
 pnpm add pimdb
-
-# Using npm
-npm install pimdb
-
-# Using yarn
 yarn add pimdb
+npm install pimdb
 ```
 
 ## Quick start
@@ -207,12 +200,12 @@ Initial benchmarks were conducted on a MacBook Pro M1 Max with 64 GB RAM.
 
 Setup: [100,000 documents](pimdb/src/indexes/benchmarks/benchmark-data.json) with a `name` field.
 
-| Name           | Hz           | Min    | Max    | Mean   | P75    | P99    | P995   | P999   | RME    | Samples |
-| -------------- | ------------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------- |
-| `array.filter` | 1,593.88     | 0.5000 | 1.1000 | 0.6274 | 0.7000 | 0.9000 | 1.0000 | 1.1000 | ±0.86% | 1000    |
-| `sorted.find`  | 3,482,412.00 | 0.0000 | 3.8000 | 0.0003 | 0.0000 | 0.0000 | 0.0000 | 0.1000 | ±3.13% | 1741206 |
+| Name         | Hz           | Min    | Max    | Mean   | P75    | P99    | P995   | P999   | RME    | Samples | Notes   |
+| ------------ | ------------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------- | ------- |
+| array.filter | 1,592.61     | 0.5000 | 1.1000 | 0.6279 | 0.7000 | 0.9000 | 1.0000 | 1.1000 | ±0.85% | 1000    |         |
+| sorted.find  | 3,512,770.00 | 0.0000 | 0.2000 | 0.0003 | 0.0000 | 0.0000 | 0.0000 | 0.1000 | ±2.77% | 1756385 | Fastest |
 
-Summary: **2184.87x faster** than native [Array.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
+Summary: **2205.67x faster** than native [Array.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
 
 ### Substring index - Chromium
 
@@ -223,7 +216,12 @@ Setup: [100,000 documents](pimdb/src/indexes/benchmarks/benchmark-data.json) wit
 | `array.filter`     | 183.81     | 4.8000 | 7.2000 | 5.4404 | 5.6000 | 6.5000 | 6.8000 | 7.0000 | ±0.43% | 1000    |         |
 | `substring.search` | 151,486.00 | 0.0000 | 0.3000 | 0.0066 | 0.0000 | 0.1000 | 0.1000 | 0.1000 | ±2.72% | 75743   | Fastest |
 
-Summary: **824.14x faster** than native [Array.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
+| Name             | Hz         | Min    | Max    | Mean   | P75    | P99    | P995   | P999   | RME    | Samples | Notes   |
+| ---------------- | ---------- | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------- | ------- |
+| array.filter     | 185.97     | 4.7000 | 7.6000 | 5.3772 | 5.7000 | 7.0000 | 7.2000 | 7.5000 | ±0.67% | 1000    |         |
+| substring.search | 120,455.91 | 0.0000 | 1.2000 | 0.0083 | 0.0000 | 0.1000 | 0.1000 | 0.7000 | ±4.17% | 60240   | Fastest |
+
+Summary: **647.72x faster** than native [Array.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
 
 <!--
 ## API reference

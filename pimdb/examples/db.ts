@@ -4,7 +4,7 @@ import {
   PimSubstringIndex,
   PimSortedIndex,
   PimPrimaryIndex,
-} from "../pimdb/src/index";
+} from "../src/index";
 
 interface User {
   id: string;
@@ -36,3 +36,8 @@ export const db = createPimDB({
   users: new PimCollection<User, typeof usersIdx>(usersIdx),
   posts: new PimCollection<Post, typeof postsIdx>(postsIdx),
 });
+
+export const db2 = {
+  users: new PimCollection<User, typeof usersIdx>(usersIdx),
+  posts: new PimCollection<Post, typeof postsIdx>(postsIdx),
+};
