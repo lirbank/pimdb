@@ -7,6 +7,7 @@
     "isolatedModules": true,
     "strict": true,
     "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
     "skipLibCheck": true,
     "outDir": "./dist",
     "declaration": true,
