@@ -136,8 +136,7 @@ export class PimCollection<
           return undefined;
         }
         const orig = (target as unknown as Record<string, unknown>)[prop] as
-          | ((...args: unknown[]) => unknown)
-          | undefined;
+          ((...args: unknown[]) => unknown) | undefined;
         if (typeof orig !== "function") {
           return undefined;
         }

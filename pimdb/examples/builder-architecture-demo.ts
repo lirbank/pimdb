@@ -276,17 +276,19 @@ export class SortedIndex<T extends BaseDocument> implements BaseIndex<T> {
 }
 
 // Built-in factories
-export class HashIndexFactory<T extends BaseDocument>
-  implements IndexFactory<T, HashIndex<T>>
-{
+export class HashIndexFactory<T extends BaseDocument> implements IndexFactory<
+  T,
+  HashIndex<T>
+> {
   create(): HashIndex<T> {
     return new HashIndex<T>();
   }
 }
 
-export class SortedIndexFactory<T extends BaseDocument>
-  implements IndexFactory<T, SortedIndex<T>>
-{
+export class SortedIndexFactory<T extends BaseDocument> implements IndexFactory<
+  T,
+  SortedIndex<T>
+> {
   constructor(private field: keyof T) {}
 
   create(): SortedIndex<T> {
@@ -349,9 +351,9 @@ export class FullTextIndex<T extends BaseDocument> implements BaseIndex<T> {
 /**
  * Custom factory for the user's full-text index
  */
-export class FullTextIndexFactory<T extends BaseDocument>
-  implements IndexFactory<T, FullTextIndex<T>>
-{
+export class FullTextIndexFactory<
+  T extends BaseDocument,
+> implements IndexFactory<T, FullTextIndex<T>> {
   constructor(private searchField: keyof T) {}
 
   create(): FullTextIndex<T> {
